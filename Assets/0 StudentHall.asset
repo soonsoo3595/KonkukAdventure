@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b110939848e381b4ea73fe97df129056, type: 3}
+  m_Name: 0 StudentHall
+  m_EditorClassIdentifier: 
+  buildingNum: 0
+  buildingName: "\uD559\uC0DD\uD68C\uAD00"
+  buildingType: 1
+  buildingDescription: "\uAC74\uAD6D\uB300\uC758 \uD559\uC0DD\uD68C\uAD00\uC774\uB2E4.
+    \n\uD559\uC2DD\uC744 \uBA39\uC744 \uC218 \uC788\uB294 \uACF3\uC774 \uC788\uACE0\n\uC2E0\uD55C\uC740\uD589,
+    \uC548\uACBD\uC810 \uB4F1\uC774 \uC788\uB2E4. "
