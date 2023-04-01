@@ -107,6 +107,7 @@ public class ExpandScrollVeiw : MonoBehaviour
         }
     }
 
+    #region scroll move
     IEnumerator SmoothResizeUp(ExpandArea rt, float area , float time)
     {
         float t = 0f;
@@ -135,4 +136,5 @@ public class ExpandScrollVeiw : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
 }
