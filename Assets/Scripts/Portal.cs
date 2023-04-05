@@ -41,10 +41,8 @@ enum BuildNum
 public class Portal : MonoBehaviour
 {
 
+    public List<DepartmentData> findData;
     List<DepartmentData> data;
-
-    int[] departmentID = new int[10];
-    string[] departmentName = new string[10];
 
     [SerializeField] BuildNum buildNum;
 
@@ -53,10 +51,11 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        findData = new List<DepartmentData>();
         data = new List<DepartmentData>();
         data = DataMgr.Departments.data;
 
-        FindDepartment(5);
+        findData = FindDepartment(5);
 
         //for(int i = 0;i<57;i++)
         //{
@@ -69,25 +68,19 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit");
         if(other.CompareTag("Player"))
         {
-            
-            Debug.Log(data);
+
+            GameManager.instacne.selectUi.SetActive(true);
         }
     }
 
-    private void FindDepartment(int num)
+    public List<DepartmentData> FindDepartment(int num)
     {
-        int i = 0;
         List<DepartmentData> findID = data.FindAll(element => element.buildingID == num);
 
-        foreach(DepartmentData data in findID)
-        {
-            departmentID[i] = data.departmentID;
-            departmentName[i] = data.name;
-            Debug.Log("학과 ID : " + departmentID[i] + " 학과 이름 : " + departmentName[i]);
-            i++;
-        }
+        return findID;
     }
 
 }

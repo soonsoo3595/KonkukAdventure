@@ -1,26 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExpandScrollVeiw : MonoBehaviour
 {
     public static ExpandScrollVeiw instance;
 
     [SerializeField] internal GameObject trans;
-    [SerializeField] internal ExpandArea[] study = new ExpandArea[16];
+    [SerializeField] internal ExpandArea[] study;
     [SerializeField] internal float area, time;
+    private bool[] _isExpand;
     private bool _isStudy1Expand, _isStudy2Expand, _isStudy3Expand, _isStudy4Expand;
 
-    private void Awake()
+    private void Start()
     {
         instance = this;
         study = trans.GetComponentsInChildren<ExpandArea>();
+        SetText(1);
+
+        _isExpand = new bool[study.Length];
 
         _isStudy1Expand = false;
         _isStudy2Expand = false;
         _isStudy3Expand = false;
         _isStudy4Expand = false;
     }
+
+    void SetText(int num)
+    {
+        Text[] names = new Text[5];
+
+        names = study[num].GetComponentsInChildren<Text>();
+        names[1].text = "texssksksksksk";
+        Debug.Log(names);
+        Debug.Log("fsdkjghdkfg");
+    }
+
     public void ExpandStudy1()
     {
         if (!_isStudy1Expand)
@@ -107,7 +123,7 @@ public class ExpandScrollVeiw : MonoBehaviour
         }
     }
 
-    #region scroll move
+    #region 스크롤 확장/감소
     IEnumerator SmoothResizeUp(ExpandArea rt, float area , float time)
     {
         float t = 0f;

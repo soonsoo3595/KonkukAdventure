@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMgr : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public static GameManager instacne;
+    public Portal portal;
+    public GameObject selectUi;
+
     // Start is called before the first frame update
     void Awake()
     {
+        instacne = this;
         DataMgr.LoadData();
+        selectUi.SetActive(false);
     }
 
     void Start()
