@@ -8,7 +8,7 @@ public class ExpandScrollVeiw : MonoBehaviour
     public static ExpandScrollVeiw instance;
 
     [SerializeField] internal GameObject trans;
-    [SerializeField] internal ExpandArea[] study;
+    [SerializeField] internal LectureDataSet[] study;
     [SerializeField] internal float area, time;
     private bool[] _isExpand;
     private bool _isStudy1Expand, _isStudy2Expand, _isStudy3Expand, _isStudy4Expand;
@@ -16,7 +16,7 @@ public class ExpandScrollVeiw : MonoBehaviour
     private void Start()
     {
         instance = this;
-        study = trans.GetComponentsInChildren<ExpandArea>();
+        study = trans.GetComponentsInChildren<LectureDataSet>();
         SetText(1);
 
         _isExpand = new bool[study.Length];
@@ -124,7 +124,7 @@ public class ExpandScrollVeiw : MonoBehaviour
     }
 
     #region 스크롤 확장/감소
-    IEnumerator SmoothResizeUp(ExpandArea rt, float area , float time)
+    IEnumerator SmoothResizeUp(LectureDataSet rt, float area , float time)
     {
         float t = 0f;
         float temp = rt.transform.position.y;
@@ -138,7 +138,7 @@ public class ExpandScrollVeiw : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator SmoothResizeDown(ExpandArea rt, float area, float time)
+    IEnumerator SmoothResizeDown(LectureDataSet rt, float area, float time)
     {
         float t = 0f;
         float temp = rt.transform.position.y;

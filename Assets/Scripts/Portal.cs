@@ -5,6 +5,7 @@ using UnityEngine;
 
 enum BuildNum
 {
+    #region 빌딩 번호
     b1 = 1,
     b2 = 2,
     b3 = 3,
@@ -36,51 +37,54 @@ enum BuildNum
     b29 = 29,
     b30 = 30,
     b31 = 31
+    #endregion 
 }
 
 public class Portal : MonoBehaviour
 {
+    //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
+    public delegate void SetDataChain(List<DepartmentData> departmentDatas, List<LectureData> lectureDatas);
+    public static event SetDataChain SetData;
 
-    public List<DepartmentData> findData;
-    List<DepartmentData> data;
+    //학과 데이터와 강의 데이터를 받을 리스트 선언
+    List<DepartmentData> departmentDatas;
+    List<LectureData> lectureDatas;
 
+    //포탈이 보여줄 빌딩의 번호 설정
     [SerializeField] BuildNum buildNum;
-
-    // 건물 번호 인스펙터 창에서 입력받고 트리거 발생 시 서버에서 번호를 이용해서 데이터 받아오고 UI 띄우기
 
     // Start is called before the first frame update
     void Start()
-    {
-        findData = new List<DepartmentData>();
-        data = new List<DepartmentData>();
-        data = DataMgr.Departments.data;
+    {   
+        //학과 데이터 Datamgr에서 가져오기
+        departmentDatas = new List<DepartmentData>();
+        departmentDatas = DataMgr.Departments.data;
+        //강의 데이터 DataMgr에서 가져오기
+        lectureDatas = new List<LectureData>();
+        lectureDatas = DataMgr.Lectures.data;
 
-        findData = FindDepartment(5);
-
-        //for(int i = 0;i<57;i++)
-        //{
-        //    departmentID[i] = data[i].departmentID;
-        //    buildingID[i] = data[i].buildingID;
-        //    departmentName[i] = data[i].name;
-        //}
+        //델리게이트 실행
+        SetData(FindDepartment((int)buildNum), lectureDatas);  
     }
 
-
+    //캐릭터가 포탈 집입시에 발동
+    #region 캐릭터 집입 이벤트
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("hit");
         if(other.CompareTag("Player"))
         {
-
-            GameManager.instacne.selectUi.SetActive(true);
+            GameManager.instance.selectUi.SetActive(true);
         }
     }
+    #endregion
 
-    public List<DepartmentData> FindDepartment(int num)
+    //빌딩 번호에 따른 학과들 검색
+    #region 빌딩에 있는 학과들 검색
+    private List<DepartmentData> FindDepartment(int num)
     {
-        List<DepartmentData> findID = data.FindAll(element => element.buildingID == num);
-
-        return findID;
+        List<DepartmentData> find = departmentDatas.FindAll(element => element.buildingID == num);
+        return find;
     }
-
+    #endregion
 }

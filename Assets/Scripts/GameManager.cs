@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instacne;
-    public Portal portal;
+    public static GameManager instance;
+
     public GameObject selectUi;
 
     // Start is called before the first frame update
     void Awake()
     {
-        instacne = this;
+        instance = this;
+
         DataMgr.LoadData();
-        selectUi.SetActive(false);
+        //selectUi.SetActive(false);
     }
 
     void Start()
@@ -22,10 +23,5 @@ public class GameManager : MonoBehaviour
         Debug.Log(DataMgr.Departments.data[0].name);
         Debug.Log(DataMgr.Lectures.data[0].name);
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
