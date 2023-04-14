@@ -63,11 +63,15 @@ public static class DataMgr
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
 
+    private static List<int> buildingRecord;
+    private static List<LectureData> lectureRecord;
 
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
 
+    public static List<int> BuildingRecord = new List<int>();
+    public static List<LectureData> LectureRecord = new List<LectureData>();
 
     public static void LoadData()
     {

@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class UIButtonManager : MonoBehaviour
 {
+    [Header("Top Toggle")]
     [SerializeField] private GameObject _selectToggle, _recordToggle;
+
+    [Header("Area")]
     [SerializeField] private GameObject _selectArea, _recordArea;
+
+    [Header("Close Button")]
     [SerializeField] private GameObject _closeUi;
 
+    [Header("Sprite")]
     [SerializeField] private Sprite _highlight;
 
     private Toggle _isSelect, _isRecord;
@@ -21,7 +27,7 @@ public class UIButtonManager : MonoBehaviour
         _isRecord = _recordToggle.GetComponent<Toggle>();
 
         _defaultColor = _selectToggle.GetComponent<Image>().color;
-        _highlightColor = new Color(0.7f,0.7f,0.7f,1);
+        _highlightColor = new Color(0.7f, 0.7f, 0.7f, 1);
 
         _isSelect.isOn = true;
     }

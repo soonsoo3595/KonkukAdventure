@@ -42,6 +42,8 @@ enum BuildNum
 
 public class Portal : MonoBehaviour
 {
+    public static Portal portal;
+
     //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
     public delegate void SetDataChain(List<DepartmentData> departmentDatas, List<LectureData> lectureDatas);
     public static event SetDataChain SetData;
@@ -52,10 +54,13 @@ public class Portal : MonoBehaviour
 
     //포탈이 보여줄 빌딩의 번호 설정
     [SerializeField] BuildNum buildNum;
+    internal int BuildNum { get { return (int)buildNum; } }
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        portal = this;
+
         //학과 데이터 Datamgr에서 가져오기
         departmentDatas = new List<DepartmentData>();
         departmentDatas = DataMgr.Departments.data;

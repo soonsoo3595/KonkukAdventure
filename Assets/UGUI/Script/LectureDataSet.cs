@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class LectureDataSet : MonoBehaviour
 {
+    public delegate void LectureStudyChain(LectureData lectureData);
+    public static event LectureStudyChain LectureStudy;
+
     //강의들의 정보를 넣는 리스트
     [SerializeField] public List<LectureData> lectureData;
     //강의명을 세팅해줄 오브젝트들이 있는 위치
@@ -26,9 +29,23 @@ public class LectureDataSet : MonoBehaviour
         {
             lectureList[i].text = lectureDatas[i].name;
         }
-        
     }
-    #endregion
+    #endregion 
 
-    
+    public void Active1()
+    {
+        LectureStudy(lectureData[0]);
+    }
+    public void Active2()
+    {
+        LectureStudy(lectureData[1]);
+    }
+    public void Active3()
+    {
+        LectureStudy(lectureData[2]);
+    }
+    public void Active4()
+    {
+        LectureStudy(lectureData[3]);
+    }
 }
