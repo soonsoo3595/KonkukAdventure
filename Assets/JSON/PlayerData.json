@@ -1,23 +1,13 @@
-[
- {
-  "[": "    \"UserID\": 1"
- },
- {
-  "[": "    \"grade\": 1"
- },
- {
-  "[": "    \"semester\": 1"
- },
- {
-  "[": "    \"creditLismit\": 4"
- },
- {
-  "[": "    \"creditReserve\": \"o\""
- },
- {
-  "[": "    \"scoreReserve\": \"o\""
- },
- {
-  "[": "    \"KUPointReserve\": 0"
- }
-]
+{
+  "data": [
+    {
+      "UserID": 1,
+      "grade": 1,
+      "semester": 1,
+      "creditLismit": 4,
+      "creditReserve": 0,
+      "scoreReserve": 0,
+      "KUPointReserve": 0
+    }
+  ]
+}

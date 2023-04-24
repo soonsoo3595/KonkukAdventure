@@ -22,6 +22,5 @@ public class GameManager : MonoBehaviour
         Debug.Log(DataMgr.Buildings.data[0].name);
         Debug.Log(DataMgr.Departments.data[0].name);
         Debug.Log(DataMgr.Lectures.data[0].name);
-
     }
 }
