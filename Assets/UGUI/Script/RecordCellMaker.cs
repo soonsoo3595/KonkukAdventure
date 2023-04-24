@@ -29,7 +29,7 @@ public class RecordCellMaker : MonoBehaviour
                 Instantiate(recordCell, this.transform);
             }
         }
-        else if (listSize == 1) Instantiate(recordCell, this.transform);
+        else if (listSize == 1 && childCout!=1) Instantiate(recordCell, this.transform);
 
         //인스턴스 된 자식들 가져오기
         recordNames = GetComponentsInChildren<Text>();

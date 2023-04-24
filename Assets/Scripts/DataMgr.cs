@@ -94,6 +94,9 @@ public static class DataMgr
 
     public static PlayerDataList player { get; private set; }
 
+    public static List<int> BuildingRecord = new List<int>();
+    public static List<LectureData> LectureRecord = new List<LectureData>();
+
     public static void LoadData()
     {
         string playerJson = File.ReadAllText(playerJsonPath);
