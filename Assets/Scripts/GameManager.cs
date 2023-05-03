@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(DataMgr.Buildings.data[0].name);
-        Debug.Log(DataMgr.Departments.data[0].name);
-        Debug.Log(DataMgr.Lectures.data[0].name);
+        Debug.Log(DataMgr.player.data.UserID);
+        Debug.Log(DataMgr.player.data.grade);
+        Debug.Log(DataMgr.player.data.creditLimit);
     }
 }

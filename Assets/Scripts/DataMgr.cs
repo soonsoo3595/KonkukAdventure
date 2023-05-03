@@ -19,7 +19,7 @@ public class PlayerData
 [System.Serializable]
 public class PlayerDataList
 {
-    public List<PlayerData> data;
+    public PlayerData data;
 }
 #endregion
 
@@ -88,11 +88,11 @@ public static class DataMgr
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
     #endregion
 
+    public static PlayerDataList player { get; private set; }
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
 
-    public static PlayerDataList player { get; private set; }
 
     public static List<int> BuildingRecord = new List<int>();
     public static List<LectureData> LectureRecord = new List<LectureData>();
