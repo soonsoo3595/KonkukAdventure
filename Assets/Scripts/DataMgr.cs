@@ -72,11 +72,8 @@ public class LectureDataList
 public static class DataMgr
 {
     // json 파일 경로
-    
-    //플레이어 Json 경로
+    #region 플레이어, 학과, 건물 Json 경로
     private static string playerJsonPath = "Assets/JSON/PlayerData.json";
-
-    #region 학과, 건물 Json 경로
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
