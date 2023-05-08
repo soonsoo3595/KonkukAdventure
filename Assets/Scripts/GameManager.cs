@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject selectUi;
 
-    // Start is called before the first frame update
     void Awake()
     {
         instance = this;
@@ -19,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(DataMgr.player.data.UserID);
-        Debug.Log(DataMgr.player.data.grade);
-        Debug.Log(DataMgr.player.data.creditLimit);
+        Debug.Log(DataMgr.player.grade);
     }
 }

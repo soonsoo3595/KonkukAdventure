@@ -35,12 +35,12 @@ public class TakeLectureInfo : MonoBehaviour
 
      public void ClickStudyButton()
     {
-        Debug.Log(DataMgr.player.data.UserID);
-        if (ReflectionData() > DataMgr.player.data.creditLimit) Debug.Log(ReflectionData() + "더이상 강의를 수강할 수 없습니다");
+        Debug.Log(DataMgr.player.userID);
+        if (ReflectionData() > DataMgr.player.creditLimit) Debug.Log(ReflectionData() + "더이상 강의를 수강할 수 없습니다");
         else
         {
-            DataMgr.player.data.creditReserve = ReflectionData();
-            Debug.Log(DataMgr.player.data.creditReserve + " 학점");
+            DataMgr.player.creditReserve = ReflectionData();
+            Debug.Log(DataMgr.player.creditReserve + " 학점");
         }
     }
 
@@ -58,6 +58,6 @@ public class TakeLectureInfo : MonoBehaviour
             }
         }
         DataMgr.LectureRecord.Add(lectureData);
-        return DataMgr.player.data.creditReserve + lectureData.course_credit;
+        return DataMgr.player.creditReserve + lectureData.course_credit;
     }
 }

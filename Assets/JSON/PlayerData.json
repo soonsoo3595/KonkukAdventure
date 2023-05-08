@@ -1,13 +1,1 @@
-{
-  "data": [
-    {
-      "UserID": 1,
-      "grade": 1,
-      "semester": 1,
-      "creditLismit": 4,
-      "creditReserve": 0,
-      "scoreReserve": 0,
-      "KUPointReserve": 0
-    }
-  ]
-}
+{"userID":1,"grade":1,"semester":1,"creditLimit":0,"creditReserve":0,"scoreReserve":0,"KUPointReserve":0}

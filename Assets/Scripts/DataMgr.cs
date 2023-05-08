@@ -7,19 +7,13 @@ using System.IO;
 [System.Serializable]
 public class PlayerData
 {
-    public int UserID;
+    public int userID;
     public int grade;
     public int semester;
     public int creditLimit;
     public int creditReserve;
     public int scoreReserve;
     public int KUPointReserve;
-}
-
-[System.Serializable]
-public class PlayerDataList
-{
-    public PlayerData data;
 }
 #endregion
 
@@ -88,7 +82,7 @@ public static class DataMgr
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
     #endregion
 
-    public static PlayerDataList player { get; private set; }
+    public static PlayerData player { get; set; }
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
@@ -104,9 +98,15 @@ public static class DataMgr
         string departmentJson = File.ReadAllText(departmentJsonPath);
         string lectureJson = File.ReadAllText(lectureJsonPath);
 
-        player = JsonUtility.FromJson<PlayerDataList>(playerJson);
+        player = JsonUtility.FromJson<PlayerData>(playerJson);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
+    }
+
+    public static void SavePlayerData()
+    {
+        string playerJson = JsonUtility.ToJson(player);
+        File.WriteAllText(playerJsonPath, playerJson);
     }
 }
