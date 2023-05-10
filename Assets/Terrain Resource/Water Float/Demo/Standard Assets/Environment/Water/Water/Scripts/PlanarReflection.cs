@@ -26,36 +26,6 @@ namespace UnityStandardAssets.Water
             m_SharedMaterial = ((WaterBase)gameObject.GetComponent(typeof(WaterBase))).sharedMaterial;
         }
 
-
-        Camera CreateReflectionCameraFor(Camera cam)
-        {
-            String reflName = gameObject.name + "Reflection" + cam.name;
-            GameObject go = GameObject.Find(reflName);
-
-            if (!go)
-            {
-                go = new GameObject(reflName, typeof(Camera));
-            }
-            if (!go.GetComponent(typeof(Camera)))
-            {
-                go.AddComponent(typeof(Camera));
-            }
-            Camera reflectCamera = go.GetComponent<Camera>();
-
-            reflectCamera.backgroundColor = clearColor;
-            reflectCamera.clearFlags = reflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
-
-            SetStandardCameraParameter(reflectCamera, reflectionMask);
-
-            if (!reflectCamera.targetTexture)
-            {
-                reflectCamera.targetTexture = CreateTextureFor(cam);
-            }
-
-            return reflectCamera;
-        }
-
-
         void SetStandardCameraParameter(Camera cam, LayerMask mask)
         {
             cam.cullingMask = mask & ~(1 << LayerMask.NameToLayer("Water"));
@@ -87,11 +57,6 @@ namespace UnityStandardAssets.Water
             if (m_HelperCameras[currentCam])
             {
                 return;
-            }
-
-            if (!m_ReflectionCamera)
-            {
-                m_ReflectionCamera = CreateReflectionCameraFor(currentCam);
             }
 
             RenderReflectionFor(currentCam, m_ReflectionCamera);

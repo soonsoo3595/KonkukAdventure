@@ -20,4 +20,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log(DataMgr.player.grade);
     }
+
 }
