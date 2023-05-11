@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(DataMgr.player.grade);
+        Debug.Log(DataMgr.player.semester);
     }
 
 }
