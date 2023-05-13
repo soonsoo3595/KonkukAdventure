@@ -1,0 +1,85 @@
+{
+  "data":
+    [
+      {
+        "itemID": 1,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 1",
+        "price": 4,
+        "reward": 4,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 2,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 2",
+        "price": 8,
+        "reward": 4,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 3,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 3",
+        "price": 13,
+        "reward": 6,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 4,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 4",
+        "price": 19,
+        "reward": 6,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 5,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 5",
+        "price": 26,
+        "reward": 8,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 6,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 6",
+        "price": 34,
+        "reward": 8,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 7,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 7",
+        "price": 44,
+        "reward": 10,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 8,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 8",
+        "price": 55,
+        "reward": 10,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 9,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 9",
+        "price": 67,
+        "reward": 12,
+        "isPurchase": "FALSE"
+      },
+      {
+        "itemID": 10,
+        "itemTypeID": 1,
+        "name": "학점제한 해제 10",
+        "price": 80,
+        "reward": 12,
+        "isPurchase": "FALSE"
+      }
+    ]
+}

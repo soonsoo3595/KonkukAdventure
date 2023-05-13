@@ -5,7 +5,7 @@ using UnityEngine;
 
 enum BuildNum
 {
-    #region ºôµù ¹øÈ£
+    #region ë¹Œë”© ë²ˆí˜¸
     b1 = 1,
     b2 = 2,
     b3 = 3,
@@ -44,15 +44,15 @@ public class Portal : MonoBehaviour
 {
     public static Portal portal;
 
-    //ÇĞ°ú µ¥ÀÌÅÍ¿Í °­ÀÇ µ¥ÀÌÅÍ¸¦ ¸Å°³º¯¼ö·Î °¡Áö´Â µ¨¸®°ÔÀÌÆ® »ı¼º
+    //í•™ê³¼ ë°ì´í„°ì™€ ê°•ì˜ ë°ì´í„°ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§€ëŠ” ë¸ë¦¬ê²Œì´íŠ¸ ìƒì„±
     public delegate void SetDataChain(List<DepartmentData> departmentDatas, List<LectureData> lectureDatas);
     public static event SetDataChain SetData;
 
-    //ÇĞ°ú µ¥ÀÌÅÍ¿Í °­ÀÇ µ¥ÀÌÅÍ¸¦ ¹ŞÀ» ¸®½ºÆ® ¼±¾ğ
+    //í•™ê³¼ ë°ì´í„°ì™€ ê°•ì˜ ë°ì´í„°ë¥¼ ë°›ì„ ë¦¬ìŠ¤íŠ¸ ì„ ì–¸
     List<DepartmentData> departmentDatas;
     List<LectureData> lectureDatas;
 
-    //Æ÷Å»ÀÌ º¸¿©ÁÙ ºôµùÀÇ ¹øÈ£ ¼³Á¤
+    //í¬íƒˆì´ ë³´ì—¬ì¤„ ë¹Œë”©ì˜ ë²ˆí˜¸ ì„¤ì •
     [SerializeField] BuildNum buildNum;
     internal int BuildNum { get { return (int)buildNum; } }
 
@@ -61,31 +61,31 @@ public class Portal : MonoBehaviour
     {
         portal = this;
 
-        //ÇĞ°ú µ¥ÀÌÅÍ Datamgr¿¡¼­ °¡Á®¿À±â
+        //í•™ê³¼ ë°ì´í„° Datamgrì—ì„œ ê°€ì ¸ì˜¤ê¸°
         departmentDatas = new List<DepartmentData>();
         departmentDatas = DataMgr.Departments.data;
-        //°­ÀÇ µ¥ÀÌÅÍ DataMgr¿¡¼­ °¡Á®¿À±â
+        //ê°•ì˜ ë°ì´í„° DataMgrì—ì„œ ê°€ì ¸ì˜¤ê¸°
         lectureDatas = new List<LectureData>();
         lectureDatas = DataMgr.Lectures.data;
 
-        //µ¨¸®°ÔÀÌÆ® ½ÇÇà
+        //ë¸ë¦¬ê²Œì´íŠ¸ ì‹¤í–‰
         SetData(FindDepartment((int)buildNum), lectureDatas);  
     }
 
-    //Ä³¸¯ÅÍ°¡ Æ÷Å» ÁıÀÔ½Ã¿¡ ¹ßµ¿
-    #region Ä³¸¯ÅÍ ÁıÀÔ ÀÌº¥Æ®
+    //ìºë¦­í„°ê°€ í¬íƒˆ ì§‘ì…ì‹œì— ë°œë™
+    #region ìºë¦­í„° ì§‘ì… ì´ë²¤íŠ¸
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("hit");
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.selectUi.SetActive(true);
+            GameManager.instance.LectureUI.SetActive(true);
         }
     }
     #endregion
 
-    //ºôµù ¹øÈ£¿¡ µû¸¥ ÇĞ°úµé °Ë»ö
-    #region ºôµù¿¡ ÀÖ´Â ÇĞ°úµé °Ë»ö
+    //ë¹Œë”© ë²ˆí˜¸ì— ë”°ë¥¸ í•™ê³¼ë“¤ ê²€ìƒ‰
+    #region ë¹Œë”©ì— ìˆëŠ” í•™ê³¼ë“¤ ê²€ìƒ‰
     private List<DepartmentData> FindDepartment(int num)
     {
         List<DepartmentData> find = departmentDatas.FindAll(element => element.buildingID == num);

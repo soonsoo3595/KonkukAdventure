@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-#region ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ
+#region í”Œë ˆì´ì–´ ë°ì´í„°
 [System.Serializable]
 public class PlayerData
 {
@@ -17,7 +17,7 @@ public class PlayerData
 }
 #endregion
 
-#region °Ç¹° µ¥ÀÌÅÍ
+#region ê±´ë¬¼ ë°ì´í„°
 [System.Serializable]
 public class BuildingData
 {
@@ -29,12 +29,12 @@ public class BuildingData
 [System.Serializable]
 public class BuildingDataList
 {
-    // ÀÌ List<BuildingData>ÀÇ º¯¼ö¸íÀÌ jsonÆÄÀÏ¿¡ Á¦ÀÏ Ã³À½¿¡ ÀÖ´Â ÀÌ¸§°ú °°¾Æ¾ß ÇÔ!!
+    // ì´ List<BuildingData>ì˜ ë³€ìˆ˜ëª…ì´ jsoníŒŒì¼ì— ì œì¼ ì²˜ìŒì— ìˆëŠ” ì´ë¦„ê³¼ ê°™ì•„ì•¼ í•¨!!
     public List<BuildingData> data;
 }
 #endregion
 
-#region ÇĞ°ú µ¥ÀÌÅÍ
+#region í•™ê³¼ ë°ì´í„°
 [System.Serializable]
 public class DepartmentData
 {
@@ -50,7 +50,7 @@ public class DepartmentDataList
 }
 #endregion
 
-#region °­ÀÇ µ¥ÀÌÅÍ
+#region ê°•ì˜ ë°ì´í„°
 [System.Serializable]
 public class LectureData
 {
@@ -69,14 +69,39 @@ public class LectureDataList
 }
 #endregion
 
+#region ì•„ì´í…œ 1 ë°ì´í„°
+[System.Serializable]
+public class Item1Data
+{
+    public int itemID;
+    public int itemTypeID;
+    public string name;
+    public int price;
+    public int reward;
+    public bool isPurchase;
+}
+
+[System.Serializable]
+public class Item1DataList
+{
+    public List<Item1Data> data;
+}
+#endregion
+
 public static class DataMgr
 {
-    // json ÆÄÀÏ °æ·Î
-    #region ÇÃ·¹ÀÌ¾î, ÇĞ°ú, °Ç¹° Json °æ·Î
+    #region ìˆ˜ê°• ê¸°ë¡ ì½”ë“œ...
+    public static List<int> BuildingRecord = new List<int>();
+    public static List<LectureData> LectureRecord = new List<LectureData>();
+    #endregion
+
+    // json íŒŒì¼ ê²½ë¡œ
+    #region Json ê²½ë¡œ
     private static string playerJsonPath = "Assets/JSON/PlayerData.json";
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
+    private static string item1JsonPath = "Assets/JSON/ItemDataJsons/ItemType1Data.json";
     #endregion
 
     public static PlayerData player { get; set; }
@@ -84,9 +109,7 @@ public static class DataMgr
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
 
-
-    public static List<int> BuildingRecord = new List<int>();
-    public static List<LectureData> LectureRecord = new List<LectureData>();
+    public static Item1DataList Item1 { get; private set; }
 
     public static void LoadData()
     {
@@ -94,11 +117,13 @@ public static class DataMgr
         string buildingJson = File.ReadAllText(buildingJsonPath);
         string departmentJson = File.ReadAllText(departmentJsonPath);
         string lectureJson = File.ReadAllText(lectureJsonPath);
+        string item1Json = File.ReadAllText(item1JsonPath);
 
         player = JsonUtility.FromJson<PlayerData>(playerJson);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
+        Item1 = JsonUtility.FromJson<Item1DataList>(item1Json);
     }
 
     public static void SavePlayerData()
