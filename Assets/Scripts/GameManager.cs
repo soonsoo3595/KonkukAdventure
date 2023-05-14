@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject LectureUI;
+    public GameObject StoreUI;
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(DataMgr.Item1.data[0].isPurchase);
+        Debug.Log(DataMgr.Items.data1[1].isPurchase);
+        Debug.Log(DataMgr.Items.data2[1].name);
     }
-
 }

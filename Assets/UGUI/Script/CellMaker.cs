@@ -5,58 +5,58 @@ using UnityEngine.UI;
 
 public class CellMaker : MonoBehaviour
 {
-    //°­ÀÇ ¸®½ºÆ®°¡ µé¾î°¥ ´ÜÀ§
+    //ê°•ì˜ ë¦¬ìŠ¤íŠ¸ê°€ ë“¤ì–´ê°ˆ ë‹¨ìœ„
     [SerializeField] GameObject cell;
-    //°­ÀÇ ¸®½ºÆ®°¡ »ı¼º µÉ À§Ä¡
+    //ê°•ì˜ ë¦¬ìŠ¤íŠ¸ê°€ ìƒì„± ë  ìœ„ì¹˜
     [SerializeField] internal GameObject trans;
-    //ÇĞ°úÀÇ ÇÏÀ§ °­ÀÇµéÀÌ µé¾î°¥ ¹è¿­
+    //í•™ê³¼ì˜ í•˜ìœ„ ê°•ì˜ë“¤ì´ ë“¤ì–´ê°ˆ ë°°ì—´
     [SerializeField] internal LectureDataSet[] study;
 
-    //ÇĞ°ú ¾ÆÀÌµğ°¡ µé¾î°¥ ¸®½ºÆ®
+    //í•™ê³¼ ì•„ì´ë””ê°€ ë“¤ì–´ê°ˆ ë¦¬ìŠ¤íŠ¸
     List<int> departmentID;
-    //ÇĞ°ú ÀÌ¸§µéÀÌ µé¾î°¥ ¸®½ºÆ®
+    //í•™ê³¼ ì´ë¦„ë“¤ì´ ë“¤ì–´ê°ˆ ë¦¬ìŠ¤íŠ¸
     List<string> departmentNmae;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        //ÃÊ±âÈ­
+        //ì´ˆê¸°í™”
         departmentID = new List<int>();
         departmentNmae = new List<string>();
-        //µ¨¸®°ÔÀÌÆ® Ãß°¡
-        Portal.SetData += MakeCell;
+        //ë¸ë¦¬ê²Œì´íŠ¸ ì¶”ê°€
+        Portal.SetLectureData += MakeCell;
     }
 
-    //¼¿ ÀÎ½ºÅÏ½º¿Í µ¿½Ã¿¡ ÅØ½ºÆ® ¼³Á¤ ¸Ş¼­µå
-    #region ¼¿ »ı¼º ¹× ÅØ½ºÆ® ¼³Á¤
+    //ì…€ ì¸ìŠ¤í„´ìŠ¤ì™€ ë™ì‹œì— í…ìŠ¤íŠ¸ ì„¤ì • ë©”ì„œë“œ
+    #region ì…€ ìƒì„± ë° í…ìŠ¤íŠ¸ ì„¤ì •
     void MakeCell(List<DepartmentData> departDatas, List<LectureData> lectData)
     {
-        //ÇĞ°ú µ¥ÀÌÅÍ ¼¼ÆÃ(ÇĞ°ú ID, ÇĞ°ú ÀÌ¸§ ºĞ¸®)
+        //í•™ê³¼ ë°ì´í„° ì„¸íŒ…(í•™ê³¼ ID, í•™ê³¼ ì´ë¦„ ë¶„ë¦¬)
         SetData(departDatas);
 
-        //ÇĞ°ú °³¼ö¸¸Å­ ¼¿ ÀÎ½ºÅÏ½º
+        //í•™ê³¼ ê°œìˆ˜ë§Œí¼ ì…€ ì¸ìŠ¤í„´ìŠ¤
         for (int i = 0; i < departDatas.Count; i++)
         {
             Instantiate(cell, trans.transform);
         }
 
-        //ÀÎ½ºÅÏ½ºÇÑ °´Ã¼µé ¹è¿­¿¡ Áı¾î³Ö°¡
+        //ì¸ìŠ¤í„´ìŠ¤í•œ ê°ì²´ë“¤ ë°°ì—´ì— ì§‘ì–´ë„£ê°€
         study = GetComponentsInChildren<LectureDataSet>();
 
-        //ÇĞ°ú, °­ÀÇ¸í ÅØ½º·Î ºÙÀÌ±â
+        //í•™ê³¼, ê°•ì˜ëª… í…ìŠ¤ë¡œ ë¶™ì´ê¸°
         for (int i = 0; i < study.Length; i++)
         {
-            //ÇĞ°ú ÀÌ¸§ ÅØ½ºÆ®·Î ºÙÀÌ´Â ÄÚµå
+            //í•™ê³¼ ì´ë¦„ í…ìŠ¤íŠ¸ë¡œ ë¶™ì´ëŠ” ì½”ë“œ
             SetDepartText(i);
 
-            //°­ÀÇ ÀÌ¸§ ÅØ½ºÆ®·Î ºÙÀÌ´Â ÄÚµå
+            //ê°•ì˜ ì´ë¦„ í…ìŠ¤íŠ¸ë¡œ ë¶™ì´ëŠ” ì½”ë“œ
             study[i].SetLectureText(findLecture(departmentID[i], lectData));
         }
     }
     #endregion
 
-    //ÇĞ°ú µ¥ÀÌÅÍ ÇĞ°úID, ÇĞ°ú ÀÌ¸§ µÎ°³·Î ºĞ¸®
-    #region ÇĞ°ú µ¥ÀÌÅÍ ID¿Í ÀÌ¸§À¸·Î ºĞ¸®
+    //í•™ê³¼ ë°ì´í„° í•™ê³¼ID, í•™ê³¼ ì´ë¦„ ë‘ê°œë¡œ ë¶„ë¦¬
+    #region í•™ê³¼ ë°ì´í„° IDì™€ ì´ë¦„ìœ¼ë¡œ ë¶„ë¦¬
     void SetData(List<DepartmentData> departDatas)
     {
         for(int i = 0; i < departDatas.Count; i++)
@@ -67,21 +67,21 @@ public class CellMaker : MonoBehaviour
     }
     #endregion
 
-    //ÇĞ°ú¸í ¼¼ÆÃ
-    #region ÇĞ°ú¸í ¼¼ÆÃ
+    //í•™ê³¼ëª… ì„¸íŒ…
+    #region í•™ê³¼ëª… ì„¸íŒ…
     void SetDepartText(int num)
     {
-        //¼¿ ³»ºÎÀÇ ¸ğµç ÅØ½ºÆ® ¼öÁı
+        //ì…€ ë‚´ë¶€ì˜ ëª¨ë“  í…ìŠ¤íŠ¸ ìˆ˜ì§‘
         Text[] names = new Text[5];
         names = study[num].GetComponentsInChildren<Text>();
-        //¹è¿­ÀÇ 0¹øÂ°¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö´Â °­ÀÇ¸í ÅØ½ºÆ®
-        //µû¶ó¼­ ÇĞ°ú¸í ¼¼ÆÃ¿¡¼­ °Çµå·Á¾ß ÇÏ´Â°Ç names[0]
+        //ë°°ì—´ì˜ 0ë²ˆì§¸ë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ëŠ” ê°•ì˜ëª… í…ìŠ¤íŠ¸
+        //ë”°ë¼ì„œ í•™ê³¼ëª… ì„¸íŒ…ì—ì„œ ê±´ë“œë ¤ì•¼ í•˜ëŠ”ê±´ names[0]
         names[0].text = departmentNmae[num];
     }
     #endregion
 
-    // ÇĞ°ú ID¿¡ µû¸¥ °­ÀÇµé °Ë»ö
-    #region ÇĞ°úID¸¦ ÅëÇØ °­ÀÇ °Ë»ö
+    // í•™ê³¼ IDì— ë”°ë¥¸ ê°•ì˜ë“¤ ê²€ìƒ‰
+    #region í•™ê³¼IDë¥¼ í†µí•´ ê°•ì˜ ê²€ìƒ‰
     List<LectureData> findLecture(int departmentID, List<LectureData> data)
     {
         List<LectureData> find = data.FindAll(element => element.departmentID == departmentID);

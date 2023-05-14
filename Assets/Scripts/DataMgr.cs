@@ -69,9 +69,9 @@ public class LectureDataList
 }
 #endregion
 
-#region 아이템 1 데이터
+#region 아이템 데이터
 [System.Serializable]
-public class Item1Data
+public class LectureItemData
 {
     public int itemID;
     public int itemTypeID;
@@ -79,12 +79,26 @@ public class Item1Data
     public int price;
     public int reward;
     public bool isPurchase;
+    public string itemInfo;
 }
 
 [System.Serializable]
-public class Item1DataList
+public class OtherItemData
 {
-    public List<Item1Data> data;
+    public int itemID;
+    public int itemTypeID;
+    public string name;
+    public int price;
+    public bool isPurchase;
+    public string itemInfo;
+}
+
+[System.Serializable]
+public class ItemDataList
+{
+    public List<LectureItemData> data1;
+    public List<OtherItemData> data2;
+
 }
 #endregion
 
@@ -101,15 +115,14 @@ public static class DataMgr
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
-    private static string item1JsonPath = "Assets/JSON/ItemDataJsons/ItemType1Data.json";
+    private static string item1JsonPath = "Assets/JSON/ItemDataJsons/ItemData.json";
     #endregion
 
     public static PlayerData player { get; set; }
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
-
-    public static Item1DataList Item1 { get; private set; }
+    public static ItemDataList Items { get; private set; }
 
     public static void LoadData()
     {
@@ -117,13 +130,13 @@ public static class DataMgr
         string buildingJson = File.ReadAllText(buildingJsonPath);
         string departmentJson = File.ReadAllText(departmentJsonPath);
         string lectureJson = File.ReadAllText(lectureJsonPath);
-        string item1Json = File.ReadAllText(item1JsonPath);
+        string itemJson = File.ReadAllText(item1JsonPath);
 
         player = JsonUtility.FromJson<PlayerData>(playerJson);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
-        Item1 = JsonUtility.FromJson<Item1DataList>(item1Json);
+        Items = JsonUtility.FromJson<ItemDataList>(itemJson);
     }
 
     public static void SavePlayerData()
