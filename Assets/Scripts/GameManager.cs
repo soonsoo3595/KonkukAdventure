@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(DataMgr.Items.data1[1].isPurchase);
-        Debug.Log(DataMgr.Items.data2[1].name);
+        Debug.Log(DataMgr.Items.creditLimit[1].isPurchase);
+        Debug.Log(DataMgr.Items.otherItem[1].name);
     }
 }

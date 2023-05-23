@@ -71,7 +71,7 @@ public class LectureDataList
 
 #region 아이템 데이터
 [System.Serializable]
-public class LectureItemData
+public class CreditLimit
 {
     public int itemID;
     public int itemTypeID;
@@ -96,9 +96,8 @@ public class OtherItemData
 [System.Serializable]
 public class ItemDataList
 {
-    public List<LectureItemData> data1;
-    public List<OtherItemData> data2;
-
+    public List<CreditLimit> creditLimit;
+    public List<OtherItemData> otherItem;
 }
 #endregion
 
@@ -115,7 +114,7 @@ public static class DataMgr
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
-    private static string item1JsonPath = "Assets/JSON/ItemDataJsons/ItemData.json";
+    private static string item1JsonPath = "Assets/JSON/ItemData.json";
     #endregion
 
     public static PlayerData player { get; set; }

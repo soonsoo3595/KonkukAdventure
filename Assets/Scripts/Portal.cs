@@ -57,13 +57,12 @@ public class Portal : MonoBehaviour
 
     #region 상점용 델리게이트 및 리스트
     //상점에 있는 아이템 리스트를 매개변수로 하는 델리게이트 선언
-    public delegate void StoreChain( List<LectureItemData> LectureItemDatas, List<OtherItemData> OtherItemDatas);
+    public delegate void StoreChain(ItemDataList itemDataList);
     public static event StoreChain SetStoreData;
-
     //로드 할 때에 Json에 있는 정보가 들어갈곳
-    List<LectureItemData> lectureItemDatas;
-    List<OtherItemData> otherItemDatas;
+    ItemDataList itemDataList;
     #endregion
+    
 
     //포탈이 보여줄 빌딩의 번호 설정
     [SerializeField] BuildNum buildNum;
@@ -83,19 +82,16 @@ public class Portal : MonoBehaviour
         lectureDatas = DataMgr.Lectures.data;
 
         //아이템 데이터 DataMgr에서 가져오기
-        lectureDatas = new List<LectureData>();
-        lectureItemDatas = DataMgr.Items.data1;
-        otherItemDatas = new List<OtherItemData>();
-        otherItemDatas = DataMgr.Items.data2;
+        itemDataList = DataMgr.Items;
         #endregion
 
         //델리게이트 실행
         //만약 상점 이라면 상점 델리게이트 실행
-        if (!((int)BuildNum).Equals(19))
+        if (((int)BuildNum).Equals(19))
         {
-            SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+            SetStoreData(itemDataList);
         }
-        else SetStoreData(lectureItemDatas, otherItemDatas);
+        else SetLectureData(FindDepartment((int)buildNum), lectureDatas);
     }
 
     //캐릭터가 포탈 집입시에 발동
