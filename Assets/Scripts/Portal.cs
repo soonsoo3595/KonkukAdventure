@@ -85,23 +85,26 @@ public class Portal : MonoBehaviour
         itemDataList = DataMgr.Items;
         #endregion
 
-        //델리게이트 실행
-        //만약 상점 이라면 상점 델리게이트 실행
-        if (((int)BuildNum).Equals(19))
-        {
-            SetStoreData(itemDataList);
-        }
-        else SetLectureData(FindDepartment((int)buildNum), lectureDatas);
     }
 
     //캐릭터가 포탈 집입시에 발동
     #region 캐릭터 집입 이벤트
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.LectureUI.SetActive(true);
+            Debug.Log("hit");
+            //델리게이트 실행
+            //만약 상점 이라면 상점 델리게이트 실행
+            if (((int)BuildNum).Equals(19))
+            {
+                GameManager.instance.StoreUI.SetActive(true);
+                SetStoreData(itemDataList);
+            }
+            else {
+                GameManager.instance.LectureUI.SetActive(true);
+                SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+            }
         }
     }
     #endregion
