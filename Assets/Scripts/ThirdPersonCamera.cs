@@ -16,7 +16,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-        setCameraPositionNormalView();
+        setCameraPositionNormalView();  
     }
 
     void setCameraPositionNormalView()

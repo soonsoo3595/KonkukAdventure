@@ -11,9 +11,6 @@ public class UIButtonManager : MonoBehaviour
     [Header("Area")]
     [SerializeField] private GameObject _selectArea, _recordArea;
 
-    [Header("Close Button")]
-    [SerializeField] private GameObject _closeUi;
-
     [Header("Sprite")]
     [SerializeField] private Sprite _highlight;
 
@@ -54,10 +51,5 @@ public class UIButtonManager : MonoBehaviour
 
         _selectArea.SetActive(false);
         _recordArea.SetActive(true);
-    }
-
-    public void CloseStudySelect()
-    {
-        _closeUi.SetActive(false);
     }
 }

@@ -6,37 +6,40 @@ using UnityEngine;
 enum BuildNum
 {
     #region 빌딩 번호
-    b1 = 1, //행정관
-    b2 = 2, //경영관
-    b3 = 3, //상허연구관
-    b4 = 4, //교육과학관
-    b5 = 5, //예술문화관
-    b6 = 6, //언어교육원
-    b7 = 7, //박물관
-    b8 = 8, //법학관
-    b9 = 9, //상허기념도서관
-    b10 = 10, //의생면과학연구관
-    b11 = 11, //동물생명과학관
-    b12 = 12, //입학정보관
-    b13 = 13, //산학협동관
-    b14 = 14, //수의학관
-    b15 = 15, //새천년관
-    b16 = 16, //건축관
-    b17 = 17, //해봉부동산학관
-    b18 = 18, //인문학관
-    b19 = 19, //학생회관
-    b20 = 20, //공학관
-    b21 = 21, //신공학관
-    b22 = 22, //과학관
-    b23 = 23, //창의관
-    b24 = 24, //온실
-    b25 = 25, //경원당
-    b26 = 26, //노천극장
-    b27 = 27, //청심대
-    b28 = 28, //KU스포츠광장
-    b29 = 29, //일감호
-    b30 = 30, //와우도
-    b31 = 31 //홍예교
+    행정관 = 1,
+    경영관 = 2,//경영대
+    상허연구관 = 3,//사회과대학
+    교육과학관 = 4,//사범대
+    예술문화관 = 5,//예술디자인대학
+    언어교육원 = 6,
+    박물관 = 7,
+    법학관 = 8,
+    상허기념도서관 = 9,
+    의생면과학연구관 = 10,
+    동물생명과학관 = 11,//상허생명과학대학
+    입학정보관 = 12,
+    산학협동관 = 13,
+    수의학관 = 14,//수의과대학
+    새천년관 = 15,
+    건축관 = 16,//건축대학
+    해봉부동산학관 = 17,//부동산과학원
+    인문학관 = 18,//문과대학
+    학생회관 = 19,//상점
+    공학관 = 20,//공과대학
+    신공학관 = 21,//KU융합과학기술원
+    과학관 = 22,//이과대학
+    창의관 = 23,
+    온실 = 24,
+    경원당 = 25,
+    노천극장 = 26,
+    청심대 = 27,
+    KU스포츠광장 = 28,
+    일감호 = 29,
+    와우도 = 30,
+    홍예교 = 31,
+    퀴즈이벤트1 = 32,
+    퀴즈이벤트2 = 33,
+    퀴즈이벤트3 = 34
     #endregion 
 }
 
@@ -62,14 +65,17 @@ public class Portal : MonoBehaviour
     //로드 할 때에 Json에 있는 정보가 들어갈곳
     ItemDataList itemDataList;
     #endregion
-    
+
+    #region 상점진입할때 캐릭터 정지, 마우스 해제 델리게이트
+    public delegate void StopCharactor();
+    public static event StopCharactor StopPlayer;
+    #endregion
 
     //포탈이 보여줄 빌딩의 번호 설정
     [SerializeField] BuildNum buildNum;
     internal int BuildNum { get { return (int)buildNum; } }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         portal = this;
 
@@ -84,7 +90,6 @@ public class Portal : MonoBehaviour
         //아이템 데이터 DataMgr에서 가져오기
         itemDataList = DataMgr.Items;
         #endregion
-
     }
 
     //캐릭터가 포탈 집입시에 발동
@@ -93,9 +98,40 @@ public class Portal : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("hit");
+            StopPlayer();
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
+            switch ((int)buildNum)
+            {
+                //강의 건물 진입
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 11:
+                case 14:
+                case 16:
+                case 17:
+                case 18:
+                case 20:
+                case 21:
+                case 22:
+                    GameManager.instance.LectureUI.SetActive(true);
+                    SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+                    break;
+
+               //상점 진입
+                case 19:
+                    GameManager.instance.StoreUI.SetActive(true);
+                    SetStoreData(itemDataList);
+                    break;
+                //퀴즈 이벤트 진입
+                case 32:
+                case 33:
+                case 34:
+                    break;
+            }
+
             if (((int)BuildNum).Equals(19))
             {
                 GameManager.instance.StoreUI.SetActive(true);
