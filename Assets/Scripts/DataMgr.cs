@@ -8,12 +8,14 @@ using System.IO;
 public class PlayerData
 {
     public int userID;
+    public string userName;
     public int grade;
     public int semester;
     public int creditLimit;
     public int creditReserve;
     public int scoreReserve;
     public int KUPointReserve;
+    public bool isSemesterOver;
 }
 #endregion
 
@@ -142,5 +144,19 @@ public static class DataMgr
     {
         string playerJson = JsonUtility.ToJson(player);
         File.WriteAllText(playerJsonPath, playerJson);
+    }
+
+    public static bool IsLastSemester()
+    {
+        int semester = player.semester;
+
+        if(semester == 8)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
