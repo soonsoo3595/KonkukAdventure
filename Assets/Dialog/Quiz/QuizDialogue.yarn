@@ -1,0 +1,12 @@
+﻿title: QuizDialogue
+tags:BODY_START
+---
+player: 퀴즈를 풀어보자!
+player: 문제문제문제문제문제
+    ->하나
+        player: ㅋㅋㅋ
+    ->둘
+        player: ㅋㅋ
+    ->셋
+        player: 정답
+===

@@ -101,6 +101,25 @@ public class ItemDataList
 }
 #endregion
 
+#region 퀴즈 데이터
+[System.Serializable]
+public class QuizData
+{
+    public int quizID;
+    public string name;
+    public string question;
+    public string[] options;
+    public string correct;
+    public string reward;
+}
+
+[System.Serializable]
+public class QuizDataList
+{
+    public List<QuizData> data;
+}
+#endregion
+
 public static class DataMgr
 {
     #region 수강 기록 코드...
@@ -114,7 +133,8 @@ public static class DataMgr
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
-    private static string item1JsonPath = "Assets/JSON/ItemData.json";
+    private static string itemJsonPath = "Assets/JSON/ItemData.json";
+    private static string quizJsonPath = "Assets/JSON/quizData.json";
     #endregion
 
     public static PlayerData player { get; set; }
@@ -122,6 +142,7 @@ public static class DataMgr
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
     public static ItemDataList Items { get; private set; }
+    public static QuizDataList quizs { get; private set; }
 
     public static void LoadData()
     {
@@ -129,13 +150,15 @@ public static class DataMgr
         string buildingJson = File.ReadAllText(buildingJsonPath);
         string departmentJson = File.ReadAllText(departmentJsonPath);
         string lectureJson = File.ReadAllText(lectureJsonPath);
-        string itemJson = File.ReadAllText(item1JsonPath);
+        string itemJson = File.ReadAllText(itemJsonPath);
+        string quizJson = File.ReadAllText(quizJsonPath);
 
         player = JsonUtility.FromJson<PlayerData>(playerJson);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
         Items = JsonUtility.FromJson<ItemDataList>(itemJson);
+        quizs = JsonUtility.FromJson<QuizDataList>(quizJson);
     }
 
     public static void SavePlayerData()
