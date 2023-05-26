@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject LectureUI;
     public GameObject StoreUI;
+    public GameObject SemesterOverUI;
+    public GameObject DetailInfoUI;
+
+    public Action renewalPopup;
 
     void Awake()
     {
@@ -22,5 +27,26 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log(DataMgr.Items.creditLimit[1].isPurchase);
         Debug.Log(DataMgr.Items.otherItem[1].name);
+    }
+
+    private void Update()
+    {
+        if(DataMgr.player.isSemesterOver)
+        {
+            if(Input.GetKeyUp(KeyCode.N)) 
+            {
+                SemesterOver();
+            }
+        }
+
+        if(Input.GetKeyUp(KeyCode.P))
+        {
+            DetailInfoUI.SetActive(!DetailInfoUI.activeSelf);
+        }
+    }
+
+    public void SemesterOver()
+    {
+        SemesterOverUI.SetActive(true);
     }
 }

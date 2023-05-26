@@ -19,6 +19,22 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
+    /* 뷰포트 마우스 클릭 시 들어가게 할려했는데 좀 문제
+    private void Update()
+    {
+        if(!cursorLocked)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                cursorLocked = !cursorLocked;
+                cursorInputForLook = !cursorInputForLook;
+
+                SetCursorState(cursorLocked);
+            }
+        }
+    }
+    */
+
 #if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
     {
