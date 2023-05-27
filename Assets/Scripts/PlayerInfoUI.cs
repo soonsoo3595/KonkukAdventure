@@ -7,7 +7,7 @@ using DG.Tweening;
 public class PlayerInfoUI : MonoBehaviour
 {
     public Text title;
-    public Text grades;
+    public Text credit;
     public Text kuPoint;
     public Text semester;
 
@@ -22,9 +22,9 @@ public class PlayerInfoUI : MonoBehaviour
 
     void Start()
     {
-        grades.text = $"ÇöÀç ÇĞÁ¡ : {DataMgr.player.grade}";
-        kuPoint.text = $"KU Æ÷ÀÎÆ® : {DataMgr.player.KUPointReserve}";
-        semester.text = $"ÁøÇà ÇĞ±â : {DataMgr.player.semester}";
+        GameManager.instance.renewalPopup += RenewalInfo;
+
+        RenewalInfo();
     }
 
     void Update()
@@ -48,11 +48,18 @@ public class PlayerInfoUI : MonoBehaviour
 
     public void Fold()
     {
-        grades.transform.parent.transform.DOScaleY(0f, 1f);
+        credit.transform.parent.transform.DOScaleY(0f, 1f);
     }
 
     public void UnFold()
     {
-        grades.transform.parent.transform.DOScaleY(1f, 1f);
+        credit.transform.parent.transform.DOScaleY(1f, 1f);
+    }
+
+    public void RenewalInfo()
+    {
+        credit.text = $"í˜„ì¬ í•™ì  : {DataMgr.player.creditReserve}";
+        kuPoint.text = $"KU í¬ì¸íŠ¸ : {DataMgr.player.KUPointReserve}";
+        semester.text = $"ì§„í–‰ í•™ê¸° : {DataMgr.player.semester}";
     }
 }
