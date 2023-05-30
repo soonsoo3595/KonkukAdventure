@@ -1,12 +1,13 @@
-﻿title: QuizDialogue
-tags:BODY_START
+﻿title: Start
 ---
-player: 퀴즈를 풀어보자!
-player: 문제문제문제문제문제
-    ->하나
-        player: ㅋㅋㅋ
-    ->둘
-        player: ㅋㅋ
-    ->셋
-        player: 정답
+<<declare $question = "question">>
+question: 퀴즈를 풀어보자!
+    <<set $question to "1111">>
+    <<Quiz question>>
+    ->option: {$question}
+        question: ㅋㅋㅋ
+    ->option: 둘
+        question: ㅋㅋ
+    ->option: 셋
+        question: 정답
 ===

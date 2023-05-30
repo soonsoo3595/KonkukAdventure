@@ -153,4 +153,6 @@ public class Portal : MonoBehaviour
         return find;
     }
     #endregion
+
+    //포탈 번호에 따른 
 }

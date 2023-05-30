@@ -5,40 +5,29 @@ using Yarn.Unity;
 
 public class CustomQuizCommands : MonoBehaviour
 {
-    QuizDataList quizDataList;
+    [SerializeField] List<QuizData> quizDataList;
 
-    public void Awake()
+    private void Awake()
     {
-        quizDataList = DataMgr.quizs;
+        YarnCommandManager.SetQuiz += SetQuiz;
+    }
+    private void Start()
+    {
+        quizDataList = DataMgr.quizs.data;
     }
 
-    [YarnCommand("set_question")]
-    public string SetQuestion()
+    public void SetQuiz(string tag)
     {
-        return quizDataList.data[0].question;
-    }
-
-    [YarnCommand("set_option_1")]
-    public string SetOptions1()
-    {
-        return quizDataList.data[0].options[0];
-    }
-
-    [YarnCommand("set_option_2")]
-    public string SetOptions2()
-    {
-        return quizDataList.data[0].options[1];
-    }
-
-    [YarnCommand("set_option_3")]
-    public string SetOptions3()
-    {
-        return quizDataList.data[0].options[2];
-    }
-
-    [YarnCommand("set_option_4")]
-    public string SetOptions4()
-    {
-        return quizDataList.data[0].options[3];
+        switch (tag)
+        {
+            case "question": Debug.Log(quizDataList[0].question);
+                break;
+                //case "question": return quizDataList[0].question;
+                //case "option_1": return quizDataList[0].options[0];
+                //case "option_2": return quizDataList[0].options[1];
+                //case "option_3": return quizDataList[0].options[2];
+                //case "option_4": return quizDataList[0].options[3];
+        }
+        //return "아무런 데이터 저장되지 않았습니다.";
     }
 }
