@@ -103,7 +103,7 @@ public class ItemDataList
 }
 #endregion
 
-#region 퀴즈 데이터
+#region 다이얼로그 데이터
 [System.Serializable]
 public class QuizData
 {
@@ -113,12 +113,13 @@ public class QuizData
     public string[] options;
     public string correct;
     public string reward;
+    public bool isEnter;
 }
 
 [System.Serializable]
-public class QuizDataList
+public class DialogueDataList
 {
-    public List<QuizData> data;
+    public List<QuizData> quiz;
 }
 #endregion
 
@@ -136,7 +137,7 @@ public static class DataMgr
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
     private static string itemJsonPath = "Assets/JSON/ItemData.json";
-    private static string quizJsonPath = "Assets/JSON/quizData.json";
+    private static string quizJsonPath = "Assets/JSON/DialogueData.json";
     #endregion
 
     public static PlayerData player { get; set; }
@@ -144,7 +145,7 @@ public static class DataMgr
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
     public static ItemDataList Items { get; private set; }
-    public static QuizDataList quizs { get; private set; }
+    public static DialogueDataList Dialogue { get; private set; }
 
     public static void LoadData()
     {
@@ -160,7 +161,7 @@ public static class DataMgr
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
         Items = JsonUtility.FromJson<ItemDataList>(itemJson);
-        quizs = JsonUtility.FromJson<QuizDataList>(quizJson);
+        Dialogue = JsonUtility.FromJson<DialogueDataList>(quizJson);
     }
 
     public static void SavePlayerData()

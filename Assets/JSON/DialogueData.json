@@ -1,7 +1,7 @@
 {
-  "data": [
+  "quiz": [
     {
-      "id": 1,
+      "id": 0,
       "name": "퀴즈1",
       "question": "건국대학교를 상징하는 동물은 무엇일까요?",
       "options": [
@@ -11,10 +11,11 @@
         "호랑이"
       ],
       "correct": "황소",
-      "reward": 4
+      "reward": 4,
+      "isEnter": false
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "퀴즈2",
       "question": "건국대학교를 상징하는 동물은 무엇 2 ?",
       "options": [
@@ -24,10 +25,11 @@
         "호랑이"
       ],
       "correct": "황소",
-      "reward": 4
+      "reward": 4,
+      "isEnter": false
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "퀴즈3",
       "question": "건국대학교를 상징하는 동물은 무엇 3 ?",
       "options": [
@@ -37,7 +39,8 @@
         "호랑이"
       ],
       "correct": "황소",
-      "reward": 4
+      "reward": 4,
+      "isEnter": false
     }
   ]
 }

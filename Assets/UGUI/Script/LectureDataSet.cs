@@ -8,23 +8,23 @@ public class LectureDataSet : MonoBehaviour
     public delegate void LectureStudyChain(LectureData lectureData);
     public static event LectureStudyChain LectureStudy;
 
-    //°­ÀÇµéÀÇ Á¤º¸¸¦ ³Ö´Â ¸®½ºÆ®
+    //ê°•ì˜ë“¤ì˜ ì •ë³´ë¥¼ ë„£ëŠ” ë¦¬ìŠ¤íŠ¸
     [SerializeField] public List<LectureData> lectureData;
-    //°­ÀÇ¸íÀ» ¼¼ÆÃÇØÁÙ ¿ÀºêÁ§Æ®µéÀÌ ÀÖ´Â À§Ä¡
+    //ê°•ì˜ëª…ì„ ì„¸íŒ…í•´ì¤„ ì˜¤ë¸Œì íŠ¸ë“¤ì´ ìˆëŠ” ìœ„ì¹˜
     [SerializeField] GameObject dir;
-    //°­ÀÇ¸íÀ» ¼¼ÆÃÇØÁÙ ¿ÀºêÁ§Æ±µéÀÌ µé¾î°¥ ¹è¿­
+    //ê°•ì˜ëª…ì„ ì„¸íŒ…í•´ì¤„ ì˜¤ë¸Œì íŠ¿ë“¤ì´ ë“¤ì–´ê°ˆ ë°°ì—´
     [SerializeField]Text[] lectureList;
 
-    //°­ÀÇ ÀÌ¸§ ¼¼ÆÃ ¸Ş¼­µå
-    #region °­ÀÇ¸í ¼¼ÆÃ ¹× °­ÀÇ µ¥ÀÌÅÍ ¹Ş¾Æ¿À±â
+    //ê°•ì˜ ì´ë¦„ ì„¸íŒ… ë©”ì„œë“œ
+    #region ê°•ì˜ëª… ì„¸íŒ… ë° ê°•ì˜ ë°ì´í„° ë°›ì•„ì˜¤ê¸°
     public void SetLectureText(List<LectureData> lectureDatas)
     {
-        //°­ÀÇ µ¥ÀÌÅÍ¸¦ ¾÷µ¥ÀÌÆ®
+        //ê°•ì˜ ë°ì´í„°ë¥¼ ì—…ë°ì´íŠ¸
         lectureData = lectureDatas;
-        //¼¿ ³»ºÎÀÇ °­ÀÇ ÀÌ¸§ ÅØ½ºÆ® ¿ÀºêÁ§Æ®µé °¡Á®¿À±â
+        //ì…€ ë‚´ë¶€ì˜ ê°•ì˜ ì´ë¦„ í…ìŠ¤íŠ¸ ì˜¤ë¸Œì íŠ¸ë“¤ ê°€ì ¸ì˜¤ê¸°
         lectureList = dir.GetComponentsInChildren<Text>();
 
-        //°¡Á®¿Â ¿ÀºêÁ§Æ®ÀÇ ÀÌ¸§µé ¼¼ÆÃ
+        //ê°€ì ¸ì˜¨ ì˜¤ë¸Œì íŠ¸ì˜ ì´ë¦„ë“¤ ì„¸íŒ…
         for (int i = 0; i < lectureList.Length; i++)
         {
             lectureList[i].text = lectureDatas[i].name;

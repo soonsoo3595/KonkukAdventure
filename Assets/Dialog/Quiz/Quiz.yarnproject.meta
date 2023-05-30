@@ -9,14 +9,8 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
-  - {fileID: 6391573757903218779, guid: 9a41385b974e26d4cb659ab17df75ee2, type: 3}
-  compileErrors:
-  - '4:0: Error: $question has already been declared in Assets/Dialog/Quiz/Quiz.yarnproject,
-    line 2
-
-    <<declare $question = "">>
-
-'
+  - {fileID: 6391573757903218779, guid: a51d64b926d66a8429e6a5b8fc5dd15a, type: 3}
+  compileErrors: []
   serializedDeclarations: []
   defaultLanguage: ko-KR
   languagesToSourceAssets: []

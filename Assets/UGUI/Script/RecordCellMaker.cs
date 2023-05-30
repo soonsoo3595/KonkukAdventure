@@ -13,15 +13,15 @@ public class RecordCellMaker : MonoBehaviour
 
     public void MakeCell()
     {
-        //°­ÀÇ ±â·Ï °¡Á® ¿Ã ¸®½ºÆ® ÃÊ±âÈ­
+        //ê°•ì˜ ê¸°ë¡ ê°€ì ¸ ì˜¬ ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”
         lectureRecords = new List<LectureData>();
         lectureRecords = DataMgr.LectureRecord;
 
-        //±â·Ï Å©±â ¹Ì¸® ¹Ş¾Æ¿À±â
+        //ê¸°ë¡ í¬ê¸° ë¯¸ë¦¬ ë°›ì•„ì˜¤ê¸°
         int listSize = lectureRecords.Count;
         int childCout = this.transform.childCount;
 
-        //°­ÀÇ ±â·Ï Å©±â¸¸Å­ ÀÎ½ºÅÏ½º
+        //ê°•ì˜ ê¸°ë¡ í¬ê¸°ë§Œí¼ ì¸ìŠ¤í„´ìŠ¤
         if (childCout < listSize - 1)
         {
             for (; childCout < listSize; childCout++)
@@ -31,10 +31,10 @@ public class RecordCellMaker : MonoBehaviour
         }
         else if (listSize == 1 && childCout!=1) Instantiate(recordCell, this.transform);
 
-        //ÀÎ½ºÅÏ½º µÈ ÀÚ½Äµé °¡Á®¿À±â
+        //ì¸ìŠ¤í„´ìŠ¤ ëœ ìì‹ë“¤ ê°€ì ¸ì˜¤ê¸°
         recordNames = GetComponentsInChildren<Text>();
         
-        //ÀÎ½ºÅÏ½º µÈ ¿ÀºêÁ§Æ® ÅØ½ºÆ® ¼³Á¤
+        //ì¸ìŠ¤í„´ìŠ¤ ëœ ì˜¤ë¸Œì íŠ¸ í…ìŠ¤íŠ¸ ì„¤ì •
         for(int i = 0; i < listSize; i++)
         {
             recordNames[i].text = lectureRecords[i].name;
