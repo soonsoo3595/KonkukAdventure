@@ -99,7 +99,6 @@ public class Portal : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.enteringUI();
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
             switch ((int)buildNum)
@@ -117,11 +116,13 @@ public class Portal : MonoBehaviour
                 case 20:
                 case 21:
                 case 22:
+                    GameManager.instance.enteringUI();
                     GameManager.instance.LectureUI.SetActive(true);
                     SetLectureData(FindDepartment((int)buildNum), lectureDatas);
                     break;
                //상점 진입
                 case 19:
+                    GameManager.instance.enteringUI();
                     GameManager.instance.StoreUI.SetActive(true);
                     SetStoreData(itemDataList);
                     break;
@@ -129,7 +130,6 @@ public class Portal : MonoBehaviour
                 case 32:
                 case 33:
                 case 34:
-                    GameManager.instance.DialogueUI.SetActive(true);
                     SetDialogue((int)buildNum);
                     break;
             }

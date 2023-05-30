@@ -112,7 +112,7 @@ public class QuizData
     public string question;
     public string[] options;
     public string correct;
-    public string reward;
+    public int reward;
     public bool isEnter;
 }
 

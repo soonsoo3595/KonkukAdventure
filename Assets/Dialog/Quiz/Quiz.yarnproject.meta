@@ -11,7 +11,15 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: a51d64b926d66a8429e6a5b8fc5dd15a, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $num
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: a51d64b926d66a8429e6a5b8fc5dd15a, type: 3}
   defaultLanguage: ko-KR
   languagesToSourceAssets: []
   useAddressableAssets: 0

@@ -1,5 +1,5 @@
 ﻿title: 32
-tags:
+tags:QuizID: 0
 ---
 question: 퀴즈를 풀어보자! 32
     ->option: 하나
@@ -8,10 +8,11 @@ question: 퀴즈를 풀어보자! 32
         question: ㅋㅋ
     ->option: 셋
         question: 정답
+        <<Correct 0>>
+    <<QuizEnd 0>>
 ===
-
 title: 33
-tags:
+tags:QuizID: 1
 ---
 question: 퀴즈를 풀어보자! 33
     ->option: 하나
@@ -20,10 +21,12 @@ question: 퀴즈를 풀어보자! 33
         question: ㅋㅋ
     ->option: 셋
         question: 정답
+        <<Correct 1>>
+    <<QuizEnd 1>>
 ===
 
 title: 34
-tags:
+tags:QuizID: 2
 ---
 question: 퀴즈를 풀어보자! 34
     ->option: 하나
@@ -32,5 +35,7 @@ question: 퀴즈를 풀어보자! 34
         question: ㅋㅋ
     ->option: 셋
         question: 정답
+        <<Correct 2>>
+    <<QuizEnd 2>>
 ===
 
