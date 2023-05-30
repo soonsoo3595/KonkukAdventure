@@ -37,18 +37,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(DataMgr.player.isSemesterOver)
-        {
-            if(Input.GetKeyUp(KeyCode.N)) 
-            {
-                SemesterOver();
-            }
-        }
+        
 
-        if(Input.GetKeyUp(KeyCode.P))
-        {
-            DetailInfoUI.SetActive(!DetailInfoUI.activeSelf);
-        }
     }
 
     public void SemesterOver()
