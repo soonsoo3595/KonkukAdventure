@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PopupMgr : MonoBehaviour
 {
-    public Popup semesterPopup;
-    public Popup detailInfoPopup;
+    private LinkedList<Popup> activePopupList;  // 활성화된 팝업 리스트
+    private List<Popup> allPopupList;   // 모든 팝업 리스트
 
-    private LinkedList<Popup> activePopupList;
-    private List<Popup> allPopupList;
+    [Header("Popup")]
+    public Popup semesterOverPopup;
+    public Popup detailInfoPopup;
+    public Popup selectStudyPopup;
+    public Popup storePopup;
 
     private void Awake()
     {
@@ -17,12 +20,29 @@ public class PopupMgr : MonoBehaviour
         InitCloseAll();
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (activePopupList.Count > 0)
+            {
+                ClosePopup(activePopupList.First.Value);
+            }
+        }
+
+        ToggleKeyDownAction(KeyCode.P, detailInfoPopup);
+
+        if (DataMgr.player.isSemesterOver)
+        {
+            ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
+        }
+    }
+
     public void Init()
     {
         allPopupList = new List<Popup>()
         {
-            semesterPopup, detailInfoPopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup
         };
 
         foreach (var popup in allPopupList)
@@ -40,12 +60,25 @@ public class PopupMgr : MonoBehaviour
         }
     }
 
+    
     private void InitCloseAll()
     {
         foreach (var popup in allPopupList)
         {
             ClosePopup(popup);
         }
+    }
+
+    private void ToggleKeyDownAction(in KeyCode key, Popup popup)
+    {
+        if (Input.GetKeyDown(key))
+            ToggleOpenClosePopup(popup);
+    }
+
+    private void ToggleOpenClosePopup(Popup popup)
+    {
+        if (!popup.gameObject.activeSelf) OpenPopup(popup);
+        else ClosePopup(popup);
     }
 
     private void OpenPopup(Popup popup)
@@ -64,7 +97,7 @@ public class PopupMgr : MonoBehaviour
 
     private void RefreshAllPopupDepth()
     {
-        foreach(var popup in allPopupList)
+        foreach(var popup in activePopupList)
         {
             popup.transform.SetAsFirstSibling();
         }
