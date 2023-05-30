@@ -5,29 +5,24 @@ using Yarn.Unity;
 
 public class CustomQuizCommands : MonoBehaviour
 {
-    [SerializeField] List<QuizData> quizDataList;
+
+    public delegate void QuizCorrect();
+    public static event QuizCorrect quizCorrect;
+
+    //다이얼로그 종료 델리게이트, 퀴즈 커맨드 안에 구현되어있어 빼고싶음
+    public delegate void DialogueEnd();
+    public static event DialogueEnd dialogueEnd;
+
+    private DialogueRunner dialogueRunner;
 
     private void Awake()
     {
-        YarnCommandManager.SetQuiz += SetQuiz;
+        dialogueRunner = GetComponent<DialogueRunner>();
     }
     private void Start()
     {
-        quizDataList = DataMgr.quizs.data;
-    }
-
-    public void SetQuiz(string tag)
-    {
-        switch (tag)
-        {
-            case "question": Debug.Log(quizDataList[0].question);
-                break;
-                //case "question": return quizDataList[0].question;
-                //case "option_1": return quizDataList[0].options[0];
-                //case "option_2": return quizDataList[0].options[1];
-                //case "option_3": return quizDataList[0].options[2];
-                //case "option_4": return quizDataList[0].options[3];
-        }
-        //return "아무런 데이터 저장되지 않았습니다.";
+        //커맨드 등록
+        dialogueRunner.AddCommandHandler("Correct", quizCorrect);
+        dialogueRunner.AddCommandHandler("End", dialogueEnd);
     }
 }

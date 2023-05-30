@@ -45,7 +45,6 @@ public class TakeLectureInfo : MonoBehaviour
         }
         else
         {
-            //
             DataMgr.player.creditReserve = ReflectionData();
             Debug.Log(DataMgr.player.creditReserve + " 학점");
             GameManager.instance.renewalPopup();

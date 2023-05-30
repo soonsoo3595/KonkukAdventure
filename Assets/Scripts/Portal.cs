@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 enum BuildNum
 {
@@ -66,9 +67,9 @@ public class Portal : MonoBehaviour
     ItemDataList itemDataList;
     #endregion
 
-    #region 상점진입할때 캐릭터 정지, 마우스 해제 델리게이트
-    public delegate void StopCharactor();
-    public static event StopCharactor StopPlayer;
+    #region 퀴즈 번호 체크
+    public delegate void SetDialogueChain(int num);
+    public static event SetDialogueChain SetDialogue;
     #endregion
 
     //포탈이 보여줄 빌딩의 번호 설정
@@ -98,7 +99,6 @@ public class Portal : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            StopPlayer();
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
             switch ((int)buildNum)
@@ -116,12 +116,13 @@ public class Portal : MonoBehaviour
                 case 20:
                 case 21:
                 case 22:
+                    GameManager.instance.enteringUI();
                     GameManager.instance.LectureUI.SetActive(true);
                     SetLectureData(FindDepartment((int)buildNum), lectureDatas);
                     break;
-
                //상점 진입
                 case 19:
+                    GameManager.instance.enteringUI();
                     GameManager.instance.StoreUI.SetActive(true);
                     SetStoreData(itemDataList);
                     break;
@@ -129,17 +130,8 @@ public class Portal : MonoBehaviour
                 case 32:
                 case 33:
                 case 34:
+                    SetDialogue((int)buildNum);
                     break;
-            }
-
-            if (((int)BuildNum).Equals(19))
-            {
-                GameManager.instance.StoreUI.SetActive(true);
-                SetStoreData(itemDataList);
-            }
-            else {
-                GameManager.instance.LectureUI.SetActive(true);
-                SetLectureData(FindDepartment((int)buildNum), lectureDatas);
             }
         }
     }
@@ -153,6 +145,4 @@ public class Portal : MonoBehaviour
         return find;
     }
     #endregion
-
-    //포탈 번호에 따른 
 }

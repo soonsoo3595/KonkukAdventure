@@ -5998,7 +5998,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1487784104230241361, guid: 0324b47ab2a82594fb8f75b18c65056d, type: 3}
       propertyPath: buildNum
-      value: 4
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2323986593730640042, guid: 0324b47ab2a82594fb8f75b18c65056d, type: 3}
       propertyPath: m_Name
@@ -15150,10 +15150,10 @@ MonoBehaviour:
   - {fileID: 4935123090270595888}
   - {fileID: 6323935189038954196}
   startNode: Start
-  startAutomatically: 1
+  startAutomatically: 0
   runSelectedOptionAsLine: 1
   lineProvider: {fileID: 0}
-  verboseLogging: 1
+  verboseLogging: 0
   onNodeStart:
     m_PersistentCalls:
       m_Calls: []
@@ -16813,7 +16813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579e085f91189d949ba789f2a7c3dd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizDataList: []
 --- !u!1001 &294310353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25420,6 +25419,7 @@ MonoBehaviour:
   StoreUI: {fileID: 1430007289}
   SemesterOverUI: {fileID: 1811097174}
   DetailInfoUI: {fileID: 1926353132}
+  DialogueUI: {fileID: 292218492}
 --- !u!1001 &469090511
 PrefabInstance:
   m_ObjectHideFlags: 0
