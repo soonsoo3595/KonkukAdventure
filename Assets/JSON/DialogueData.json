@@ -1,7 +1,7 @@
 {
   "quiz": [
     {
-      "id": 0,
+      "id": 32,
       "name": "퀴즈1",
       "question": "건국대학교를 상징하는 동물은 무엇일까요?",
       "options": [
@@ -15,7 +15,7 @@
       "isEnter": false
     },
     {
-      "id": 1,
+      "id": 33,
       "name": "퀴즈2",
       "question": "건국대학교를 상징하는 동물은 무엇 2 ?",
       "options": [
@@ -29,7 +29,7 @@
       "isEnter": false
     },
     {
-      "id": 2,
+      "id": 34,
       "name": "퀴즈3",
       "question": "건국대학교를 상징하는 동물은 무엇 3 ?",
       "options": [
