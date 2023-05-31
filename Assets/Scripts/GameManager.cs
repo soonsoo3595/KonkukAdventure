@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
         LectureUI.SetActive(false);
         StoreUI.SetActive(false);
+        DialogueUI.SetActive(true);
     }
 
     void Start()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1750018, g: 0.21892715, b: 0.30122024, a: 1}
+  m_IndirectSpecularColor: {r: 0.17500201, g: 0.21892741, b: 0.30122074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15105,6 +15105,7 @@ GameObject:
   - component: {fileID: 266644044}
   - component: {fileID: 266644045}
   - component: {fileID: 266644046}
+  - component: {fileID: 266644047}
   m_Layer: 5
   m_Name: DialogueRunner
   m_TagString: Untagged
@@ -15176,6 +15177,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4142a0edd0e53b84f9069efcb0087442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &266644047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266644043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579e085f91189d949ba789f2a7c3dd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &266645099
@@ -16770,9 +16783,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292218493}
-  - component: {fileID: 292218494}
   m_Layer: 5
-  m_Name: QuizUI
+  m_Name: DialogueUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16801,18 +16813,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &292218494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292218492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579e085f91189d949ba789f2a7c3dd45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &294310353
 PrefabInstance:
   m_ObjectHideFlags: 0

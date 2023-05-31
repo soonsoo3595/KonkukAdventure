@@ -37,9 +37,9 @@ public class TakeLectureInfo : MonoBehaviour
     {
         Debug.Log(DataMgr.player.userID);
 
-        if (ReflectionData() > DataMgr.player.creditLimit)
+        if (DataMgr.player.creditReserve + lectureData.course_credit > DataMgr.player.creditLimit)
         {
-            Debug.Log(ReflectionData() + "더이상 강의를 수강할 수 없습니다");
+            Debug.Log("더이상 강의를 수강할 수 없습니다");
             transform.parent.parent.gameObject.SetActive(false);
             GameManager.instance.SemesterOver();
         }

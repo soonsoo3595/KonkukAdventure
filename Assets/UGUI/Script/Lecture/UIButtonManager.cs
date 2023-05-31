@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//이 스크립트 날려버리고 싶음
 public class UIButtonManager : MonoBehaviour
 {
     [Header("Top Toggle")]
