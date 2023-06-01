@@ -117,8 +117,8 @@ public class StarterAssetsInputs : MonoBehaviour
 
     private void Awake()
     {
-        Portal.StopPlayer += Stop;
-        CloseButton.ReStartPlayer += ReStart;
+        GameManager.instance.enteringUI += Stop;
+        GameManager.instance.exitUI += ReStart;
     }
 }
 	

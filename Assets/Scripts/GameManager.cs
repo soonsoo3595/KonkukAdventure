@@ -11,8 +11,14 @@ public class GameManager : MonoBehaviour
     public GameObject StoreUI;
     public GameObject SemesterOverUI;
     public GameObject DetailInfoUI;
+    public GameObject DialogueUI;
 
     public Action renewalPopup;
+
+    //UI 진입으로 마우스 활성화
+    public Action enteringUI;
+    //UI 빠져나올때 마우스 비활성화
+    public Action exitUI;
 
     void Awake()
     {
@@ -21,28 +27,19 @@ public class GameManager : MonoBehaviour
 
         LectureUI.SetActive(false);
         StoreUI.SetActive(false);
+        DialogueUI.SetActive(true);
     }
 
     void Start()
     {
-        Debug.Log(DataMgr.quizs.data[1].options[2]);
-        Debug.Log(DataMgr.quizs.data[1].question);
+        Debug.Log(DataMgr.Dialogue.quiz[1].options[2]);
+        Debug.Log(DataMgr.Dialogue.quiz[1].question);
     }
 
     private void Update()
     {
-        if(DataMgr.player.isSemesterOver)
-        {
-            if(Input.GetKeyUp(KeyCode.N)) 
-            {
-                SemesterOver();
-            }
-        }
+        
 
-        if(Input.GetKeyUp(KeyCode.P))
-        {
-            DetailInfoUI.SetActive(!DetailInfoUI.activeSelf);
-        }
     }
 
     public void SemesterOver()

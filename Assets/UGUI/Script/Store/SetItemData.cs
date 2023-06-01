@@ -33,11 +33,11 @@ public class SetItemData : MonoBehaviour
         {
             case false:
                 text[0].text = otherItem.name;
-                text[1].text = "PRICE: " + otherItem.price.ToString();
+                text[1].text = $"Price: {otherItem.price}";
                 break;
             case true:
                 text[0].text = creditLimit.name;
-                text[1].text = "PRICE: " + creditLimit.price.ToString();
+                text[1].text = $"Price {creditLimit.price}";
                 break;
         }
     }
