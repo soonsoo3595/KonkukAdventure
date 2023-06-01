@@ -36,12 +36,6 @@ public class GameManager : MonoBehaviour
         Debug.Log(DataMgr.Dialogue.quiz[1].question);
     }
 
-    private void Update()
-    {
-        
-
-    }
-
     public void SemesterOver()
     {
         SemesterOverUI.SetActive(true);

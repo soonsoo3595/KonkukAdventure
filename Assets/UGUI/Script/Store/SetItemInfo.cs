@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SetItemInfo : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class SetItemInfo : MonoBehaviour
     private bool flag;
 
     [SerializeField] private GameObject activePart;
-    [SerializeField] private Text nameText, infoText;
+    [SerializeField] private TMP_Text nameText, infoText;
     [SerializeField] private Button button;
 
     private void Awake()
