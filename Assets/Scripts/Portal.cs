@@ -103,7 +103,7 @@ public class Portal : MonoBehaviour
         {
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
-            switch ((int)buildNum)
+            switch (BuildNum)
             {
                 //강의 건물 진입
                 case 2:
@@ -121,6 +121,7 @@ public class Portal : MonoBehaviour
                     popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.OpenPopup(popup);
                     SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+
                     break;
                //상점 진입
                 case 19:
@@ -132,7 +133,7 @@ public class Portal : MonoBehaviour
                 case 32:
                 case 33:
                 case 34:
-                    SetDialogue((int)buildNum);
+                    SetDialogue(BuildNum);
                     break;
             }
         }
