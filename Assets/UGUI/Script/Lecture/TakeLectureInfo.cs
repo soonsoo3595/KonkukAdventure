@@ -9,6 +9,9 @@ public class TakeLectureInfo : MonoBehaviour
     [SerializeField] private Text nameSpace;
     List<int> buildingRecord;
 
+    public Popup semesterOverPopup;
+    public Popup selectStudyPopup;
+
     void Start()
     {
         this.gameObject.SetActive(false);
@@ -40,8 +43,8 @@ public class TakeLectureInfo : MonoBehaviour
         if (DataMgr.player.creditReserve + lectureData.course_credit > DataMgr.player.creditLimit)
         {
             Debug.Log("더이상 강의를 수강할 수 없습니다");
-            transform.parent.parent.gameObject.SetActive(false);
-            GameManager.instance.SemesterOver();
+            PopupMgr.instance.ClosePopup(selectStudyPopup);
+            PopupMgr.instance.OpenPopup(semesterOverPopup);
         }
         else
         {

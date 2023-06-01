@@ -97,6 +97,8 @@ public class Portal : MonoBehaviour
     #region 캐릭터 집입 이벤트
     private void OnTriggerEnter(Collider other)
     {
+        Popup popup;
+
         if(other.CompareTag("Player"))
         {
             //델리게이트 실행
@@ -116,14 +118,15 @@ public class Portal : MonoBehaviour
                 case 20:
                 case 21:
                 case 22:
-                    GameManager.instance.enteringUI();
-                    GameManager.instance.LectureUI.SetActive(true);
-                    SetLectureData(FindDepartment(BuildNum), lectureDatas);
+                    popup = PopupMgr.instance.selectStudyPopup;
+                    PopupMgr.instance.OpenPopup(popup);
+                    SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+
                     break;
                //상점 진입
                 case 19:
-                    GameManager.instance.enteringUI();
-                    GameManager.instance.StoreUI.SetActive(true);
+                    popup = PopupMgr.instance.selectStudyPopup;
+                    PopupMgr.instance.OpenPopup(popup);
                     SetStoreData(itemDataList);
                     break;
                 //퀴즈 이벤트 진입
@@ -137,6 +140,44 @@ public class Portal : MonoBehaviour
     }
     #endregion
 
+    private void OnTriggerExit(Collider other)
+    {
+        Popup popup;
+
+        if (other.CompareTag("Player"))
+        {
+            switch ((int)buildNum)
+            {
+                //강의 건물 진입
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 11:
+                case 14:
+                case 16:
+                case 17:
+                case 18:
+                case 20:
+                case 21:
+                case 22:
+                    popup = PopupMgr.instance.selectStudyPopup;
+                    PopupMgr.instance.ClosePopup(popup);
+                    break;
+                //상점 진입
+                case 19:
+                    popup = PopupMgr.instance.selectStudyPopup;
+                    PopupMgr.instance.ClosePopup(popup);
+                    break;
+                //퀴즈 이벤트 진입
+                case 32:
+                case 33:
+                case 34:
+                    SetDialogue((int)buildNum);
+                    break;
+            }
+        }
+    }
     //빌딩 번호에 따른 학과들 검색
     #region 빌딩에 있는 학과들 검색
     private List<DepartmentData> FindDepartment(int num)
