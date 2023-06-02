@@ -21,14 +21,11 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
-    }
 
-    private void Start()
-    {
         popupMgr = PopupMgr.instance;
     }
 
@@ -51,9 +48,6 @@ public class StarterAssetsInputs : MonoBehaviour
 #if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
     {
-        if (popupMgr.IsPopupActive())
-            return;
-
         MoveInput(value.Get<Vector2>());
     }
 
