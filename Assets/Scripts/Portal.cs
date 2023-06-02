@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using TMPro;
 
 enum BuildNum
 {
@@ -76,6 +77,9 @@ public class Portal : MonoBehaviour
     [SerializeField] BuildNum buildNum;
     internal int BuildNum { get { return (int)buildNum; } }
 
+    [Header("제대로 만들기 커찮아요...")]
+    [SerializeField] private TMP_Text departmentName;
+
     private void Start()
     {
         portal = this;
@@ -118,6 +122,7 @@ public class Portal : MonoBehaviour
                 case 22:
                     GameManager.instance.enteringUI();
                     GameManager.instance.LectureUI.SetActive(true);
+                    departmentName.text = buildNum.ToString();
                     SetLectureData(FindDepartment(BuildNum), lectureDatas);
                     break;
                //상점 진입

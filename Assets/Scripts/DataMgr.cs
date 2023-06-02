@@ -17,6 +17,14 @@ public class PlayerData
     public int KUPointReserve;
     public bool isSemesterOver;
 }
+
+public class PlayerRecordData
+{
+    public int userID;
+    public int totalCredit;
+    public int totalKupoint;
+    public int graduateCredit;
+}
 #endregion
 
 #region 건물 데이터
@@ -133,6 +141,7 @@ public static class DataMgr
     // json 파일 경로
     #region Json 경로
     private static string playerJsonPath = "Assets/JSON/PlayerData.json";
+    private static string playerRecordJsonPath = "Assets/JSON/PlayerRecordData.json";
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
     private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
@@ -141,6 +150,7 @@ public static class DataMgr
     #endregion
 
     public static PlayerData player { get; set; }
+    public static PlayerRecordData record { get; set; }
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
@@ -150,6 +160,7 @@ public static class DataMgr
     public static void LoadData()
     {
         string playerJson = File.ReadAllText(playerJsonPath);
+        string playerRecordJson = File.ReadAllText(playerRecordJsonPath);
         string buildingJson = File.ReadAllText(buildingJsonPath);
         string departmentJson = File.ReadAllText(departmentJsonPath);
         string lectureJson = File.ReadAllText(lectureJsonPath);
@@ -157,6 +168,7 @@ public static class DataMgr
         string quizJson = File.ReadAllText(quizJsonPath);
 
         player = JsonUtility.FromJson<PlayerData>(playerJson);
+        record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
@@ -167,7 +179,9 @@ public static class DataMgr
     public static void SavePlayerData()
     {
         string playerJson = JsonUtility.ToJson(player);
+        string playerRecordJson = JsonUtility.ToJson(record);
         File.WriteAllText(playerJsonPath, playerJson);
+        File.WriteAllText(playerRecordJsonPath, playerRecordJson);
     }
 
     public static bool IsLastSemester()

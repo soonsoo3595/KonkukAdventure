@@ -17,7 +17,7 @@ public class StoreManager : MonoBehaviour
     private void Awake()
     {
         Portal.SetStoreData += SetItemData;
-        SetItemInfo.update += SetItemData;
+        SetItemInfo.ItemUpdate += SetItemData;
     }
 
     //아이템들의 정보를 아이템 셀에 뿌려주는 메서드
