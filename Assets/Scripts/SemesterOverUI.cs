@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class SemesterOverUI : MonoBehaviour
 {
+    Popup popup;
+
     public Text title, currentTxt, nextTxt, description;
     public Button nextBtn, stayBtn;
 
     private void Awake()
     {
+        popup = GetComponent<Popup>();
         nextBtn.onClick.AddListener(Next);
         stayBtn.onClick.AddListener(Stay);
-    }
-
-    void Start()
-    {
-        
     }
 
     private void OnEnable()
@@ -60,7 +58,7 @@ public class SemesterOverUI : MonoBehaviour
         }
 
         DataMgr.player.isSemesterOver = false;
-        gameObject.SetActive(false);
+        PopupMgr.instance.ClosePopup(popup);
     }
 
     public void Stay()
@@ -68,6 +66,6 @@ public class SemesterOverUI : MonoBehaviour
         Debug.Log("현재 학기 유지");
 
         DataMgr.player.isSemesterOver = true;
-        gameObject.SetActive(false);
+        PopupMgr.instance.ClosePopup(popup);
     }
 }

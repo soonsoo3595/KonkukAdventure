@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
+    PopupMgr popupMgr;
+
     [Header("Character Input Values")]
     public Vector2 move;
     public Vector2 look;
@@ -18,6 +20,14 @@ public class StarterAssetsInputs : MonoBehaviour
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
+
+    private void Start()
+    {
+        GameManager.instance.enteringUI += Stop;
+        GameManager.instance.exitUI += ReStart;
+
+        popupMgr = PopupMgr.instance;
+    }
 
     /*
     private void Update()
@@ -100,8 +110,13 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void Stop()
     {
-        cursorLocked = !cursorLocked;
-        cursorInputForLook = !cursorInputForLook;
+        if(popupMgr.IsPopupActive())
+        {
+            return;
+        }
+
+        cursorLocked = false;   
+        cursorInputForLook = false; 
         LookInput(default);
 
         SetCursorState(cursorLocked);
@@ -109,16 +124,17 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void ReStart()
     {
-        cursorLocked = !cursorLocked;
-        cursorInputForLook = !cursorInputForLook;
+        if (popupMgr.IsPopupActive())
+        {
+            return;
+        }
+
+        cursorLocked = true;    
+        cursorInputForLook = true; 
 
         SetCursorState(cursorLocked);
     }
 
-    private void Awake()
-    {
-        GameManager.instance.enteringUI += Stop;
-        GameManager.instance.exitUI += ReStart;
-    }
+    
 }
 	
