@@ -39,3 +39,11 @@ question: 퀴즈를 풀어보자! 34
     <<End>>
 ===
 
+title: 0
+tag: Error 0
+---
+System: 이미 본 퀴즈 입니다.
+<<End>>
+===
+
+

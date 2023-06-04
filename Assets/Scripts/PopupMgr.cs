@@ -14,6 +14,7 @@ public class PopupMgr : MonoBehaviour
     public Popup detailInfoPopup;
     public Popup selectStudyPopup;
     public Popup storePopup;
+    public Popup dialoguePopup;
 
     public static PopupMgr instance;
 
@@ -51,7 +52,7 @@ public class PopupMgr : MonoBehaviour
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup
         };
 
         foreach (var popup in allPopupList)

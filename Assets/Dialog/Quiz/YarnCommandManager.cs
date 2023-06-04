@@ -10,11 +10,14 @@ public class YarnCommandManager : MonoBehaviour
     private int portalNum;
 
     private DialogueRunner dialogueRunner;
+    private GameObject parent;
 
     private void Awake()
     {
         Portal.SetDialogue += SetDialogue;
         dialogueRunner = GetComponent<DialogueRunner>();
+
+        parent = transform.parent.gameObject;
 
         #region Yarn 커맨드 등록
         CustomQuizCommands.quizCorrect += QuizCorrect;
@@ -26,6 +29,7 @@ public class YarnCommandManager : MonoBehaviour
     void SetDialogue(int num)
     {
         portalNum = num;
+        dialogueRunner.Stop();
 
         switch (num)
         {
@@ -38,6 +42,7 @@ public class YarnCommandManager : MonoBehaviour
                     dialogueRunner.StartDialogue(num.ToString());
                     break;
                 }
+                dialogueRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
             case 33:
@@ -48,6 +53,8 @@ public class YarnCommandManager : MonoBehaviour
                     dialogueRunner.StartDialogue(num.ToString());
                     break;
                 }
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
             case 34:
@@ -58,6 +65,8 @@ public class YarnCommandManager : MonoBehaviour
                     dialogueRunner.StartDialogue(num.ToString());
                     break;
                 }
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
         }
@@ -82,6 +91,16 @@ public class YarnCommandManager : MonoBehaviour
                 Debug.Log(DataMgr.Dialogue.quiz[ID].isEnter);
                 break;
         }
-        GameManager.instance.exitUI();
+        PopupMgr.instance.ClosePopup(transform.parent.GetComponent<Popup>());
+    }
+
+    private void Checked()
+    {
+        if (!dialogueRunner.startNode.Equals("0"))
+        {
+            dialogueRunner.StartDialogue("0");
+        }
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("0");
     }
 }

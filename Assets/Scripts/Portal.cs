@@ -133,7 +133,8 @@ public class Portal : MonoBehaviour
                 case 32:
                 case 33:
                 case 34:
-                    GameManager.instance.DialogueUI.SetActive(true);
+                    popup = PopupMgr.instance.dialoguePopup;
+                    PopupMgr.instance.OpenPopup(popup);
                     SetDialogue(BuildNum);
                     break;
             }
@@ -167,14 +168,15 @@ public class Portal : MonoBehaviour
                     break;
                 //상점 진입
                 case 19:
-                    popup = PopupMgr.instance.selectStudyPopup;
+                    popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.ClosePopup(popup);
                     break;
                 //퀴즈 이벤트 진입
                 case 32:
                 case 33:
                 case 34:
-                    SetDialogue((int)buildNum);
+                    popup = PopupMgr.instance.dialoguePopup;
+                    PopupMgr.instance.ClosePopup(popup);
                     break;
             }
         }

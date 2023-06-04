@@ -27,13 +27,5 @@ public class GameManager : MonoBehaviour
 
         LectureUI.SetActive(false);
         StoreUI.SetActive(false);
-        DialogueUI.SetActive(true);
     }
-
-    void Start()
-    {
-        Debug.Log(DataMgr.Dialogue.quiz[1].options[2]);
-        Debug.Log(DataMgr.Dialogue.quiz[1].question);
-    }
-
 }
