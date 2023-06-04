@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class LectureCell : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class LectureCell : MonoBehaviour
     public static event LectureStudyChain SetLecture;
 
     [SerializeField] internal LectureData lectureData;
-
     public void onClickName()
     {
         SetLecture(lectureData);

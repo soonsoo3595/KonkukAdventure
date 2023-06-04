@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class PlayerInfoUI : MonoBehaviour
 {
-    public Text title;
-    public Text credit;
-    public Text kuPoint;
-    public Text semester;
+    public TMP_Text title;
+    public TMP_Text credit;
+    public TMP_Text kuPoint;
+    public TMP_Text semester;
 
     Button toggleBtn;
     bool isFolded = false;
@@ -58,8 +59,9 @@ public class PlayerInfoUI : MonoBehaviour
 
     public void RenewalInfo()
     {
-        credit.text = $"현재 학점 : {DataMgr.player.creditReserve}";
-        kuPoint.text = $"KU 포인트 : {DataMgr.player.KUPointReserve}";
-        semester.text = $"진행 학기 : {DataMgr.player.semester}";
+        title.text = DataMgr.player.userName;
+        credit.text = $"이번학기 <color=#2BFF00>{DataMgr.player.creditReserve}</color> 학점 수강";
+        kuPoint.text = $"{DataMgr.player.KUPointReserve} Point";
+        semester.text = $"{DataMgr.player.grade} 학년 {((DataMgr.player.semester%2).Equals(1) ? 1 : 2)} 학기";
     }
 }

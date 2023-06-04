@@ -22,7 +22,7 @@ public class PlayerDetailInfo : MonoBehaviour
         PlayerRecordData record = DataMgr.record;
 
         userNameTxt.text = $" {player.userName}";
-        gradeTxt.text = $"{player.grade}학년 {player.semester}학기";
+        gradeTxt.text = $"{player.grade}학년 {DataMgr.player.semester/2+1}학기";
         limitCreditTxt.text = $"{player.creditReserve} / {player.creditLimit}";
         navigateGradu.text = $"{record.totalCredit} / {record.graduateCredit}";
         graduatePoint.text = $"{record.graduateCredit}";

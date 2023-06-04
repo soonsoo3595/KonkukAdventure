@@ -10,6 +10,7 @@ public class StudyButton : MonoBehaviour
     [SerializeField] private TMP_Text InfoSpace;
     List<int> buildingRecord;
 
+    [SerializeField] private GameObject completePopup;
     public Popup semesterOverPopup;
     public Popup selectStudyPopup;
 
@@ -17,10 +18,12 @@ public class StudyButton : MonoBehaviour
     {
         LectureCell.SetLecture += Active;
         buildingRecord = DataMgr.BuildingRecord;
+        this.gameObject.SetActive(false);
     }
 
     void Active(LectureData lectureData)
     {
+        this.gameObject.SetActive(true);
         SetLectureInfo(lectureData);
         SetLectureName(lectureData.name);
     }
@@ -37,8 +40,6 @@ public class StudyButton : MonoBehaviour
 
      public void ClickStudyButton()
     {
-        Debug.Log(DataMgr.player.userID);
-
         if (DataMgr.player.creditReserve + lectureData.course_credit > DataMgr.player.creditLimit)
         {
             Debug.Log("더이상 강의를 수강할 수 없습니다");
@@ -55,6 +56,8 @@ public class StudyButton : MonoBehaviour
             DataMgr.player.KUPointReserve += lectureData.KU_point;
 
             GameManager.instance.renewalPopup();
+
+            completePopup.SetActive(true);
         }
     }
 
@@ -81,5 +84,6 @@ public class StudyButton : MonoBehaviour
     private void OnDisable()
     {
         InfoSpace.text = "";
+        this.gameObject.SetActive(false);
     }
 }
