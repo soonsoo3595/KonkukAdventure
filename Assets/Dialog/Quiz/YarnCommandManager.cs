@@ -80,7 +80,6 @@ public class YarnCommandManager : MonoBehaviour
             case 34:
                 DataMgr.Dialogue.quiz[ID].isEnter = true;
                 Debug.Log(DataMgr.Dialogue.quiz[ID].isEnter);
-                transform.parent.gameObject.SetActive(false);
                 break;
         }
         GameManager.instance.exitUI();

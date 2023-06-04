@@ -8,7 +8,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler
 
 
     [SerializeField]
-    private Transform _targetTr; // ì´ë™ë  UI
+    private Transform _targetTr; // ÀÌµ¿µÉ UI
 
     private Vector2 _startingPoint;
     private Vector2 _moveBegin;
@@ -16,19 +16,19 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     private void Awake()
     {
-        // ì´ë™ ëŒ€ìƒ UIë¥¼ ì§€ì •í•˜ì§€ ì•Šì€ ê²½ìš°, ìë™ìœ¼ë¡œ ë¶€ëª¨ë¡œ ì´ˆê¸°í™”
+        // ÀÌµ¿ ´ë»ó UI¸¦ ÁöÁ¤ÇÏÁö ¾ÊÀº °æ¿ì, ÀÚµ¿À¸·Î ºÎ¸ğ·Î ÃÊ±âÈ­
         if (_targetTr == null)
             _targetTr = transform.parent;
     }
 
-    // ë“œë˜ê·¸ ì‹œì‘ ìœ„ì¹˜ ì§€ì •
+    // µå·¡±× ½ÃÀÛ À§Ä¡ ÁöÁ¤
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         _startingPoint = _targetTr.position;
         _moveBegin = eventData.position;
     }
 
-    // ë“œë˜ê·¸ : ë§ˆìš°ìŠ¤ ì»¤ì„œ ìœ„ì¹˜ë¡œ ì´ë™
+    // µå·¡±× : ¸¶¿ì½º Ä¿¼­ À§Ä¡·Î ÀÌµ¿
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         _moveOffset = eventData.position - _moveBegin;

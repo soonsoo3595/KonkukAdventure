@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SetItemData : MonoBehaviour
 {
@@ -28,17 +27,17 @@ public class SetItemData : MonoBehaviour
         if (creditLimit.itemTypeID.Equals(0)) flag = false;
         else flag = true;
 
-        TMP_Text[] text = GetComponentsInChildren<TMP_Text>();
+        Text[] text = GetComponentsInChildren<Text>();
 
         switch (flag)
         {
             case false:
                 text[0].text = otherItem.name;
-                text[1].text = $"{otherItem.price}";
+                text[1].text = $"Price: {otherItem.price}";
                 break;
             case true:
                 text[0].text = creditLimit.name;
-                text[1].text = $" {creditLimit.price}";
+                text[1].text = $"Price {creditLimit.price}";
                 break;
         }
     }

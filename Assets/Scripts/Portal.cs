@@ -121,19 +121,18 @@ public class Portal : MonoBehaviour
                     popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.OpenPopup(popup);
                     SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+
                     break;
                //상점 진입
                 case 19:
-                    popup = PopupMgr.instance.storePopup;
+                    popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.OpenPopup(popup);
-                    Debug.Log(itemDataList.creditLimit[0].name);
                     SetStoreData(itemDataList);
                     break;
                 //퀴즈 이벤트 진입
                 case 32:
                 case 33:
                 case 34:
-                    GameManager.instance.DialogueUI.SetActive(true);
                     SetDialogue(BuildNum);
                     break;
             }

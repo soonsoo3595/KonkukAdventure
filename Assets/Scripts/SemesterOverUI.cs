@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SemesterOverUI : MonoBehaviour
 {
     Popup popup;
 
-    public TMP_Text title, currentTxt, nextTxt;
+    public Text title, currentTxt, nextTxt, description;
     public Button nextBtn, stayBtn;
 
     private void Awake()
@@ -21,20 +20,21 @@ public class SemesterOverUI : MonoBehaviour
     private void OnEnable()
     {
         int currentSemester = DataMgr.player.semester;
-        TMP_Text nextBtnTxt = nextBtn.GetComponentInChildren<TMP_Text>();
+        Text nextBtnTxt = nextBtn.GetComponentInChildren<Text>();
 
-        currentTxt.text = $"현재 학기 : {currentSemester}학기";
+        currentTxt.text = $"  현재 학기 : {currentSemester}학기";
 
         if(DataMgr.IsLastSemester())
         {
             title.text = "마지막 학기가 끝났습니다";
-            nextTxt.text = $"다음 학기 : 졸업";
-            nextBtnTxt.text = "졸업 하기";
+            nextTxt.text = $"  다음 학기 : 졸업";
+            description.text = "  졸업을 하시려면 왼쪽 버튼을 눌러주세요\n  아직 더 머무르고 싶으면 오른쪽 버튼을 눌러주세요\n  (N키를 눌러 언제든지 창을 다시 띄울 수 있습니다)";
+            nextBtnTxt.text = "졸업하기";
         }
         else
         {
             title.text = "현재 학기가 종료 되었습니다";
-            nextTxt.text = $"다음 학기 : {currentSemester + 1}학기";
+            nextTxt.text = $"  다음 학기 : {currentSemester + 1}학기";
         }
 
     }
@@ -51,7 +51,7 @@ public class SemesterOverUI : MonoBehaviour
             Debug.Log("다음 학기로");
 
             DataMgr.player.semester += 1;   // 학기 설정
-            DataMgr.player.grade = GradeCalculate(DataMgr.player.semester);   // 학년 설정
+            DataMgr.player.grade = (DataMgr.player.semester / 2) + 1;   // 학년 설정
             DataMgr.player.creditReserve = 0;   // 학점 0점으로 돌리기
 
             GameManager.instance.renewalPopup();
@@ -67,22 +67,5 @@ public class SemesterOverUI : MonoBehaviour
 
         DataMgr.player.isSemesterOver = true;
         PopupMgr.instance.ClosePopup(popup);
-        this.GetComponent<Animator>().SetBool("close", true);
-    }
-
-    private int GradeCalculate(int num)
-    {
-        switch (num)
-        {
-            case 1:
-            case 2: return 1;
-            case 3:
-            case 4: return 2;
-            case 5:
-            case 6: return 3;
-            case 7:
-            case 8: return 4;
-        }
-        return default;
     }
 }
