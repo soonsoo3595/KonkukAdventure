@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         LectureUI.SetActive(false);
         StoreUI.SetActive(false);
-        DialogueUI.SetActive(false);
+        DialogueUI.SetActive(true);
     }
 
     void Start()
@@ -36,8 +36,4 @@ public class GameManager : MonoBehaviour
         Debug.Log(DataMgr.Dialogue.quiz[1].question);
     }
 
-    public void SemesterOver()
-    {
-        SemesterOverUI.SetActive(true);
-    }
 }

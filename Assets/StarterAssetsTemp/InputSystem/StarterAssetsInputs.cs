@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
-    PopupMgr popupMgr;
-
     [Header("Character Input Values")]
     public Vector2 move;
     public Vector2 look;
@@ -21,12 +19,10 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
-
-        popupMgr = PopupMgr.instance;
     }
 
     /*
@@ -110,7 +106,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void Stop()
     {
-        if(popupMgr.IsPopupActive())
+        if(PopupMgr.instance.activePopupList.Count > 0)
         {
             return;
         }
@@ -124,7 +120,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void ReStart()
     {
-        if (popupMgr.IsPopupActive())
+        if (PopupMgr.instance.activePopupList.Count > 0)
         {
             return;
         }
