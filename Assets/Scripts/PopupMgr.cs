@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PopupMgr : MonoBehaviour
 {
-    internal LinkedList<Popup> activePopupList;  // 활성화된 팝업 리스트
+    public LinkedList<Popup> activePopupList;  // 활성화된 팝업 리스트
     private List<Popup> allPopupList;   // 모든 팝업 리스트
 
     [Header("Popup")]
