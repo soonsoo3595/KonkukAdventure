@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SetItemInfo : MonoBehaviour
 {
     //구매 버튼 클릭시에 상품 업데이트
     //StoreManager에 있는 SetItemData 를 가져온다.
-    public delegate void UPdateChain(ItemDataList itemDataList);
-    public static event UPdateChain update;
+    public delegate void UpdateChain(ItemDataList itemDataList);
+    public static event UpdateChain ItemUpdate;
 
     private CreditLimit creditLimit;
     private OtherItemData otherItem;
+
+    //아이템 구분을 위한 flag
     private bool flag;
 
     [SerializeField] private GameObject activePart;
-    [SerializeField] private Text nameText, infoText;
+    [SerializeField] private TMP_Text nameText, infoText;
     [SerializeField] private Button button;
 
     private void Awake()
@@ -74,10 +77,13 @@ public class SetItemInfo : MonoBehaviour
                 DataMgr.player.KUPointReserve -= creditLimit.price;
                 DataMgr.Items.otherItem[otherItem.itemID].isPurchase = true;
 
+                //간단 상태창 업데이트
+                GameManager.instance.renewalPopup();
+
                 //업데이트 된 정보를 다시 받아서
                 //디스플레이 업데이트
                 itemDataList = DataMgr.Items;
-                update(itemDataList);
+                ItemUpdate(itemDataList);
 
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함
@@ -103,10 +109,13 @@ public class SetItemInfo : MonoBehaviour
                 DataMgr.player.creditLimit += creditLimit.reward;
                 DataMgr.Items.creditLimit[creditLimit.itemID].isPurchase = true;
 
+                //간단 상태창 업데이트
+                GameManager.instance.renewalPopup();
+
                 //업데이트 된 정보를 다시 받아서
                 //디스플레이 업데이트
                 itemDataList = DataMgr.Items;
-                update(itemDataList);
+                ItemUpdate(itemDataList);
 
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함
