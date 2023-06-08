@@ -20,6 +20,7 @@ public class SetItemInfo : MonoBehaviour
     [SerializeField] private GameObject activePart;
     [SerializeField] private TMP_Text nameText, infoText;
     [SerializeField] private Button button;
+    [SerializeField] private GameObject purchasePopup;
 
     private void Awake()
     {
@@ -88,6 +89,9 @@ public class SetItemInfo : MonoBehaviour
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함
                 activePart.SetActive(false);
+
+                //구매완료 팝업 활성화
+                purchasePopup.SetActive(true);
                 break;
 
             case true:
@@ -120,6 +124,10 @@ public class SetItemInfo : MonoBehaviour
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함
                 activePart.SetActive(false);
+
+                //구매완료 팝업 활성화
+                purchasePopup.SetActive(true);
+
                 Debug.Log(DataMgr.player.creditLimit);
                 Debug.Log(DataMgr.player.KUPointReserve);
 
