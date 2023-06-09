@@ -126,7 +126,6 @@ public class Portal : MonoBehaviour
                 case 19:
                     popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.OpenPopup(popup);
-                    Debug.Log(itemDataList.creditLimit[0].name);
                     SetStoreData(itemDataList);
                     break;
                 //퀴즈 이벤트 진입

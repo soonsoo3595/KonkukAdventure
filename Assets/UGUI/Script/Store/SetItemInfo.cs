@@ -20,11 +20,15 @@ public class SetItemInfo : MonoBehaviour
     [SerializeField] private GameObject activePart;
     [SerializeField] private TMP_Text nameText, infoText;
     [SerializeField] private Button button;
+
+    //구매 버튼을 눌렀을 때 활성화 되는 팝업
     [SerializeField] private GameObject purchasePopup;
+    [SerializeField] private TMP_Text[] popupText;
 
     private void Awake()
     {
         SetItemData.itemSelect += Active;
+        popupText = purchasePopup.GetComponentsInChildren<TMP_Text>();
 
         activePart.SetActive(false);
     }
@@ -65,13 +69,17 @@ public class SetItemInfo : MonoBehaviour
                 //한번 구매 했을 때 활성화되는 if
                 if (otherItem.isPurchase.Equals(true))
                 {
-                    Debug.Log("이미 구매한 상품입니다!");
+                    popupText[0].text = "구매 안내";
+                    popupText[1].text = "이미 구매한 상품입니다!";
+                    purchasePopup.SetActive(true);
                     break;
                 }
                 //가지고 있는 포인트가 아이템 가격보다 작을 때
                 if (DataMgr.player.KUPointReserve < otherItem.price)
                 {
-                    Debug.Log("KU포인트가 부족합니다!");
+                    popupText[0].text = "구매 안내";
+                    popupText[1].text = "KU포인트가 부족합니다";
+                    purchasePopup.SetActive(true);
                     break;
                 }
                 //DataMgr에 정보 업데이트
@@ -91,6 +99,8 @@ public class SetItemInfo : MonoBehaviour
                 activePart.SetActive(false);
 
                 //구매완료 팝업 활성화
+                popupText[0].text = "구매 완료";
+                popupText[1].text = "구매가 완료되었습니다!";
                 purchasePopup.SetActive(true);
                 break;
 
@@ -98,13 +108,17 @@ public class SetItemInfo : MonoBehaviour
                 //모든 상품을 구매 했을 경우 활성화되는 if
                 if (creditLimit.isPurchase.Equals(true))
                 {
-                    Debug.Log("모든 상품을 구매하셧습니다!");
+                    popupText[0].text = "구매 안내";
+                    popupText[1].text = "모든 상품을 구배하셨습니다!";
+                    purchasePopup.SetActive(true);
                     break;
                 }
                 //가지고 있는 포인트가 아이템 가격보다 작을 때
                 if (DataMgr.player.KUPointReserve < creditLimit.price)
                 {
-                    Debug.Log("KU포인트가 부족합니다!");
+                    popupText[0].text = "구매 안내";
+                    popupText[1].text = "KU포인트가 부족합니다";
+                    purchasePopup.SetActive(true);
                     break;
                 }
 
@@ -126,6 +140,8 @@ public class SetItemInfo : MonoBehaviour
                 activePart.SetActive(false);
 
                 //구매완료 팝업 활성화
+                popupText[0].text = "구매 완료";
+                popupText[1].text = "구매가 완료되었습니다!";
                 purchasePopup.SetActive(true);
 
                 Debug.Log(DataMgr.player.creditLimit);
