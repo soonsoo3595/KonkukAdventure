@@ -23,16 +23,11 @@ public class StarterAssetsInputs : MonoBehaviour
 
     private void Awake()
     {
+        popupMgr = PopupMgr.instance;
+
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
     }
-
-    private void Start()
-    {
-        popupMgr = PopupMgr.instance;
-    }
-
-
     /*
     private void Update()
     {
