@@ -75,7 +75,7 @@ public class SetItemInfo : MonoBehaviour
                     break;
                 }
                 //가지고 있는 포인트가 아이템 가격보다 작을 때
-                if (DataMgr.player.KUPointReserve < otherItem.price)
+                if (DataMgr.Player.KUPointReserve < otherItem.price)
                 {
                     popupText[0].text = "구매 안내";
                     popupText[1].text = "KU포인트가 부족합니다";
@@ -83,7 +83,7 @@ public class SetItemInfo : MonoBehaviour
                     break;
                 }
                 //DataMgr에 정보 업데이트
-                DataMgr.player.KUPointReserve -= creditLimit.price;
+                DataMgr.Player.KUPointReserve -= creditLimit.price;
                 DataMgr.Items.otherItem[otherItem.itemID].isPurchase = true;
 
                 //간단 상태창 업데이트
@@ -114,7 +114,7 @@ public class SetItemInfo : MonoBehaviour
                     break;
                 }
                 //가지고 있는 포인트가 아이템 가격보다 작을 때
-                if (DataMgr.player.KUPointReserve < creditLimit.price)
+                if (DataMgr.Player.KUPointReserve < creditLimit.price)
                 {
                     popupText[0].text = "구매 안내";
                     popupText[1].text = "KU포인트가 부족합니다";
@@ -123,8 +123,8 @@ public class SetItemInfo : MonoBehaviour
                 }
 
                 //DataMgr에 정보 업데이트
-                DataMgr.player.KUPointReserve -= creditLimit.price;
-                DataMgr.player.creditLimit += creditLimit.reward;
+                DataMgr.Player.KUPointReserve -= creditLimit.price;
+                DataMgr.Player.creditLimit += creditLimit.reward;
                 DataMgr.Items.creditLimit[creditLimit.itemID].isPurchase = true;
 
                 //간단 상태창 업데이트
@@ -144,8 +144,8 @@ public class SetItemInfo : MonoBehaviour
                 popupText[1].text = "구매가 완료되었습니다!";
                 purchasePopup.SetActive(true);
 
-                Debug.Log(DataMgr.player.creditLimit);
-                Debug.Log(DataMgr.player.KUPointReserve);
+                Debug.Log(DataMgr.Player.creditLimit);
+                Debug.Log(DataMgr.Player.KUPointReserve);
 
                 break;
         }

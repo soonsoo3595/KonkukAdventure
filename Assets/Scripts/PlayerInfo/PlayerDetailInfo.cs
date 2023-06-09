@@ -18,11 +18,11 @@ public class PlayerDetailInfo : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerData player = DataMgr.player;
-        PlayerRecordData record = DataMgr.record;
+        PlayerData player = DataMgr.Player;
+        PlayerRecordData record = DataMgr.Record;
 
         userNameTxt.text = $" {player.userName}";
-        gradeTxt.text = $"{player.grade}학년 {DataMgr.player.semester/2+1}학기";
+        gradeTxt.text = $"{player.grade}학년 {DataMgr.Player.semester/2+1}학기";
         limitCreditTxt.text = $"{player.creditReserve} / {player.creditLimit}";
         navigateGradu.text = $"{record.totalCredit} / {record.graduateCredit}";
         graduatePoint.text = $"{record.graduateCredit}";

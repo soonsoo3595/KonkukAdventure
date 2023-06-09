@@ -39,7 +39,7 @@ public class StudyButton : MonoBehaviour
 
      public void ClickStudyButton()
     {
-        if (DataMgr.player.creditReserve + lectureData.course_credit > DataMgr.player.creditLimit)
+        if (DataMgr.Player.creditReserve + lectureData.course_credit > DataMgr.Player.creditLimit)
         {
             Debug.Log("더이상 강의를 수강할 수 없습니다");
             PopupMgr.instance.ClosePopup(selectStudyPopup);
@@ -48,11 +48,11 @@ public class StudyButton : MonoBehaviour
         else
         {
             //학점 반영
-            DataMgr.record.totalCredit += lectureData.course_credit;
-            DataMgr.player.creditReserve = ReflectionData();
+            DataMgr.Record.totalCredit += lectureData.course_credit;
+            DataMgr.Player.creditReserve = ReflectionData();
             //Ku포인트 반영
-            DataMgr.record.totalKupoint += lectureData.KU_point;
-            DataMgr.player.KUPointReserve += lectureData.KU_point;
+            DataMgr.Record.totalKupoint += lectureData.KU_point;
+            DataMgr.Player.KUPointReserve += lectureData.KU_point;
 
             GameManager.instance.renewalPopup();
 
@@ -76,7 +76,7 @@ public class StudyButton : MonoBehaviour
         }
 
         DataMgr.LectureRecord.Add(lectureData);
-        return DataMgr.player.creditReserve + lectureData.course_credit;
+        return DataMgr.Player.creditReserve + lectureData.course_credit;
     }
 
     //닫으면 설명창 초기화

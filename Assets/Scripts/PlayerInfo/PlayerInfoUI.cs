@@ -59,9 +59,9 @@ public class PlayerInfoUI : MonoBehaviour
 
     public void RenewalInfo()
     {
-        title.text = DataMgr.player.userName;
-        credit.text = $"이번학기 <color=#2BFF00>{DataMgr.player.creditReserve}</color> 학점 수강";
-        kuPoint.text = $"{DataMgr.player.KUPointReserve} Point";
-        semester.text = $"{DataMgr.player.grade} 학년 {((DataMgr.player.semester%2).Equals(1) ? 1 : 2)} 학기";
+        title.text = DataMgr.Player.userName;
+        credit.text = $"이번학기 <color=#2BFF00>{DataMgr.Player.creditReserve}</color> 학점 수강";
+        kuPoint.text = $"{DataMgr.Player.KUPointReserve} Point";
+        semester.text = $"{DataMgr.Player.grade} 학년 {((DataMgr.Player.semester%2).Equals(1) ? 1 : 2)} 학기";
     }
 }

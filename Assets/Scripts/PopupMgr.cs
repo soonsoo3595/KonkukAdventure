@@ -42,7 +42,7 @@ public class PopupMgr : MonoBehaviour
 
         ToggleKeyDownAction(KeyCode.P, detailInfoPopup);
 
-        if (DataMgr.player.isSemesterOver)
+        if (DataMgr.Player.isSemesterOver)
         {
             ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
         }
@@ -70,7 +70,6 @@ public class PopupMgr : MonoBehaviour
         }
     }
 
-    
     private void InitCloseAll()
     {
         foreach (var popup in allPopupList)

@@ -20,7 +20,7 @@ public class SemesterOverUI : MonoBehaviour
 
     private void OnEnable()
     {
-        int currentSemester = DataMgr.player.semester;
+        int currentSemester = DataMgr.Player.semester;
         TMP_Text nextBtnTxt = nextBtn.GetComponentInChildren<TMP_Text>();
 
         currentTxt.text = $"현재 학기 : {currentSemester}학기";
@@ -50,14 +50,14 @@ public class SemesterOverUI : MonoBehaviour
         {
             Debug.Log("다음 학기로");
 
-            DataMgr.player.semester += 1;   // 학기 설정
-            DataMgr.player.grade = GradeCalculate(DataMgr.player.semester);   // 학년 설정
-            DataMgr.player.creditReserve = 0;   // 학점 0점으로 돌리기
+            DataMgr.Player.semester += 1;   // 학기 설정
+            DataMgr.Player.grade = GradeCalculate(DataMgr.Player.semester);   // 학년 설정
+            DataMgr.Player.creditReserve = 0;   // 학점 0점으로 돌리기
 
             GameManager.instance.renewalPopup();
         }
 
-        DataMgr.player.isSemesterOver = false;
+        DataMgr.Player.isSemesterOver = false;
         PopupMgr.instance.ClosePopup(popup);
     }
 
@@ -65,7 +65,7 @@ public class SemesterOverUI : MonoBehaviour
     {
         Debug.Log("현재 학기 유지");
 
-        DataMgr.player.isSemesterOver = true;
+        DataMgr.Player.isSemesterOver = true;
         PopupMgr.instance.ClosePopup(popup);
         this.GetComponent<Animator>().SetBool("close", true);
     }

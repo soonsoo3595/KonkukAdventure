@@ -18,6 +18,8 @@ public class CellMaker : MonoBehaviour
     //학과 이름들이 들어갈 리스트
     [SerializeField] List<string> departmentNmae;
 
+    private Scrollbar scrollbar;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class CellMaker : MonoBehaviour
         departmentID = new List<int>();
         departmentNmae = new List<string>();
         study = new List<GameObject>();
+        scrollbar = this.GetComponentInChildren<Scrollbar>();
         //델리게이트 추가
         Portal.SetLectureData += MakeCell;
 
@@ -51,6 +54,7 @@ public class CellMaker : MonoBehaviour
             study[i].GetComponentInChildren<TMP_Text>().text = departmentNmae[i];
             study[i].GetComponent<LectureDataSet>().lectureData = findLecture(departmentID[i], lectData);
         }
+        scrollbar.value = 1;
     }
     #endregion
 

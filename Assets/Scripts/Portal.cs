@@ -38,9 +38,12 @@ enum BuildNum
     일감호 = 29,
     와우도 = 30,
     홍예교 = 31,
+    //퀴즈
     퀴즈이벤트1 = 32,
     퀴즈이벤트2 = 33,
-    퀴즈이벤트3 = 34
+    퀴즈이벤트3 = 34,
+    //현수막
+    샘플현수막 = 100
     #endregion 
 }
 
@@ -122,19 +125,22 @@ public class Portal : MonoBehaviour
                     PopupMgr.instance.OpenPopup(popup);
                     SetLectureData(FindDepartment((int)buildNum), lectureDatas);
                     break;
-               //상점 진입
+               //상점 해제
                 case 19:
                     popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.OpenPopup(popup);
                     SetStoreData(itemDataList);
                     break;
-                //퀴즈 이벤트 진입
+                //퀴즈 이벤트 해제
                 case 32:
                 case 33:
                 case 34:
                     popup = PopupMgr.instance.dialoguePopup;
                     PopupMgr.instance.OpenPopup(popup);
                     SetDialogue(BuildNum);
+                    break;
+                case 100:
+                    Application.OpenURL("http://www.konkuk.ac.kr/do/Index.do");
                     break;
             }
         }

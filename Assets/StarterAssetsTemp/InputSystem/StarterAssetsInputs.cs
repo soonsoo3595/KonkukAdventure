@@ -28,6 +28,7 @@ public class StarterAssetsInputs : MonoBehaviour
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
     }
+
     /*
     private void Update()
     {
@@ -81,7 +82,6 @@ public class StarterAssetsInputs : MonoBehaviour
         SetCursorState(cursorLocked);
     }
 #endif
-
 
     public void MoveInput(Vector2 newMoveDirection)
     {

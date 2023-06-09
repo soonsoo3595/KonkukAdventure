@@ -76,7 +76,7 @@ public class YarnCommandManager : MonoBehaviour
     //퀴즈 정답, 평점 상승
     private void QuizCorrect()
     {
-        DataMgr.player.scoreReserve += DataMgr.Dialogue.quiz[ID].reward;
+        DataMgr.Player.scoreReserve += DataMgr.Dialogue.quiz[ID].reward;
     }
 
     //다이얼로그 종료

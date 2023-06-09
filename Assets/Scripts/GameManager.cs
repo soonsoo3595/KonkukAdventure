@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         DataMgr.LoadData();
-
-        LectureUI.SetActive(false);
-        StoreUI.SetActive(false);
+        Debug.Log("실행");
     }
 }

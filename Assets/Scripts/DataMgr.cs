@@ -138,8 +138,8 @@ public static class DataMgr
     public static List<LectureData> LectureRecord = new List<LectureData>();
     #endregion
 
-    // json 파일 경로
-    #region Json 경로
+    /*
+     #region Json 경로
     private static string playerJsonPath = "Assets/JSON/PlayerData.json";
     private static string playerRecordJsonPath = "Assets/JSON/PlayerRecordData.json";
     private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
@@ -147,10 +147,21 @@ public static class DataMgr
     private static string lectureJsonPath = "Assets/JSON/LectureData.json";
     private static string itemJsonPath = "Assets/JSON/ItemData.json";
     private static string quizJsonPath = "Assets/JSON/DialogueData.json";
+    #endregion*/
+
+    // json 파일 경로
+    #region Json 경로
+    private static string playerJsonPath = "JSON/PlayerData";
+    private static string playerRecordJsonPath = "JSON/PlayerRecordData";
+    private static string buildingJsonPath = "JSON/BuildingData";
+    private static string departmentJsonPath = "JSON/DepartmentData";
+    private static string lectureJsonPath = "JSON/LectureData";
+    private static string itemJsonPath = "JSON/ItemData";
+    private static string quizJsonPath = "JSON/DialogueData";
     #endregion
 
-    public static PlayerData player { get; set; }
-    public static PlayerRecordData record { get; set; }
+    public static PlayerData Player { get; set; }
+    public static PlayerRecordData Record { get; set; }
     public static BuildingDataList Buildings { get; private set; }
     public static DepartmentDataList Departments { get; private set; }
     public static LectureDataList Lectures { get; private set; }
@@ -159,6 +170,17 @@ public static class DataMgr
 
     public static void LoadData()
     {
+        TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
+        TextAsset playerRecordJson = Resources.Load<TextAsset>(playerRecordJsonPath);
+        TextAsset buildingJson = Resources.Load<TextAsset>(buildingJsonPath);
+        TextAsset departmentJson = Resources.Load<TextAsset>(departmentJsonPath);
+        TextAsset lectureJson = Resources.Load<TextAsset>(lectureJsonPath);
+        TextAsset itemJson = Resources.Load<TextAsset>(itemJsonPath);
+        TextAsset quizJson = Resources.Load<TextAsset>(quizJsonPath);
+
+        Debug.Log(playerJson);
+
+        /*
         string playerJson = File.ReadAllText(playerJsonPath);
         string playerRecordJson = File.ReadAllText(playerRecordJsonPath);
         string buildingJson = File.ReadAllText(buildingJsonPath);
@@ -166,27 +188,28 @@ public static class DataMgr
         string lectureJson = File.ReadAllText(lectureJsonPath);
         string itemJson = File.ReadAllText(itemJsonPath);
         string quizJson = File.ReadAllText(quizJsonPath);
+         */
 
-        player = JsonUtility.FromJson<PlayerData>(playerJson);
-        record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson);
-        Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson);
-        Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson);
-        Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson);
-        Items = JsonUtility.FromJson<ItemDataList>(itemJson);
-        Dialogue = JsonUtility.FromJson<DialogueDataList>(quizJson);
+        Player = JsonUtility.FromJson<PlayerData>(playerJson.text);
+        Record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson.text);
+        Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson.text);
+        Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson.text);
+        Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson.text);
+        Items = JsonUtility.FromJson<ItemDataList>(itemJson.text);
+        Dialogue = JsonUtility.FromJson<DialogueDataList>(quizJson.text);
     }
 
     public static void SavePlayerData()
     {
-        string playerJson = JsonUtility.ToJson(player);
-        string playerRecordJson = JsonUtility.ToJson(record);
+        string playerJson = JsonUtility.ToJson(Player);
+        string playerRecordJson = JsonUtility.ToJson(Record);
         File.WriteAllText(playerJsonPath, playerJson);
         File.WriteAllText(playerRecordJsonPath, playerRecordJson);
     }
 
     public static bool IsLastSemester()
     {
-        int semester = player.semester;
+        int semester = Player.semester;
 
         if(semester == 8)
         {
