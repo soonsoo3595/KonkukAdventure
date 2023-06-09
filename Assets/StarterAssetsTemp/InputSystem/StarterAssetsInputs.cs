@@ -21,10 +21,14 @@ public class StarterAssetsInputs : MonoBehaviour
 
     private void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
     }
-
     /*
     private void Update()
     {
