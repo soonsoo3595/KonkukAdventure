@@ -147,6 +147,7 @@ public class Portal : MonoBehaviour
     }
     #endregion
 
+    //캐릭터 진입 해제시 발동
     private void OnTriggerExit(Collider other)
     {
         Popup popup;
@@ -186,6 +187,7 @@ public class Portal : MonoBehaviour
             }
         }
     }
+
     //빌딩 번호에 따른 학과들 검색
     #region 빌딩에 있는 학과들 검색
     private List<DepartmentData> FindDepartment(int num)

@@ -8,14 +8,14 @@ public class SetItemData : MonoBehaviour
 {
     //아이템 클릭시에 아이템 정보 및 구매버튼 활성화
     public delegate void ItemSelecteChain(CreditLimit creditLimit , OtherItemData otherItem, bool checkFlag);
-    public static event ItemSelecteChain itemSelect;
+    public static event ItemSelecteChain ItemSelect;
 
     //StoreManager에서 접근하기 위해 internal
     [SerializeField]internal CreditLimit creditLimit;
     [SerializeField]internal OtherItemData otherItem;
 
     //아이템의 상품이 어떤 상품인지 알려주는 변수
-    private bool flag;
+    private bool itemflag;
 
     private void Awake()
     {
@@ -25,12 +25,12 @@ public class SetItemData : MonoBehaviour
     //해당 상품의 종류를 확인하는 메서드
     void WhatThisItem()
     {
-        if (creditLimit.itemTypeID.Equals(0)) flag = false;
-        else flag = true;
+        if (creditLimit.itemTypeID.Equals(0)) itemflag = false;
+        else itemflag = true;
 
         TMP_Text[] text = GetComponentsInChildren<TMP_Text>();
 
-        switch (flag)
+        switch (itemflag)
         {
             case false:
                 text[0].text = otherItem.name;
@@ -46,6 +46,6 @@ public class SetItemData : MonoBehaviour
     //탭 클릭 시에 SetItemInfo 에 아이템 정보 전송
     public void OnButtonClick()
     {
-        itemSelect(creditLimit, otherItem, flag);
+        ItemSelect(creditLimit, otherItem, itemflag);
     }
 }

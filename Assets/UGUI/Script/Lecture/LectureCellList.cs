@@ -7,7 +7,7 @@ public class LectureCellList : MonoBehaviour
 {
     [SerializeField] private GameObject activePart;
     [SerializeField] private GameObject lectureList;
-    [SerializeField] private LectureCell[] lectures;
+    [SerializeField] private LectureCellButton[] lectures;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class LectureCellList : MonoBehaviour
     private void LectureCellDataSet(List<LectureData> lectureDatas)
     {
         activePart.SetActive(true);
-        lectures = lectureList.GetComponentsInChildren<LectureCell>();
+        lectures = lectureList.GetComponentsInChildren<LectureCellButton>();
         for(int i = 0; i < lectures.Length; i++)
         {
             lectures[i].lectureData = lectureDatas[i];

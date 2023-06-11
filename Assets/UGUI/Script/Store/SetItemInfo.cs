@@ -8,8 +8,8 @@ public class SetItemInfo : MonoBehaviour
 {
     //구매 버튼 클릭시에 상품 업데이트
     //StoreManager에 있는 SetItemData 를 가져온다.
-    public delegate void UpdateChain(ItemDataList itemDataList);
-    public static event UpdateChain ItemUpdate;
+    public delegate void UpdateStoreChain(ItemDataList itemDataList);
+    public static event UpdateStoreChain StoreUpdate;
 
     private CreditLimit creditLimit;
     private OtherItemData otherItem;
@@ -27,7 +27,7 @@ public class SetItemInfo : MonoBehaviour
 
     private void Awake()
     {
-        SetItemData.itemSelect += Active;
+        SetItemData.ItemSelect += Active;
         popupText = purchasePopup.GetComponentsInChildren<TMP_Text>();
 
         activePart.SetActive(false);
@@ -92,7 +92,7 @@ public class SetItemInfo : MonoBehaviour
                 //업데이트 된 정보를 다시 받아서
                 //디스플레이 업데이트
                 itemDataList = DataMgr.Items;
-                ItemUpdate(itemDataList);
+                StoreUpdate(itemDataList);
 
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함
@@ -133,7 +133,7 @@ public class SetItemInfo : MonoBehaviour
                 //업데이트 된 정보를 다시 받아서
                 //디스플레이 업데이트
                 itemDataList = DataMgr.Items;
-                ItemUpdate(itemDataList);
+                StoreUpdate(itemDataList);
 
                 //정보창 비활성화
                 //정보창 업데이트 귀찮아서 이렇게 처리함

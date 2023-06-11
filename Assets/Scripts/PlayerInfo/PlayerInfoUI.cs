@@ -28,11 +28,6 @@ public class PlayerInfoUI : MonoBehaviour
         RenewalInfo();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Click()
     {
         isFolded = !isFolded;

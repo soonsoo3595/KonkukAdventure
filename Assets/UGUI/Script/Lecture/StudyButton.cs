@@ -16,18 +16,18 @@ public class StudyButton : MonoBehaviour
 
     void Start()
     {
-        LectureCell.SetLecture += Active;
+        LectureCellButton.ClickLecture += Active;
         buildingRecord = DataMgr.BuildingRecord;
     }
 
     void Active(LectureData lectureData)
     {
         this.gameObject.SetActive(true);
-        SetLectureInfo(lectureData);
+        GetLectureData(lectureData);
         SetLectureName(lectureData.name);
     }
 
-    void SetLectureInfo(LectureData lectureData)
+    void GetLectureData(LectureData lectureData)
     {
         this.lectureData = lectureData;
     }

@@ -9,21 +9,21 @@ public class StoreManager : MonoBehaviour
     //아이템 정보를 받아오는 타이밍이 어긋나서 만들었음
     //이게 없으면 아이템 정보를 받기 전부터 이름 같은것들을 세팅해서
     //아무런 정보를 띄우지 않음. 꼭 필요함
-    public delegate void StoreChain();
-    public static event StoreChain WhatIsThis;
+    public delegate void ItemIdentifyChain();
+    public static event ItemIdentifyChain WhatIsThis;
 
     [SerializeField] SetItemData[] itemDatas;
 
     private void Awake()
     {
         Portal.SetStoreData += SetItemData;
-        SetItemInfo.ItemUpdate += SetItemData;
+        SetItemInfo.StoreUpdate += SetItemData;
     }
 
     //아이템들의 정보를 아이템 셀에 뿌려주는 메서드
     //SetItemInfo에서 델리게이트를 이용해
     //플레이어가 상품 구매후, 업데이트 할 때에 호출한다.
-    public void SetItemData(ItemDataList itemDataList)
+    private void SetItemData(ItemDataList itemDataList)
     {
         CreditLimit nowLimitItem = LimititemCheck(itemDataList.creditLimit);
 
@@ -41,7 +41,7 @@ public class StoreManager : MonoBehaviour
     }
 
     //현재 학점 제한 아이템 해제 상품에서 제일 앞에 있는거 끌어오는 코드
-    CreditLimit LimititemCheck(List<CreditLimit> creditLimit )
+    private CreditLimit LimititemCheck(List<CreditLimit> creditLimit )
     {
         for(int i=0;i< creditLimit.Count; i++)
         {

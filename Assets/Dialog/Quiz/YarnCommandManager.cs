@@ -10,18 +10,15 @@ public class YarnCommandManager : MonoBehaviour
     private int portalNum;
 
     private DialogueRunner dialogueRunner;
-    private GameObject parent;
 
     private void Awake()
     {
         Portal.SetDialogue += SetDialogue;
         dialogueRunner = GetComponent<DialogueRunner>();
 
-        parent = transform.parent.gameObject;
-
         #region Yarn 커맨드 등록
-        CustomQuizCommands.quizCorrect += QuizCorrect;
-        CustomQuizCommands.dialogueEnd += DialogueEnd;
+        CustomQuizCommands.QuizCorrectCommand += QuizCorrect;
+        CustomQuizCommands.DialogueEndCommand += DialogueEnd;
         #endregion
     }
 
