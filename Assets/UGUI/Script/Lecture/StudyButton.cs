@@ -24,7 +24,7 @@ public class StudyButton : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         GetLectureData(lectureData);
-        SetLectureName(lectureData.name);
+        SetLectureName(lectureData);
     }
 
     void GetLectureData(LectureData lectureData)
@@ -32,9 +32,9 @@ public class StudyButton : MonoBehaviour
         this.lectureData = lectureData;
     }
 
-    void SetLectureName(string name)
+    void SetLectureName(LectureData name)
     {
-        InfoSpace.text = name;
+        InfoSpace.text = $"{name.grade} 학년 과목\n획득 가능 학점: {name.course_credit}\n획득 가능 포인트: {name.KU_point}";
     }
 
      public void ClickStudyButton()

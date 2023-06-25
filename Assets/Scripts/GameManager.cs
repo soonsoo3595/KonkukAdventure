@@ -25,5 +25,12 @@ public class GameManager : MonoBehaviour
         instance = this;
         DataMgr.LoadData();
         Debug.Log("실행");
+
+        SetResoulution();
+    }
+
+    void SetResoulution()
+    {
+        Application.targetFrameRate = 30;
     }
 }
