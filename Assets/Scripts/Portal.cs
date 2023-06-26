@@ -42,8 +42,6 @@ enum BuildNum
     퀴즈이벤트1 = 32,
     퀴즈이벤트2 = 33,
     퀴즈이벤트3 = 34,
-    //현수막
-    샘플현수막 = 100
     #endregion 
 }
 
@@ -54,12 +52,8 @@ public class Portal : MonoBehaviour
     #region 수강신청용 델리게이트 및 리스트
     //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
     //해당 델리게이트는 수강신청 델리게이트
-    public delegate void LectureChain(List<DepartmentData> departmentDatas, List<LectureData> lectureDatas);
+    public delegate void LectureChain(int buildNum);
     public static event LectureChain SetLectureData;
-
-    //학과 데이터와 강의 데이터를 받을 리스트 선언
-    List<DepartmentData> departmentDatas;
-    List<LectureData> lectureDatas;
     #endregion
 
     #region 상점용 델리게이트 및 리스트
@@ -84,13 +78,6 @@ public class Portal : MonoBehaviour
         portal = this;
 
         #region 데이터 get 코드
-        //학과 데이터 Datamgr에서 가져오기
-        departmentDatas = new List<DepartmentData>();
-        departmentDatas = DataMgr.Departments.data;
-        //강의 데이터 DataMgr에서 가져오기
-        lectureDatas = new List<LectureData>();
-        lectureDatas = DataMgr.Lectures.data;
-
         //아이템 데이터 DataMgr에서 가져오기
         itemDataList = DataMgr.Items;
         #endregion
@@ -123,7 +110,7 @@ public class Portal : MonoBehaviour
                 case 22:
                     popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.OpenPopup(popup);
-                    SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+                    SetLectureData((int)buildNum);
                     break;
                //상점 해제
                 case 19:
@@ -139,15 +126,13 @@ public class Portal : MonoBehaviour
                     PopupMgr.instance.OpenPopup(popup);
                     SetDialogue(BuildNum);
                     break;
-                case 100:
-                    Application.OpenURL("http://www.konkuk.ac.kr/do/Index.do");
-                    break;
             }
         }
     }
     #endregion
 
     //캐릭터 진입 해제시 발동
+    #region 캐릭터 진입 해제 이벤트
     private void OnTriggerExit(Collider other)
     {
         Popup popup;
@@ -186,14 +171,6 @@ public class Portal : MonoBehaviour
                     break;
             }
         }
-    }
-
-    //빌딩 번호에 따른 학과들 검색
-    #region 빌딩에 있는 학과들 검색
-    private List<DepartmentData> FindDepartment(int num)
-    {
-        List<DepartmentData> find = departmentDatas.FindAll(element => element.buildingID == num);
-        return find;
     }
     #endregion
 }
