@@ -110,17 +110,9 @@ public class PopupMgr : MonoBehaviour
 
     private void RefreshAllPopupDepth()
     {
-        foreach (var popup in activePopupList)
+        foreach(var popup in activePopupList)
         {
             popup.transform.SetAsFirstSibling();
         }
-    }
-
-    public bool IsPopupActive()
-    {
-        if (activePopupList.Count > 0)
-            return true;
-        else
-            return false;
     }
 }
