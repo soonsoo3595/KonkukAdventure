@@ -48,12 +48,13 @@ public class StarterAssetsInputs : MonoBehaviour
 #if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
     {
+        /*
         if (popupMgr.IsPopupActive())
         {
             MoveInput(new Vector2(0f, 0f));
             return;
         }
-
+        */
         MoveInput(value.Get<Vector2>());
     }
 
