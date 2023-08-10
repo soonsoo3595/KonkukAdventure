@@ -138,18 +138,6 @@ public static class DataMgr
     public static List<LectureData> LectureRecord = new List<LectureData>();
     #endregion
 
-    /*
-     #region Json 경로
-    private static string playerJsonPath = "Assets/JSON/PlayerData.json";
-    private static string playerRecordJsonPath = "Assets/JSON/PlayerRecordData.json";
-    private static string buildingJsonPath = "Assets/JSON/BuildingData.json";
-    private static string departmentJsonPath = "Assets/JSON/DepartmentData.json";
-    private static string lectureJsonPath = "Assets/JSON/LectureData.json";
-    private static string itemJsonPath = "Assets/JSON/ItemData.json";
-    private static string quizJsonPath = "Assets/JSON/DialogueData.json";
-    #endregion*/
-
-    // json 파일 경로
     #region Json 경로
     private static string playerJsonPath = "JSON/PlayerData";
     private static string playerRecordJsonPath = "JSON/PlayerRecordData";
@@ -179,16 +167,6 @@ public static class DataMgr
         TextAsset quizJson = Resources.Load<TextAsset>(quizJsonPath);
 
         Debug.Log(playerJson);
-
-        /*
-        string playerJson = File.ReadAllText(playerJsonPath);
-        string playerRecordJson = File.ReadAllText(playerRecordJsonPath);
-        string buildingJson = File.ReadAllText(buildingJsonPath);
-        string departmentJson = File.ReadAllText(departmentJsonPath);
-        string lectureJson = File.ReadAllText(lectureJsonPath);
-        string itemJson = File.ReadAllText(itemJsonPath);
-        string quizJson = File.ReadAllText(quizJsonPath);
-         */
 
         Player = JsonUtility.FromJson<PlayerData>(playerJson.text);
         Record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson.text);

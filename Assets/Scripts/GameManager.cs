@@ -2,16 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    public GameObject LectureUI;
-    public GameObject StoreUI;
-    public GameObject SemesterOverUI;
-    public GameObject DetailInfoUI;
-    public GameObject DialogueUI;
 
     public Action renewalPopup;
 
@@ -22,15 +17,53 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-        DataMgr.LoadData();
-        Debug.Log("실행");
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
 
-        SetResoulution();
+        DontDestroyOnLoad(gameObject);
+
+        if (!Director.isDataLoad && SceneManager.GetActiveScene().name != "Start")
+        {
+            LoadData();
+        }
     }
 
-    void SetResoulution()
+    void Start()
     {
-        Application.targetFrameRate = 30;
+    }
+
+    public void LoadData()
+    {
+        if(!Director.isDataLoad)
+        {
+            DataMgr.LoadData();
+            Director.isDataLoad = true;
+        }
+    }
+
+    public void SaveData()
+    {
+        DataMgr.Player.grade++;
+        DataMgr.SavePlayerData();
+        Director.isDataLoad = false;
+    }
+
+    public void ExitGame()
+    {
+        // 게임 종료 전 세이브
+
+        Debug.Log("게임 종료");
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

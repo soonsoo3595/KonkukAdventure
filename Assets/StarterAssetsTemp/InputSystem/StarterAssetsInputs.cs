@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
+    PopupMgr popupMgr;
+
     [Header("Character Input Values")]
     public Vector2 move;
     public Vector2 look;
@@ -21,6 +23,8 @@ public class StarterAssetsInputs : MonoBehaviour
 
     private void Awake()
     {
+        popupMgr = PopupMgr.instance;
+
         GameManager.instance.enteringUI += Stop;
         GameManager.instance.exitUI += ReStart;
     }
@@ -44,6 +48,13 @@ public class StarterAssetsInputs : MonoBehaviour
 #if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
     {
+        /*
+        if (popupMgr.IsPopupActive())
+        {
+            MoveInput(new Vector2(0f, 0f));
+            return;
+        }
+        */
         MoveInput(value.Get<Vector2>());
     }
 
@@ -72,7 +83,6 @@ public class StarterAssetsInputs : MonoBehaviour
         SetCursorState(cursorLocked);
     }
 #endif
-
 
     public void MoveInput(Vector2 newMoveDirection)
     {
@@ -106,13 +116,13 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void Stop()
     {
-        if(PopupMgr.instance.activePopupList.Count > 0)
+        if (popupMgr.IsPopupActive())
         {
             return;
         }
 
-        cursorLocked = false;   
-        cursorInputForLook = false; 
+        cursorLocked = false;
+        cursorInputForLook = false;
         LookInput(default);
 
         SetCursorState(cursorLocked);
@@ -120,17 +130,15 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void ReStart()
     {
-        if (PopupMgr.instance.activePopupList.Count > 0)
+        if (popupMgr.IsPopupActive())
         {
             return;
         }
 
-        cursorLocked = true;    
-        cursorInputForLook = true; 
+        cursorLocked = true;
+        cursorInputForLook = true;
 
         SetCursorState(cursorLocked);
     }
-
-    
 }
 	
