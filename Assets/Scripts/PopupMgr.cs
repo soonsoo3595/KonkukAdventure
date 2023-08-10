@@ -15,6 +15,7 @@ public class PopupMgr : MonoBehaviour
     public Popup selectStudyPopup;
     public Popup storePopup;
     public Popup dialoguePopup;
+    public Popup gameExitPopup;
 
     public static PopupMgr instance;
 
@@ -38,6 +39,10 @@ public class PopupMgr : MonoBehaviour
             {
                 ClosePopup(activePopupList.First.Value);
             }
+            else
+            {
+                OpenPopup(gameExitPopup);
+            }
         }
 
         ToggleKeyDownAction(KeyCode.P, detailInfoPopup);
@@ -52,7 +57,7 @@ public class PopupMgr : MonoBehaviour
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, gameExitPopup
         };
 
         foreach (var popup in allPopupList)
@@ -110,9 +115,17 @@ public class PopupMgr : MonoBehaviour
 
     private void RefreshAllPopupDepth()
     {
-        foreach(var popup in activePopupList)
+        foreach (var popup in activePopupList)
         {
             popup.transform.SetAsFirstSibling();
         }
+    }
+
+    public bool IsPopupActive()
+    {
+        if (activePopupList.Count > 0)
+            return true;
+        else
+            return false;
     }
 }

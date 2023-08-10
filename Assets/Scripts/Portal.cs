@@ -51,7 +51,7 @@ public class Portal : MonoBehaviour
     #region 수강신청용 델리게이트 및 리스트
     //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
     //해당 델리게이트는 수강신청 델리게이트
-    public delegate void LectureChain(List<DepartmentData> departmentDatas, List<LectureData> lectureDatas);
+    public delegate void LectureChain(int BuildNum);
     public static event LectureChain SetLectureData;
 
     //학과 데이터와 강의 데이터를 받을 리스트 선언
@@ -120,7 +120,7 @@ public class Portal : MonoBehaviour
                 case 22:
                     popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.OpenPopup(popup);
-                    SetLectureData(FindDepartment((int)buildNum), lectureDatas);
+                    SetLectureData((int)buildNum);
                     break;
                //상점 진입
                 case 19:
