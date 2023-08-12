@@ -268,11 +268,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 96923202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0764ef55745da04bae2e8177778b43c, type: 3}
+  m_Script: {fileID: 11500000, guid: cadbad7e24a1a634bbeee7f88568cf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startText: {fileID: 431748234}
-  color: {r: 0, g: 1, b: 0, a: 1}
+  color: {r: 0, g: 0.9433962, b: 0.18566622, a: 0}
 --- !u!114 &96923208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,10 +282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 96923202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b2de7b15960d843a309600087fb643, type: 3}
+  m_Script: {fileID: 11500000, guid: f3df0c3b3df1a0149ac2fee50950a851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Konkuk
+  sceneName: Kunkuk
 --- !u!1 &154514597
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,11 +336,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 154514597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0764ef55745da04bae2e8177778b43c, type: 3}
+  m_Script: {fileID: 11500000, guid: cadbad7e24a1a634bbeee7f88568cf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startText: {fileID: 634930348}
-  color: {r: 0, g: 1, b: 0, a: 1}
+  color: {r: 0.06549895, g: 1, b: 0, a: 0}
 --- !u!114 &154514600
 MonoBehaviour:
   m_ObjectHideFlags: 0
