@@ -38,9 +38,10 @@ enum BuildNum
     일감호 = 29,
     와우도 = 30,
     홍예교 = 31,
+    //퀴즈
     퀴즈이벤트1 = 32,
     퀴즈이벤트2 = 33,
-    퀴즈이벤트3 = 34
+    퀴즈이벤트3 = 34,
     #endregion 
 }
 
@@ -51,12 +52,8 @@ public class Portal : MonoBehaviour
     #region 수강신청용 델리게이트 및 리스트
     //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
     //해당 델리게이트는 수강신청 델리게이트
-    public delegate void LectureChain(int BuildNum);
+    public delegate void LectureChain(int buildNum);
     public static event LectureChain SetLectureData;
-
-    //학과 데이터와 강의 데이터를 받을 리스트 선언
-    List<DepartmentData> departmentDatas;
-    List<LectureData> lectureDatas;
     #endregion
 
     #region 상점용 델리게이트 및 리스트
@@ -81,13 +78,6 @@ public class Portal : MonoBehaviour
         portal = this;
 
         #region 데이터 get 코드
-        //학과 데이터 Datamgr에서 가져오기
-        departmentDatas = new List<DepartmentData>();
-        departmentDatas = DataMgr.Departments.data;
-        //강의 데이터 DataMgr에서 가져오기
-        lectureDatas = new List<LectureData>();
-        lectureDatas = DataMgr.Lectures.data;
-
         //아이템 데이터 DataMgr에서 가져오기
         itemDataList = DataMgr.Items;
         #endregion
@@ -103,7 +93,7 @@ public class Portal : MonoBehaviour
         {
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
-            switch ((int)buildNum)
+            switch (BuildNum)
             {
                 //강의 건물 진입
                 case 2:
@@ -122,23 +112,27 @@ public class Portal : MonoBehaviour
                     PopupMgr.instance.OpenPopup(popup);
                     SetLectureData((int)buildNum);
                     break;
-               //상점 진입
+               //상점 해제
                 case 19:
-                    popup = PopupMgr.instance.selectStudyPopup;
+                    popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.OpenPopup(popup);
                     SetStoreData(itemDataList);
                     break;
-                //퀴즈 이벤트 진입
+                //퀴즈 이벤트 해제
                 case 32:
                 case 33:
                 case 34:
-                    SetDialogue((int)buildNum);
+                    popup = PopupMgr.instance.dialoguePopup;
+                    PopupMgr.instance.OpenPopup(popup);
+                    SetDialogue(BuildNum);
                     break;
             }
         }
     }
     #endregion
 
+    //캐릭터 진입 해제시 발동
+    #region 캐릭터 진입 해제 이벤트
     private void OnTriggerExit(Collider other)
     {
         Popup popup;
@@ -165,24 +159,18 @@ public class Portal : MonoBehaviour
                     break;
                 //상점 진입
                 case 19:
-                    popup = PopupMgr.instance.selectStudyPopup;
+                    popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.ClosePopup(popup);
                     break;
                 //퀴즈 이벤트 진입
                 case 32:
                 case 33:
                 case 34:
-                    SetDialogue((int)buildNum);
+                    popup = PopupMgr.instance.dialoguePopup;
+                    PopupMgr.instance.ClosePopup(popup);
                     break;
             }
         }
-    }
-    //빌딩 번호에 따른 학과들 검색
-    #region 빌딩에 있는 학과들 검색
-    private List<DepartmentData> FindDepartment(int num)
-    {
-        List<DepartmentData> find = departmentDatas.FindAll(element => element.buildingID == num);
-        return find;
     }
     #endregion
 }
