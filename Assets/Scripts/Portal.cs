@@ -71,11 +71,14 @@ public class Portal : MonoBehaviour
 
     //포탈이 보여줄 빌딩의 번호 설정
     [SerializeField] BuildNum buildNum;
+
+    private QuestManager _questManager;
     internal int BuildNum { get { return (int)buildNum; } }
 
     private void Start()
     {
         portal = this;
+        _questManager = GameManager.instance.questManager;
 
         #region 데이터 get 코드
         //아이템 데이터 DataMgr에서 가져오기
@@ -91,6 +94,11 @@ public class Portal : MonoBehaviour
 
         if(other.CompareTag("Player"))
         {
+            ///포탈의 콜라이더가 트리거 되었을 때
+            ///퀘스트 체크를 최초에 실행한다.
+            ///QuestManager에서 다이얼로그 팝업과 보상 지급 진행
+            if (_questManager.QuestCheck((BuildNum))) return;
+
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
             switch (BuildNum)

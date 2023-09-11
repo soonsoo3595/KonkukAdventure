@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public Action renewalPopup;
+    public GameObject player;
+    public QuestManager questManager;
 
+    [Header("Action 인스펙터")]
+    public Action renewalPopup;
     //UI 진입으로 마우스 활성화
     public Action enteringUI;
     //UI 빠져나올때 마우스 비활성화
