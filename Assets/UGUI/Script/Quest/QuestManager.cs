@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public List<QuestData> quests;
+    [SerializeField] GameObject questObject;
+    [SerializeField] GameObject questObjectPool;
 
-    private GameObject _player;
+    internal List<GameObject> questObjectList;
 
-    private void Start()
+    private List<QuestData> _quests;
+
+    private void Awake()
     {
-        _player = GameManager.instance.player;
+        _quests = new List<QuestData>();
+        questObjectList = new List<GameObject>();
     }
 
     void SetQuest(QuestData quest)
     {
-        quests.Add(quest);
+        GameObject instance = Instantiate(questObject, questObjectPool.transform);
+        questObjectList.Add(instance);
+        _quests.Add(quest);
+        instance.SetActive(false);
     }
 
     void PopQuest(QuestData quest)
     {
-        quests.Remove(quest);
+        _quests.Remove(quest);
     }
 
     public bool QuestCheck(int destination)
     {
-        foreach(QuestData quest in quests)
+        foreach(QuestData quest in _quests)
         {
             if (quest.destination.Equals(destination))
             {
