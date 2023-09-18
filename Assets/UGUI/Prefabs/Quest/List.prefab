@@ -1000,6 +1000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9085607251514203853}
   - component: {fileID: 9085607251514203854}
+  - component: {fileID: 7198461548544747249}
   m_Layer: 5
   m_Name: List
   m_TagString: Untagged
@@ -1043,6 +1044,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9085607251514203852}
   m_CullTransparentMesh: 0
+--- !u!114 &7198461548544747249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085607251514203852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff9d366e8f24bd40be6316405eb6db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: {fileID: 9085607250421896508}
+  questExplain: {fileID: 9085607251459464506}
+  questReward: {fileID: 9085607251571597259}
 --- !u!1 &9085607251571597257
 GameObject:
   m_ObjectHideFlags: 0
