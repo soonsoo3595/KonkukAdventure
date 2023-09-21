@@ -36,8 +36,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
     }
 
+    private void Update()
+    {   
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            if (SceneManager.GetActiveScene().name == "Ui")
+            {
+                ExitGame();
+            }
+        }
+    }
     public void LoadData()
     {
         if(!Director.isDataLoad)
@@ -49,13 +60,13 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
-        DataMgr.Player.grade++;
         DataMgr.SavePlayerData();
         Director.isDataLoad = false;
     }
 
     public void ExitGame()
     {
+        SaveData();
         // 게임 종료 전 세이브
 
         Debug.Log("게임 종료");
