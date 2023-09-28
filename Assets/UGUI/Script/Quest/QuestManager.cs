@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [SerializeField] GameObject questObject;
-    [SerializeField] GameObject questObjectPool;
+    public static QuestManager questManager;
 
-    internal List<GameObject> questObjectList;
+    [SerializeField] GameObject questObject;
+
+    [SerializeField] internal List<GameObject> questObjectList;
 
     private List<QuestData> _quests;
 
     private void Awake()
     {
+        questManager = this;
         _quests = new List<QuestData>();
         questObjectList = new List<GameObject>();
     }
 
+    private void Start()
+    {
+        SetQuest(DataMgr.Quest);
+    }
+
     void SetQuest(QuestData quest)
     {
-        GameObject instance = Instantiate(questObject, questObjectPool.transform);
+        GameObject instance = Instantiate(questObject, this.transform);
         instance.GetComponent<QuestObjectController>().GetData(quest);
         questObjectList.Add(instance);
         _quests.Add(quest);
@@ -43,14 +50,5 @@ public class QuestManager : MonoBehaviour
     {
         ///QuestData를 사용하는 quest 다이얼로그를팝업 합니다.
         ///해당 작업을 하기 위해서 popUp Manager를 사용하여 작업합니다.
-    }
-
-    private void OnDisable()
-    {
-        foreach(GameObject questObject in questObjectList)
-        {
-            questObject.transform.parent = questObjectPool.transform;
-            questObject.SetActive(false);
-        }
     }
 }

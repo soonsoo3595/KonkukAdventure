@@ -10,14 +10,17 @@ public class QuestUiController : MonoBehaviour
 
     private void Start()
     {
-        _questManager = GameManager.instance.questManager;    
+        _questManager = QuestManager.questManager;   
     }
 
     public void OnClickQuestTab()
     {
         foreach(GameObject questObject in _questManager.questObjectList)
         {
-            questObject.transform.parent = questContentTrans;
+            questObject.transform.SetParent(questContentTrans);
+            questObject.transform.position = new Vector3(questObject.transform.position.x, transform.position.y, 0);
+            questObject.transform.eulerAngles = Vector3.zero;
+            questObject.transform.localScale = Vector3.one;
             questObject.SetActive(true);
         }
     }
