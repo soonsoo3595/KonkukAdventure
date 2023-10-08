@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8056244915291994023}
   - component: {fileID: 3597976968401567907}
   m_Layer: 5
-  m_Name: New
+  m_Name: isDone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,10 +307,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New
+  m_text: "\uBBF8\uC644\uB8CC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4778e1f8d5e004ad79db81f688da7d68, type: 2}
-  m_sharedMaterial: {fileID: -6588280525361536061, guid: 4778e1f8d5e004ad79db81f688da7d68, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d0f63ec3c137c94395b5a5b532ac494, type: 2}
+  m_sharedMaterial: {fileID: 8508688762906813337, guid: 3d0f63ec3c137c94395b5a5b532ac494, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1059,6 +1059,7 @@ MonoBehaviour:
   questName: {fileID: 9085607250421896508}
   questExplain: {fileID: 9085607251459464506}
   questReward: {fileID: 9085607251571597259}
+  isQuestDone: {fileID: 871124617173153372}
 --- !u!1 &9085607251571597257
 GameObject:
   m_ObjectHideFlags: 0

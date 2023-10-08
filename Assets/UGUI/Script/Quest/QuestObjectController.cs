@@ -8,6 +8,7 @@ public class QuestObjectController : MonoBehaviour
     [SerializeField] TextMeshProUGUI questName;
     [SerializeField] TextMeshProUGUI questExplain;
     [SerializeField] TextMeshProUGUI questReward;
+    [SerializeField] TextMeshProUGUI isQuestDone;
 
     private int _id;
     private int _destination;
@@ -42,13 +43,7 @@ public class QuestObjectController : MonoBehaviour
         questName.text = _id.ToString();
         questExplain.text = _destination.ToString();
         questReward.text = _explain.ToString();
-    }
-
-    /// <summary>
-    /// 퀘스트창이 비활성화 되면 QuestObjectPool로 위치를 옮긴다.
-    /// </summary>
-    private void OnDisable()
-    {
-        this.transform.SetParent(QuestManager.questManager.transform);
+        if (_isQuestDone == true) isQuestDone.text = "완료";
+        else isQuestDone.text = "미완료";
     }
 }
