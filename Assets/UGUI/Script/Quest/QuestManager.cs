@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] internal List<GameObject> questObjectList;
     [SerializeField] private List<QuestData> _quests;
     [SerializeField] private List<QuestData> _newQuests;
+    [SerializeField] private List<QuestData> _DoneQuests;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        QuestObjectController.Delete += DeleteQuest;
         ///test 코드
         AddQuest(DataMgr.Quest);
         AddQuest(DataMgr.Quest);
@@ -33,28 +35,17 @@ public class QuestManager : MonoBehaviour
         _newQuests.Add(quest);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            for(int i =0; i< _quests.Count; i++)
-            {
-                QuestComplete(_quests[i]);
-            }
-        }
-    }
-
     public void MakeQuestObject()
     {
         ///퀘스트 탭을 클릭하면 무조건 완료된 퀘스트가 있는지 체크한다.
         ///퀘스트가 갱신되었을 경우
         for (int i = _quests.Count-1; i >=0; i--)
         {
-            if (_quests[i].quest_Done.Equals(true))
+            questObjectList[i].GetComponent<QuestObjectController>().GetData(_quests[i]);
+            if (_quests[i].quest_Done)
             {
+                _DoneQuests.Add(_quests[i]);
                 _quests.Remove(_quests[i]);
-                Destroy(questObjectList[i]);
-                questObjectList.RemoveAt(i);
             }
         }
 
@@ -78,38 +69,27 @@ public class QuestManager : MonoBehaviour
     /// <summary>
     /// 퀘스트수행을 체크
     /// 포탈에 도착하면 무조건 실행하는 메서드
+    /// 퀘스트 오브젝트의 내부 파라미터 quest_Done을 True로 만들어주는 메서드 입니다.
     /// </summary>
     /// <param name="destination"> 포탈의 이름 </param>
     /// <returns>faㅣse 이면 갱신 불필요</returns>
-    public bool QuestCheck(int destination)
+    public bool CheckQuest(int destination)
     {
         foreach (QuestData quest in _quests)
         {
-            return QuestComplete2(quest, destination);
+            if (quest.destination.Equals(destination) && quest.quest_Done.Equals(false))
+            {
+                quest.quest_Done = true;
+                return true;
+            }
         }
         return false;
     }
 
-    /// <summary>
-    /// 퀘스트 오브젝트의 내부 파라미터 quest_Done을 True로 만들어주는 메서드 입니다.
-    /// </summary>
-    /// <param name="quest"> QuestCheck 메서드에서 검사하는 quest 오브젝트가 들어갑니다. </param>
-    bool QuestComplete2(QuestData quest, int destination)
+    void DeleteQuest(GameObject questObject)
     {
-        if (quest.destination.Equals(destination))
-        {
-            quest.quest_Done = true;
-            return true;
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 퀘스트 오브젝트의 내부 파라미터 quest_Done을 True로 만들어주는 메서드 입니다.
-    /// </summary>
-    /// <param name="quest"> QuestCheck 메서드에서 검사하는 quest 오브젝트가 들어갑니다. </param>
-    void QuestComplete(QuestData quest)
-    {
-        quest.quest_Done = true;
+        _quests.Remove(questObject.GetComponent<QuestObjectController>().questdata);
+        questObjectList.Remove(questObject);
+        Destroy(questObject);
     }
 }

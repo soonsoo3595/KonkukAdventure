@@ -135,6 +135,7 @@ public class DialogueDataList
 [System.Serializable]
 public class QuestData{
     public int questID;
+    public string questName;
     public int destination;
     public string quest_Explain;
     public int reward_Credit;
