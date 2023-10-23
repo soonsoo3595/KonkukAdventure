@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
@@ -80,6 +81,7 @@ public class QuestManager : MonoBehaviour
             if (quest.destination.Equals(destination) && quest.quest_Done.Equals(false))
             {
                 quest.quest_Done = true;
+                QuestTrackingController.questTracking.navigator.gameObject.SetActive(false);
                 return true;
             }
         }
