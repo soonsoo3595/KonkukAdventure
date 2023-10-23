@@ -154,6 +154,19 @@ public class DialogueDataList
 }
 #endregion
 
+#region 퀘스트 데이터
+[System.Serializable]
+public class QuestData{
+    public int questID;
+    public string questName;
+    public int destination;
+    public string quest_Explain;
+    public int reward_Credit;
+    public int next_Quest;
+    public bool quest_Done;
+}
+#endregion
+
 public static class DataMgr
 {
     #region 수강 기록 코드...
@@ -169,6 +182,7 @@ public static class DataMgr
     private static string lectureJsonPath = "JSON/LectureData";
     private static string itemJsonPath = "JSON/ItemData";
     private static string quizJsonPath = "JSON/DialogueData";
+    private static string questJsonPath = "JSON/QuestData";
     #endregion
 
     public static PlayerData Player { get; set; }
@@ -178,7 +192,7 @@ public static class DataMgr
     public static LectureDataList Lectures { get; private set; }
     public static ItemDataList Items { get; private set; }
     public static DialogueDataList Dialogue { get; private set; }
-
+    public static QuestData Quest { get; private set; }
     public static void LoadData()
     {
         // TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
@@ -189,6 +203,8 @@ public static class DataMgr
         TextAsset itemJson = Resources.Load<TextAsset>(itemJsonPath);
         TextAsset quizJson = Resources.Load<TextAsset>(quizJsonPath);
 
+        TextAsset questJson = Resources.Load<TextAsset>(questJsonPath);
+
         // Player = JsonUtility.FromJson<PlayerData>(playerJson.text);
         // Record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson.text);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson.text);
@@ -196,6 +212,7 @@ public static class DataMgr
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson.text);
         Items = JsonUtility.FromJson<ItemDataList>(itemJson.text);
         Dialogue = JsonUtility.FromJson<DialogueDataList>(quizJson.text);
+        Quest = JsonUtility.FromJson<QuestData>(questJson.text);
     }
 
     public static void SavePlayerData()
