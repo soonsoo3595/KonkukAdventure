@@ -8,7 +8,8 @@ public class QuestTrackingController : MonoBehaviour
     public static QuestTrackingController questTracking;
 
     [SerializeField] GameObject portalPool;
-    [SerializeField] public Image navigator;
+    [SerializeField] public GameObject navigator;
+    [SerializeField] GameObject player;
 
     public bool isTrackingFlag;
 
@@ -57,9 +58,9 @@ public class QuestTrackingController : MonoBehaviour
     {
         while (isTrackingFlag)
         {
-            float angleRad = Mathf.Atan2(target.z, target.x);
+            float angleRad = Mathf.Atan2(target.x - player.transform.position.x, target.z - player.transform.position.z);
             float angleDeg = (180 / Mathf.PI) * angleRad;
-            navigator.transform.rotation = Quaternion.Euler(-90, 0, angleDeg);
+            navigator.transform.rotation = Quaternion.Euler(-90, 0, angleDeg - 180);
 
             yield return null;
         }
