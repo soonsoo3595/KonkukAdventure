@@ -1,0 +1,51 @@
+﻿title: 32
+tags:QuizID: 0
+---
+question: 건국대학교를 상징하는 동물은 무엇일까요?
+    ->option: 강아지
+        question: 오답 입니다!
+    ->option: 갈매기
+        question: 오답 입니다!
+    ->option: 황소
+        question: 정답 입니다!
+        <<Correct>>
+    ->option: 고양이
+        question: 오답 입니다!
+    <<End>>
+===
+title: 33
+tags:QuizID: 1
+---
+question: 퀴즈를 풀어보자! 33
+    ->option: 하나
+        question: ㅋㅋㅋ
+    ->option: 둘
+        question: ㅋㅋ
+    ->option: 셋
+        question: 정답
+        <<Correct>>
+    <<End>>
+===
+
+title: 34
+tags:QuizID: 2
+---
+question: 퀴즈를 풀어보자! 34
+    ->option: 하나
+        question: ㅋㅋㅋ
+    ->option: 둘
+        question: ㅋㅋ
+    ->option: 셋
+        question: 정답
+        <<Correct>>
+    <<End>>
+===
+
+title: 0
+tag: Error 0
+---
+System: 이미 본 퀴즈 입니다.
+<<End>>
+===
+
+
