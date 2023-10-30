@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 14ac91a3d0b5ed0469dc2fb7f66377c6, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8dce84b5011952b4d9149d3317112156, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 3b50f48cb746ccd428c9b7159756b0df, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -7119,7 +7119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3df0c3b3df1a0149ac2fee50950a851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Tutorial
+  sceneName: Konkuk
 --- !u!1 &2131882936
 GameObject:
   m_ObjectHideFlags: 0
