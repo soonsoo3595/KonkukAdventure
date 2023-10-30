@@ -30,11 +30,8 @@ public class GameManager : MonoBehaviour
             Destroy(instance);
         }
 
+        LoadData();
 
-        if (!Director.isDataLoad && SceneManager.GetActiveScene().name != "Start")
-        {
-            LoadData();
-        }
     }
 
     void Start()

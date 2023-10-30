@@ -97,7 +97,7 @@ public class Portal : MonoBehaviour
             ///포탈의 콜라이더가 트리거 되었을 때
             ///퀘스트 체크를 최초에 실행한다.
             ///QuestManager에서 다이얼로그 팝업과 보상 지급 진행
-            if (_questManager.CheckQuest((BuildNum))) return;
+            // if (_questManager.CheckQuest((BuildNum))) return;
 
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행

@@ -193,6 +193,7 @@ public static class DataMgr
     public static ItemDataList Items { get; private set; }
     public static DialogueDataList Dialogue { get; private set; }
     public static QuestData Quest { get; private set; }
+
     public static void LoadData()
     {
         // TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
