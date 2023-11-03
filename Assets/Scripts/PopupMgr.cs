@@ -16,12 +16,14 @@ public class PopupMgr : MonoBehaviour
     public Popup storePopup;
     public Popup dialoguePopup;
     public Popup exitPopup;
+    public Popup campusMapPopup;
 
     public static PopupMgr instance;
 
     private void Awake()
     {
         instance = this;
+
     }
 
     private void Start()
@@ -51,13 +53,15 @@ public class PopupMgr : MonoBehaviour
         {
             ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
         }
+
+        ToggleKeyDownAction(KeyCode.M, campusMapPopup);
     }
 
     public void Init()
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, exitPopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, exitPopup, campusMapPopup
         };
 
         foreach (var popup in allPopupList)

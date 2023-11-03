@@ -6487,6 +6487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   playerID: 
+  isLoginned: 0
 --- !u!1 &1988425978
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,6 @@ public class GameSave : MonoBehaviour
 
     public void SaveData()
     {
-        GameManager.instance.SaveData();
+        GameManager.instance.ExitGame();
     }    
 }

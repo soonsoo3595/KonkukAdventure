@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     private void Update()

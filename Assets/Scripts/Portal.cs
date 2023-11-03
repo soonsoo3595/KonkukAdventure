@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-enum BuildNum
+public enum BuildNum
 {
     #region 빌딩 번호
     행정관 = 1,
