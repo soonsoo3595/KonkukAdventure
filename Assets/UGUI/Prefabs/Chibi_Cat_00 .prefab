@@ -3332,7 +3332,6 @@ GameObject:
   - component: {fileID: 929518975853788426}
   - component: {fileID: 929518975853788437}
   - component: {fileID: 929518975853788436}
-  - component: {fileID: 929518975853788433}
   m_Layer: 3
   m_Name: 'Chibi_Cat_00 '
   m_TagString: Player
@@ -3482,18 +3481,6 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
---- !u!114 &929518975853788433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8737250645035430187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b759695c5b219a40920f3ac0e66ac0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8878767863292303877
 GameObject:
   m_ObjectHideFlags: 0
