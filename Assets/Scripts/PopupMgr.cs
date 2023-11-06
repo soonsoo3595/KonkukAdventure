@@ -17,6 +17,7 @@ public class PopupMgr : MonoBehaviour
     public Popup dialoguePopup;
     public Popup exitPopup;
     public Popup campusMapPopup;
+    public Popup placeInfoPopup;
 
     public static PopupMgr instance;
 
@@ -49,10 +50,10 @@ public class PopupMgr : MonoBehaviour
 
         ToggleKeyDownAction(KeyCode.P, detailInfoPopup);
 
-        // if (DataMgr.Player.isSemesterOver)
-        // {
-        //     ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
-        // }
+        if (DataMgr.Player.isSemesterOver)
+        {
+            ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
+        }
 
         ToggleKeyDownAction(KeyCode.M, campusMapPopup);
     }
@@ -61,7 +62,7 @@ public class PopupMgr : MonoBehaviour
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, exitPopup, campusMapPopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, exitPopup, campusMapPopup, placeInfoPopup
         };
 
         foreach (var popup in allPopupList)

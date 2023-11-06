@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c60aad2efb7ba64ea4d9324000c1ae7, type: 3}
+  m_Name: "11 \uC0DD\uBA85\uACFC\uD559\uAD00"
+  m_EditorClassIdentifier: 
+  placeImage: {fileID: 21300000, guid: 68a819beed972664e91dca057016ef25, type: 3}
+  placeName: "\uC0C1\uD5C8\uC5F0\uAD6C\uAD00"
+  placeDescription: "\uC8FC\uB85C \uACBD\uC601\uB300\uC640 \uACBD\uC601\uB300\uD559\uC6D0
+    \uD559\uC0DD\uB4E4\uC774 \uC218\uC5C5\uC744 \uB4E3\uB294 \uAC74\uBB3C. \uACBD\uC601\uB300\uD559
+    \uD589\uC815\uC2E4\uC774 \uC704\uCE58\uD574 \uC788\uACE0, \uD55C\uAE00\uACFC
+    \uCEF4\uD4E8\uD130 \uAC19\uC740 \uD559\uC0DD\uB4E4\uC5D0\uAC8C \uC81C\uACF5\uD558\uB294
+    \uC18C\uD504\uD2B8\uC6E8\uC5B4\uB3C4 \uBE4C\uB9B4 \uC218 \uC788\uB2E4. \n24\uC2DC\uAC04
+    \uBB34\uC778\uC73C\uB85C \uC6B4\uC601\uB418\uB294 \uD3B8\uC758\uC810\uACFC \uBCF5\uC0AC\uC2E4,
+    \uCE74\uD398\uB3C4 \uC788\uC73C\uBA70 \uD559\uC0DD\uB4E4\uC774 \uD3B8\uD788 \uACF5\uBD80\uD560
+    \uC218 \uC788\uAC8C \uB9CC\uB4E0 K-HUB(\uC624\uD508\uD615 \uC790\uC2B5\uACF5\uAC04)\uAC00
+    \uC788\uB2E4. "

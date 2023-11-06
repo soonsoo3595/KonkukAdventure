@@ -175,8 +175,8 @@ public static class DataMgr
     #endregion
 
     #region Json 경로
-    private static string playerJsonPath = "JSON/PlayerData";
-    private static string playerRecordJsonPath = "JSON/PlayerRecordData";
+    //private static string playerJsonPath = "JSON/PlayerData";
+    //private static string playerRecordJsonPath = "JSON/PlayerRecordData";
     private static string buildingJsonPath = "JSON/BuildingData";
     private static string departmentJsonPath = "JSON/DepartmentData";
     private static string lectureJsonPath = "JSON/LectureData";
@@ -196,8 +196,8 @@ public static class DataMgr
 
     public static void LoadData()
     {
-        TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
-        TextAsset playerRecordJson = Resources.Load<TextAsset>(playerRecordJsonPath);
+        // TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
+        // TextAsset playerRecordJson = Resources.Load<TextAsset>(playerRecordJsonPath);
         TextAsset buildingJson = Resources.Load<TextAsset>(buildingJsonPath);
         TextAsset departmentJson = Resources.Load<TextAsset>(departmentJsonPath);
         TextAsset lectureJson = Resources.Load<TextAsset>(lectureJsonPath);
@@ -206,8 +206,8 @@ public static class DataMgr
 
         TextAsset questJson = Resources.Load<TextAsset>(questJsonPath);
 
-        Player = JsonUtility.FromJson<PlayerData>(playerJson.text);
-        Record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson.text);
+        // Player = JsonUtility.FromJson<PlayerData>(playerJson.text);
+        // Record = JsonUtility.FromJson<PlayerRecordData>(playerRecordJson.text);
         Buildings = JsonUtility.FromJson<BuildingDataList>(buildingJson.text);
         Departments = JsonUtility.FromJson<DepartmentDataList>(departmentJson.text);
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson.text);

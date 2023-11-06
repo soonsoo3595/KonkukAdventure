@@ -47,6 +47,8 @@ public enum BuildNum
 
 public class Portal : MonoBehaviour
 {
+    public PlaceInfoPopup placeInfoPopup;
+
     public static Portal portal;
 
     #region 수강신청용 델리게이트 및 리스트
@@ -101,6 +103,12 @@ public class Portal : MonoBehaviour
 
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
+
+            placeInfoPopup.SetPopup(BuildNum - 1);
+            popup = PopupMgr.instance.placeInfoPopup;
+            PopupMgr.instance.OpenPopup(popup);
+            
+            /*
             switch (BuildNum)
             {
                 //강의 건물 진입
@@ -135,6 +143,7 @@ public class Portal : MonoBehaviour
                     SetDialogue(BuildNum);
                     break;
             }
+            */
         }
     }
     #endregion
