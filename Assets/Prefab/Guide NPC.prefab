@@ -2409,6 +2409,7 @@ GameObject:
   - component: {fileID: 2931874135691834913}
   - component: {fileID: 3770437344083517650}
   - component: {fileID: 5782397906867253689}
+  - component: {fileID: 1253367026105694893}
   m_Layer: 0
   m_Name: TriggerArea
   m_TagString: Untagged
@@ -2509,6 +2510,20 @@ MonoBehaviour:
   body: {fileID: 216478917511144526}
   speed: 0
   _thisCamera: {fileID: 6462418035615264517}
+  guideDialogu: {fileID: 0}
+--- !u!114 &1253367026105694893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598505491555470115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00f138669e06404c9e9917f1af8e519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideDialogu: {fileID: 0}
 --- !u!1 &5617719860062216786
 GameObject:
   m_ObjectHideFlags: 0

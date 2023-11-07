@@ -15,6 +15,7 @@ public class PopupMgr : MonoBehaviour
     public Popup selectStudyPopup;
     public Popup storePopup;
     public Popup dialoguePopup;
+    public Popup storyPopup;
 
     public static PopupMgr instance;
 
@@ -52,7 +53,7 @@ public class PopupMgr : MonoBehaviour
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, storyPopup
         };
 
         foreach (var popup in allPopupList)
@@ -70,7 +71,7 @@ public class PopupMgr : MonoBehaviour
         }
     }
 
-    private void InitCloseAll()
+    public void InitCloseAll()
     {
         foreach (var popup in allPopupList)
         {
@@ -107,6 +108,7 @@ public class PopupMgr : MonoBehaviour
 
         GameManager.instance.exitUI();
     }
+
 
     private void RefreshAllPopupDepth()
     {
