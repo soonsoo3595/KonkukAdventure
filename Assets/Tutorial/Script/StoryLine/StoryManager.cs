@@ -9,6 +9,8 @@ public class StoryManager : MonoBehaviour
 
     private Popup popup;
     [SerializeField] DialogueRunner dialogueRunner;
+    [SerializeField] LineView lineView;
+
 
     [SerializeField] RectTransform dialogue;
     [SerializeField] RectTransform playerInfo;
@@ -28,7 +30,7 @@ public class StoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             popup = PopupMgr.instance.dialoguePopup;
             PopupMgr.instance.OpenPopup(popup);
@@ -75,14 +77,14 @@ public class StoryManager : MonoBehaviour
     void DisableNextBnt(int num)
     {
         Debug.Log("버튼 없어짐");
-        LineView.lineView.continueButton = null;
+        lineView.continueButton = null;
         dialogNextBtn.SetActive(false);
     }
 
     void EnableNextBtn(int num)
     {
         dialogNextBtn.SetActive(true);
-        LineView.lineView.continueButton = dialogNextBtn;
+        lineView.continueButton = dialogNextBtn;
     }
     #endregion
 
@@ -99,7 +101,7 @@ public class StoryManager : MonoBehaviour
                 PopupMgr.instance.OpenPopup(popup);
                 playerInfo.anchoredPosition = new Vector3(0, 185, 0);
                 dialogue.anchoredPosition = new Vector3(0, -365, 0);
-                LineView.lineView.OnContinueClicked();
+                lineView.OnContinueClicked();
             }
         }
     }
@@ -109,7 +111,7 @@ public class StoryManager : MonoBehaviour
         if(_storyState == 2)
         {
             SetStoryState(3);
-            LineView.lineView.OnContinueClicked();
+            lineView.OnContinueClicked();
         }
     }
 }
