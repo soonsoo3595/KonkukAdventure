@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using Ricimi;
 
-enum BuildNum
+public enum BuildNum
 {
     #region 빌딩 번호
     행정관 = 1,
@@ -16,37 +17,42 @@ enum BuildNum
     박물관 = 7,
     법학관 = 8,
     상허기념도서관 = 9,
-    의생면과학연구관 = 10,
-    동물생명과학관 = 11,//상허생명과학대학
-    입학정보관 = 12,
-    산학협동관 = 13,
-    수의학관 = 14,//수의과대학
-    새천년관 = 15,
-    건축관 = 16,//건축대학
-    해봉부동산학관 = 17,//부동산과학원
-    인문학관 = 18,//문과대학
-    학생회관 = 19,//상점
-    공학관 = 20,//공과대학
-    신공학관 = 21,//KU융합과학기술원
-    과학관 = 22,//이과대학
-    창의관 = 23,
-    온실 = 24,
+    의생명과학연구관 = 10,
+    생명과학관 = 11, 
+    동물생명과학관 = 12, //상허생명과학대학
+    입학정보관 = 13,
+    산학협동관 = 14,
+    수의학관 = 15,//수의과대학
+    새천년관 = 16,
+    건축관 = 17,//건축대학
+    해봉부동산학관 = 18,//부동산과학원
+    인문학관 = 19,//문과대학
+    학생회관 = 20,//상점
+    공학관 = 21,//공과대학
+    신공학관 = 22,//KU융합과학기술원
+    과학관 = 23,//이과대학
+    창의관 = 24,
     경원당 = 25,
-    노천극장 = 26,
-    청심대 = 27,
-    KU스포츠광장 = 28,
-    일감호 = 29,
-    와우도 = 30,
-    홍예교 = 31,
+    쿨하우스 = 26,
+    노천극장 = 27,
+    청심대 = 28,
+    KU스포츠광장 = 29,
+    건국대학교병원 = 30,
+    일감호 = 31,
+    와우도 = 32,
+    홍예교 = 33,
+    설립자묘소 = 34,
     //퀴즈
-    퀴즈이벤트1 = 32,
-    퀴즈이벤트2 = 33,
-    퀴즈이벤트3 = 34,
+    퀴즈이벤트1 = 35,
+    퀴즈이벤트2 = 36,
+    퀴즈이벤트3 = 37,
     #endregion 
 }
 
 public class Portal : MonoBehaviour
 {
+    public PlaceInfoPopup placeInfoPopup;
+
     public static Portal portal;
 
     #region 수강신청용 델리게이트 및 리스트
@@ -97,44 +103,15 @@ public class Portal : MonoBehaviour
             ///포탈의 콜라이더가 트리거 되었을 때
             ///퀘스트 체크를 최초에 실행한다.
             ///QuestManager에서 다이얼로그 팝업과 보상 지급 진행
-            if (_questManager.CheckQuest((BuildNum))) return;
+            // if (_questManager.CheckQuest((BuildNum))) return;
 
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
-            switch (BuildNum)
-            {
-                //강의 건물 진입
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 11:
-                case 14:
-                case 16:
-                case 17:
-                case 18:
-                case 20:
-                case 21:
-                case 22:
-                    popup = PopupMgr.instance.selectStudyPopup;
-                    PopupMgr.instance.OpenPopup(popup);
-                    SetLectureData((int)buildNum);
-                    break;
-               //상점 해제
-                case 19:
-                    popup = PopupMgr.instance.storePopup;
-                    PopupMgr.instance.OpenPopup(popup);
-                    SetStoreData(itemDataList);
-                    break;
-                //퀴즈 이벤트 해제
-                case 32:
-                case 33:
-                case 34:
-                    popup = PopupMgr.instance.dialoguePopup;
-                    PopupMgr.instance.OpenPopup(popup);
-                    SetDialogue(BuildNum);
-                    break;
-            }
+
+            placeInfoPopup.SetPopup(BuildNum);
+            popup = PopupMgr.instance.placeInfoPopup;
+            PopupMgr.instance.OpenPopup(popup);
+            
         }
     }
     #endregion
@@ -143,6 +120,7 @@ public class Portal : MonoBehaviour
     #region 캐릭터 진입 해제 이벤트
     private void OnTriggerExit(Collider other)
     {
+        PopupMgr.instance.ClosePopup(PopupMgr.instance.placeInfoPopup);
         Popup popup;
 
         if (other.CompareTag("Player"))
@@ -154,19 +132,19 @@ public class Portal : MonoBehaviour
                 case 3:
                 case 4:
                 case 5:
-                case 11:
-                case 14:
-                case 16:
+                case 12:
+                case 15:
                 case 17:
                 case 18:
-                case 20:
+                case 19:
                 case 21:
                 case 22:
+                case 23:
                     popup = PopupMgr.instance.selectStudyPopup;
                     PopupMgr.instance.ClosePopup(popup);
                     break;
                 //상점 진입
-                case 19:
+                case 20:
                     popup = PopupMgr.instance.storePopup;
                     PopupMgr.instance.ClosePopup(popup);
                     break;
@@ -181,4 +159,44 @@ public class Portal : MonoBehaviour
         }
     }
     #endregion
+
+    public void ActivatePopup(int placeNum)
+    {
+        Popup popup;
+
+        switch (placeNum)
+        {
+            //강의 건물 진입
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 12:
+            case 15:
+            case 17:
+            case 18:
+            case 19:
+            case 21:
+            case 22:
+            case 23:
+                popup = PopupMgr.instance.selectStudyPopup;
+                PopupMgr.instance.OpenPopup(popup);
+                SetLectureData(placeNum);
+                break;
+            //상점 해제
+            case 20:
+                popup = PopupMgr.instance.storePopup;
+                PopupMgr.instance.OpenPopup(popup);
+                SetStoreData(itemDataList);
+                break;
+            //퀴즈 이벤트 해제
+            case 32:
+            case 33:
+            case 34:
+                popup = PopupMgr.instance.dialoguePopup;
+                PopupMgr.instance.OpenPopup(popup);
+                SetDialogue(placeNum);
+                break;
+        }
+    }
 }

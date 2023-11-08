@@ -15,6 +15,8 @@ public class PlayfabMgr : MonoBehaviour
     public string playerName = string.Empty;
     [HideInInspector] public string playerID = string.Empty;
 
+    public bool isLoginned;
+
     public static PlayfabMgr Instance { get { return instance; } }
 
     public Action updateWindow;
@@ -41,6 +43,8 @@ public class PlayfabMgr : MonoBehaviour
 
     public void Logout()
     {
+        isLoginned = false;
+
         PlayFabClientAPI.ForgetAllCredentials();
         updateWindow();
     }
@@ -49,7 +53,7 @@ public class PlayfabMgr : MonoBehaviour
 
     public void GetPlayerProfile()
     {
-        if(IsLoggined())
+        if(isLoginned)
         {
             var request = new GetPlayerProfileRequest
             {
@@ -97,8 +101,6 @@ public class PlayfabMgr : MonoBehaviour
 
     public IEnumerator GetUserData()
     {
-        bool isComplete = false;
-
         var request = new GetUserDataRequest() { PlayFabId = playerID };
         PlayFabClientAPI.GetUserData(request, (result) =>
         {
@@ -110,8 +112,8 @@ public class PlayfabMgr : MonoBehaviour
                 {
                     PlayerData player = JsonUtility.FromJson<PlayerData>(eachData.Value.Value);
 
+                    playerName = player.userName;
                     DataMgr.Player = player;
-                    isComplete = true;
                 }
                 if (eachData.Key.Contains("PlayerRecordData"))
                 {
@@ -123,16 +125,11 @@ public class PlayfabMgr : MonoBehaviour
 
         }, DisplayPlayfabError);
 
-        while (!isComplete)
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(5.0f);
     }
 
     public IEnumerator GetDisplayName()
     {
-        bool isComplete = false;
-
         PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest()
         {
             PlayFabId = playerID,
@@ -144,12 +141,10 @@ public class PlayfabMgr : MonoBehaviour
         (result) =>
         {
             playerName = result.PlayerProfile.DisplayName;
-            isComplete = true;
 
         }, DisplayPlayfabError);
 
-        while (isComplete) { yield return null; }
-
+        yield return null;
     }
 
     private void DisplayPlayfabError(PlayFabError error) => Debug.LogError("error : " + error.GenerateErrorReport());
@@ -157,8 +152,8 @@ public class PlayfabMgr : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("로그인 성공");
+        isLoginned = true;
         playerID = result.PlayFabId;
-
         StartCoroutine(GetUserData());
 
         updateWindow();
@@ -188,7 +183,6 @@ public class PlayfabMgr : MonoBehaviour
     private void OnGetPlayerProfileSuccess(GetPlayerProfileResult result)
     {
         Debug.Log("Player ID: " + playerID);
-        
     }
 
     private void OnGetPlayerProfileFailure(PlayFabError error)

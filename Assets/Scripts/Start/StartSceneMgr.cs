@@ -19,7 +19,6 @@ public class StartSceneMgr : MonoBehaviour
         registerBtn.onClick.AddListener(ClickRegister);
         confirmBtn.onClick.AddListener(Continue);
 
-
         PlayfabMgr.Instance.updateWindow += UpdateWindow;
     }
 
@@ -35,11 +34,16 @@ public class StartSceneMgr : MonoBehaviour
 
     public void UpdateWindow()
     {
-        if(PlayfabMgr.Instance.IsLoggined())
+        if (PlayfabMgr.Instance.isLoginned)
         {
-            beforeLogin.SetActive(false);
-            afterLogin.SetActive(true);
-            UpdateDescription();
+            if (PlayfabMgr.Instance.playerName == string.Empty)
+            {
+                Invoke("AfterLogin", 1f);
+            }
+            else
+            {
+                AfterLogin();
+            }
         }
         else
         {
@@ -83,6 +87,13 @@ public class StartSceneMgr : MonoBehaviour
         {
             inputFields[i].text = string.Empty;
         }
+    }
+
+    private void AfterLogin()
+    {
+        beforeLogin.SetActive(false);
+        afterLogin.SetActive(true);
+        UpdateDescription();
     }
 
     public void UpdateDescription()

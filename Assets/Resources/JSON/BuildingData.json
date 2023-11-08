@@ -1,10 +1,9 @@
 {
-  "data":
-  [
+  "data": [
     {
       "buildingID": 1,
       "name": "행정관",
-      "subType": "이벤트  장소"
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 2,
@@ -23,7 +22,7 @@
     },
     {
       "buildingID": 5,
-      "name": "예술문화관",
+      "name": "예술디자인관",
       "subType": "예술디자인대학"
     },
     {
@@ -34,7 +33,7 @@
     {
       "buildingID": 7,
       "name": "박물관",
-      "subType": "이벤트  장소"
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 8,
@@ -44,7 +43,7 @@
     {
       "buildingID": 9,
       "name": "상허기념도서관",
-      "subType": "이벤트  장소"
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 10,
@@ -53,108 +52,123 @@
     },
     {
       "buildingID": 11,
+      "name": "생명과학관",
+      "subType": ""
+    },
+    {
+      "buildingID": 12,
       "name": "동물생명과학관",
       "subType": "상허생명과학대학"
     },
     {
-      "buildingID": 12,
+      "buildingID": 13,
       "name": "입학정보관",
       "subType": ""
     },
     {
-      "buildingID": 13,
+      "buildingID": 14,
       "name": "산학협동관",
       "subType": ""
     },
     {
-      "buildingID": 14,
+      "buildingID": 15,
       "name": "수의학관",
       "subType": "수의과대학"
     },
     {
-      "buildingID": 15,
+      "buildingID": 16,
       "name": "새천년관",
       "subType": ""
     },
     {
-      "buildingID": 16,
+      "buildingID": 17,
       "name": "건축관",
       "subType": "건축대학"
     },
     {
-      "buildingID": 17,
+      "buildingID": 18,
       "name": "해봉부동산학관",
       "subType": "부동산과학원"
     },
     {
-      "buildingID": 18,
+      "buildingID": 19,
       "name": "인문학관",
       "subType": "문과대학"
     },
     {
-      "buildingID": 19,
+      "buildingID": 20,
       "name": "학생회관",
       "subType": ""
     },
     {
-      "buildingID": 20,
+      "buildingID": 21,
       "name": "공학관",
       "subType": "공과대학"
     },
     {
-      "buildingID": 21,
+      "buildingID": 22,
       "name": "신공학관",
       "subType": "KU융합과학기술원"
     },
     {
-      "buildingID": 22,
+      "buildingID": 23,
       "name": "과학관",
       "subType": "이과대학"
     },
     {
-      "buildingID": 23,
+      "buildingID": 24,
       "name": "창의관",
       "subType": ""
     },
     {
-      "buildingID": 24,
-      "name": "온실",
-      "subType": "이벤트  장소"
-    },
-    {
       "buildingID": 25,
       "name": "경원당",
-      "subType": "이벤트  장소"
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 26,
-      "name": "노천극장",
-      "subType": "이벤트  장소"
+      "name": "쿨하우스",
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 27,
-      "name": "청심대",
-      "subType": "이벤트  장소"
+      "name": "노천극장",
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 28,
-      "name": "KU스포츠광장",
-      "subType": "이벤트  장소"
+      "name": "청심대",
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 29,
-      "name": "일감호",
-      "subType": "이벤트  장소"
+      "name": "KU스포츠광장",
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 30,
-      "name": "와우도",
-      "subType": "이벤트  장소"
+      "name": "건국대학교병원",
+      "subType": "이벤트 장소"
     },
     {
       "buildingID": 31,
+      "name": "일감호",
+      "subType": "이벤트 장소"
+    },
+    {
+      "buildingID": 32,
+      "name": "와우도",
+      "subType": "이벤트 장소"
+    },
+    {
+      "buildingID": 33,
       "name": "홍예교",
-      "subType": "이벤트  장소"
+      "subType": "이벤트 장소"
+    },
+    {
+      "buildingID": 34,
+      "name": "설립자묘소",
+      "subType": "이벤트 장소"
     }
   ]
 }

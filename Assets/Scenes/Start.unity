@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 14ac91a3d0b5ed0469dc2fb7f66377c6, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8dce84b5011952b4d9149d3317112156, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 3b50f48cb746ccd428c9b7159756b0df, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3919,7 +3919,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 560, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1146368706
 MonoBehaviour:
@@ -4368,7 +4368,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 560, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280730846
 MonoBehaviour:
@@ -4436,7 +4436,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 399.08, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1283976799
 CanvasGroup:
@@ -5383,7 +5383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000061035, y: 49}
   m_SizeDelta: {x: 620, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684815563
@@ -5421,7 +5421,7 @@ MonoBehaviour:
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -5656,7 +5656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1969779916}
         m_TargetAssemblyTypeName: PlayfabMgr, Assembly-CSharp
         m_MethodName: Logout
         m_Mode: 1
@@ -6033,7 +6033,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 560, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865238004
 MonoBehaviour:
@@ -6487,6 +6487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   playerID: 
+  isLoginned: 0
 --- !u!1 &1988425978
 GameObject:
   m_ObjectHideFlags: 0
@@ -7119,7 +7120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3df0c3b3df1a0149ac2fee50950a851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Tutorial
+  sceneName: Konkuk
 --- !u!1 &2131882936
 GameObject:
   m_ObjectHideFlags: 0
