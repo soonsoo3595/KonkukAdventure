@@ -11,7 +11,7 @@ public class StartSceneMgr : MonoBehaviour
     public TMP_InputField[] inputFields;
     public TextMeshProUGUI descript, info;
 
-    private CurrentTab currentTab = CurrentTab.Login;
+    public CurrentTab currentTab = CurrentTab.Login;
 
     void Start()
     {
@@ -60,6 +60,7 @@ public class StartSceneMgr : MonoBehaviour
         }
         else if(currentTab == CurrentTab.Register)
         {
+            Debug.Log("회원가입 요청");
             RegisterRequest();
         }
 
