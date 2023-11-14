@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using Cinemachine;
 
 public class StoryManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class StoryManager : MonoBehaviour
     [SerializeField] GameObject dialogNextBtn;
 
     private VariableStorageBehaviour _variableStorage;
+    private CinemachineVirtualCamera _tempCamera;
     [SerializeField]  private float _storyState = -1;
 
     // Start is called before the first frame update
@@ -47,6 +49,7 @@ public class StoryManager : MonoBehaviour
     #region 대화 명령어
     void SetCommends()
     {
+        
         dialogueRunner.AddCommandHandler<int>(
                     "Get_Story",     // the name of the command
                     GetStoryState // the method to run
@@ -58,6 +61,22 @@ public class StoryManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>(
                    "Enable_Button",
                    EnableNextBtn
+           );
+        dialogueRunner.AddCommandHandler<int>(
+                   "Get_New_Quest",
+                   GetNewQuest
+           );
+        dialogueRunner.AddCommandHandler<int>(
+                   "Get_Disable_Quest",
+                   GetDisableQuest
+           );
+        dialogueRunner.AddCommandHandler<int>(
+                   "Guide_Portal",
+                   GuidePortal
+           );
+        dialogueRunner.AddCommandHandler<int>(
+                   "Camera_Out",
+                   CameraOut
            );
     }
 
@@ -84,6 +103,26 @@ public class StoryManager : MonoBehaviour
     {
         dialogNextBtn.SetActive(true);
         lineView.continueButton = dialogNextBtn;
+    }
+
+    void GetNewQuest(int num)
+    {
+        QuestManager.questManager.AddNewQuest(DataMgr.Quest.quest[num]);
+    }
+
+    void GetDisableQuest(int num)
+    {
+        QuestManager.questManager.AddDisableQuest(DataMgr.Quest.quest[num]);
+    }
+
+    void GuidePortal(int BuildNum)
+    {
+        QuestTrackingController.questTracking.NavigatePortal(BuildNum);
+    }
+
+    void CameraOut(int num)
+    {
+        CameraSwitcher.cameraSwitcher.SwitchPrioroty(_tempCamera);
     }
     #endregion
 

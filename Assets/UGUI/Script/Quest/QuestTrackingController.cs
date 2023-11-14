@@ -27,11 +27,13 @@ public class QuestTrackingController : MonoBehaviour
         QuestObjectController.Tracking += NavigatePortal;
     }
 
-    bool NavigatePortal(int buildingNum)
+    public bool NavigatePortal(int buildingNum)
     {
         if (SearchPortal(buildingNum).Equals(null)) return true;
 
         if (isTrackingFlag) Debug.Log("새로운 퀘스트를 추적합니다!");
+
+        Debug.Log($"목적지는 {buildingNum} 입니다.");
 
         navigator.gameObject.SetActive(true);
         isTrackingFlag = true;

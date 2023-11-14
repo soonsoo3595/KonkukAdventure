@@ -3628,6 +3628,7 @@ MonoBehaviour:
   - {fileID: 1660243755}
   descript: {fileID: 1661371064}
   info: {fileID: 60905948}
+  currentTab: 0
 --- !u!1 &1009438418
 GameObject:
   m_ObjectHideFlags: 0
@@ -7120,7 +7121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3df0c3b3df1a0149ac2fee50950a851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Konkuk
+  sceneName: Tutorial
 --- !u!1 &2131882936
 GameObject:
   m_ObjectHideFlags: 0
