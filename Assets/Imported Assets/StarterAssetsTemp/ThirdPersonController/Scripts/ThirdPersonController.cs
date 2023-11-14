@@ -207,6 +207,7 @@ namespace StarterAssets
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Cinemachine will follow this target
+            //카메라 위 아래로 움직이는거 내가 막아났음
             //CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
             //    _cinemachineTargetYaw, 0.0f);
             
