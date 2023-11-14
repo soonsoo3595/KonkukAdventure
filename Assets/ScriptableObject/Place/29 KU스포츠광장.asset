@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c60aad2efb7ba64ea4d9324000c1ae7, type: 3}
+  m_Name: "29 KU\uC2A4\uD3EC\uCE20\uAD11\uC7A5"
+  m_EditorClassIdentifier: 
+  placeImage: {fileID: 21300000, guid: 221b74eb3be378848aa7c52a1415c086, type: 3}
+  placeName: "KU\uC2A4\uD3EC\uCE20\uAD11\uC7A5"
+  placeDescription: " \uD6C4\uBB38\uCABD\uC5D0 \uC704\uCE58\uD55C \uB300\uC6B4\uB3D9\uC7A5\uC774\uBA70
+    \uCD95\uAD6C\uC7A5,\uD48B\uC0B4\uC7A5,\uB18D\uAD6C\uC7A5,\uC871\uAD6C\uC7A5\uC774
+    \uC788\uC73C\uBA70 \uC721\uC0C1\uD2B8\uB799\uB3C4 \uC788\uB2E4. \n \uC8FC\uB85C
+    \uB2E8\uACFC\uB300\uC5D0\uC11C \uCCB4\uC721\uB300\uD68C\uB97C \uD558\uBA74 \uC774
+    \uACF3\uC5D0\uC11C \uD558\uBA70 \uCD95\uC81C\uC5D0\uC11C \uC5F0\uC608\uC778 \uACF5\uC5F0\uB3C4
+    \uC774\uACF3\uC5D0 \uBB34\uB300\uB97C \uC124\uCE58\uD574 \uC9C4\uD589\uD55C\uB2E4."

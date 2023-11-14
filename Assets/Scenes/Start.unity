@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 14ac91a3d0b5ed0469dc2fb7f66377c6, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8dce84b5011952b4d9149d3317112156, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 3b50f48cb746ccd428c9b7159756b0df, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 782501757}
     m_SelectOnDown: {fileID: 1660243755}
@@ -2718,7 +2718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: adde37502a078400db0ff6a2833c8d55, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edaa77bd436e5e14aa74e3f300eb08d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3938,7 +3938,7 @@ MonoBehaviour:
     m_Right: 20
     m_Top: 40
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -4097,7 +4097,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 439.99994}
-  m_SizeDelta: {x: 960, y: 200}
+  m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227337878
 MonoBehaviour:
@@ -4119,7 +4119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC74\uAD6D \uC5B4\uB4DC\uBCA4\uCC98"
+  m_text: KU:rasic World
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d0f63ec3c137c94395b5a5b532ac494, type: 2}
   m_sharedMaterial: {fileID: 8508688762906813337, guid: 3d0f63ec3c137c94395b5a5b532ac494, type: 2}
@@ -4152,7 +4152,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4436,7 +4436,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 399.08, y: 0}
+  m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1283976799
 CanvasGroup:
@@ -5082,7 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 58858021}
     m_SelectOnDown: {fileID: 0}
@@ -5656,7 +5656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1969779916}
         m_TargetAssemblyTypeName: PlayfabMgr, Assembly-CSharp
         m_MethodName: Logout
         m_Mode: 1
@@ -6487,6 +6487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   playerID: 
+  isLoginned: 0
 --- !u!1 &1988425978
 GameObject:
   m_ObjectHideFlags: 0
@@ -7119,7 +7120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3df0c3b3df1a0149ac2fee50950a851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Tutorial
+  sceneName: Konkuk
 --- !u!1 &2131882936
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,30 +23,27 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(instance);
         }
 
-        DontDestroyOnLoad(gameObject);
+        LoadData();
 
-        if (!Director.isDataLoad && SceneManager.GetActiveScene().name != "Start")
-        {
-            LoadData();
-        }
     }
 
     void Start()
     {
-
+        
     }
 
     private void Update()
     {   
         if(Input.GetKey(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name == "Ui")
+            if (SceneManager.GetActiveScene().name == "Start")
             {
                 ExitGame();
             }

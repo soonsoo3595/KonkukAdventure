@@ -15,13 +15,16 @@ public class PopupMgr : MonoBehaviour
     public Popup selectStudyPopup;
     public Popup storePopup;
     public Popup dialoguePopup;
- 
+    public Popup exitPopup;
+    public Popup campusMapPopup;
+    public Popup placeInfoPopup;
 
     public static PopupMgr instance;
 
     private void Awake()
     {
         instance = this;
+
     }
 
     private void Start()
@@ -39,6 +42,10 @@ public class PopupMgr : MonoBehaviour
             {
                 ClosePopup(activePopupList.First.Value);
             }
+            else
+            {
+                ToggleKeyDownAction(KeyCode.Escape, exitPopup);
+            }
         }
 
         ToggleKeyDownAction(KeyCode.P, detailInfoPopup);
@@ -47,13 +54,15 @@ public class PopupMgr : MonoBehaviour
         {
             ToggleKeyDownAction(KeyCode.N, semesterOverPopup);
         }
+
+        ToggleKeyDownAction(KeyCode.M, campusMapPopup);
     }
 
     public void Init()
     {
         allPopupList = new List<Popup>()
         {
-            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup
+            semesterOverPopup, detailInfoPopup, selectStudyPopup, storePopup, dialoguePopup, exitPopup, campusMapPopup, placeInfoPopup
         };
 
         foreach (var popup in allPopupList)
@@ -105,6 +114,12 @@ public class PopupMgr : MonoBehaviour
         activePopupList.Remove(popup);
         popup.gameObject.SetActive(false);
         RefreshAllPopupDepth();
+
+        if(GameManager.instance == null)
+        {
+            Debug.Log("GameManager.instance is null");
+            return;
+        }
 
         GameManager.instance.exitUI();
     }

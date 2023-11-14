@@ -175,8 +175,8 @@ public static class DataMgr
     #endregion
 
     #region Json 경로
-    // private static string playerJsonPath = "JSON/PlayerData";
-    // private static string playerRecordJsonPath = "JSON/PlayerRecordData";
+    //private static string playerJsonPath = "JSON/PlayerData";
+    //private static string playerRecordJsonPath = "JSON/PlayerRecordData";
     private static string buildingJsonPath = "JSON/BuildingData";
     private static string departmentJsonPath = "JSON/DepartmentData";
     private static string lectureJsonPath = "JSON/LectureData";
@@ -193,6 +193,7 @@ public static class DataMgr
     public static ItemDataList Items { get; private set; }
     public static DialogueDataList Dialogue { get; private set; }
     public static QuestData Quest { get; private set; }
+
     public static void LoadData()
     {
         // TextAsset playerJson = Resources.Load<TextAsset>(playerJsonPath);
