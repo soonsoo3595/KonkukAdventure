@@ -58,6 +58,8 @@ public class Portal : MonoBehaviour
 
     public static Portal portal;
 
+    public GameObject infoIcon;
+
     #region 수강신청용 델리게이트 및 리스트
     //학과 데이터와 강의 데이터를 매개변수로 가지는 델리게이트 생성
     //해당 델리게이트는 수강신청 델리게이트
