@@ -33,12 +33,11 @@ public class QuestTrackingController : MonoBehaviour
 
         if (isTrackingFlag) Debug.Log("새로운 퀘스트를 추적합니다!");
 
-        Debug.Log($"목적지는 {buildingNum} 입니다.");
-
         navigator.gameObject.SetActive(true);
         isTrackingFlag = true;
 
         Vector3 trackingPosition = SearchPortal(buildingNum).position;
+        Debug.Log($"목적지는 {trackingPosition} 입니다.");
         StartCoroutine(Tracking_Update(trackingPosition));
 
         return false;

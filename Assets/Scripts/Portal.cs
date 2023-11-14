@@ -126,6 +126,7 @@ public class Portal : MonoBehaviour
                 placeInfoPopup.SetPopup(BuildNum);
                 popup = PopupMgr.instance.placeInfoPopup;
                 PopupMgr.instance.OpenPopup(popup);
+                StoryManager.storyManager.PortalIn();
             }
             else
             {
@@ -208,12 +209,14 @@ public class Portal : MonoBehaviour
                 popup = PopupMgr.instance.selectStudyPopup;
                 PopupMgr.instance.OpenPopup(popup);
                 SetLectureData(placeNum);
+                StoryManager.storyManager.PortalIn();
                 break;
             //상점 해제
             case 20:
                 popup = PopupMgr.instance.storePopup;
                 PopupMgr.instance.OpenPopup(popup);
                 SetStoreData(itemDataList);
+                StoryManager.storyManager.PortalIn();
                 break;
             //퀴즈 이벤트 해제
             case 32:

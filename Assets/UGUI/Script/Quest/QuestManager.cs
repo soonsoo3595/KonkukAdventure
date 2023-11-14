@@ -32,11 +32,6 @@ public class QuestManager : MonoBehaviour
         _newQuests.Add(quest);
     }
 
-    public void AddDisableQuest(QuestData quest)
-    {
-        _quests.Add(quest);
-    }
-
     public void MakeQuestObject()
     {
         ///퀘스트 탭을 클릭하면 무조건 완료된 퀘스트가 있는지 체크한다.
@@ -79,14 +74,11 @@ public class QuestManager : MonoBehaviour
     {
         foreach (QuestData quest in _quests)
         {
+            //튜토용 코드 State 3
+            if (quest.questID.Equals(3)) StoryManager.storyManager.storyState = 4;
             if (quest.destination.Equals(destination) && quest.quest_Done.Equals(false))
             {
                 quest.quest_Done = true;
-                if(questObjectList == null)
-                {
-                    _quests.Remove(quest);
-                    _doneQuests.Add(quest);
-                }
                 QuestTrackingController.questTracking.navigator.gameObject.SetActive(false);
                 return true;
             }

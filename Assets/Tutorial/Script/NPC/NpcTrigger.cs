@@ -48,6 +48,7 @@ public class NpcTrigger : MonoBehaviour
         if (_cameraSwitcher.isPlayerCamera != true)
         {
             _cameraSwitcher.SwitchPrioroty(_now_Camera);
+            storyDialogu.Stop();
         }
     }
 }

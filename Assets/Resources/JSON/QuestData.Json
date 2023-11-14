@@ -19,11 +19,20 @@
     },
     {
         "questID": 3,
-        "questName":"신공학관 으로", 
+        "questName":"신공학관으로", 
         "destination": 22, 
         "quest_Explain": "직접 강의를 들을 차례, 신공학관으로 가자",
         "reward_Credit": 0,
         "next_Quest": 4,
+        "quest_Done": false
+    },
+    {
+        "questID": 4,
+        "questName":"상점으로 가보자!", 
+        "destination": 20, 
+        "quest_Explain": "KU포인트를 사용하러 상점으로 가자",
+        "reward_Credit": 0,
+        "next_Quest": 5,
         "quest_Done": false
     }
     ]

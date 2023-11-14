@@ -15,8 +15,8 @@ public class ECTPopupAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        
         this.gameObject.SetActive(false);
+        StoryManager.storyManager.StoryState_5();
     }
 
     IEnumerator Opne()
