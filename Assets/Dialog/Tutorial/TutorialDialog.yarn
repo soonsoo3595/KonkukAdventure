@@ -1,5 +1,66 @@
-﻿title: TutorialDialog
-tags: Start
+﻿title: GameStart
 ---
+<<declare $player_info_tuto = false>>
+<<declare $quest_info_tuto = false>>
+<<declare $studdy_info_tuto = false>>
+<<declare $store_info_tuto = false>>
+<<declare $dialogNextBtn = "dialogNextBtn">>
+<<declare $isGuideBusy = false>>
+<<declare $Story_State = 0>>
 
+<<Get_Story {$Story_State}>>//현재 스토리 단계를 스크립트에 주는 명령어
+
+
+???:어서오세요!
+???:당신이 건국대학교에 오기만을 기다렸어요!
+// ???:제가 당신을 만나려고 얼마나 오랜 시간을 기다렸는지 알면 깜짝 놀랄걸요?
+// ???:앗! 제 소개를 하지 않았군요!
+// 캠퍼스 투어 가이드:저는 건국대학교 학생회에서 당신을 안내하기 위해 나온 캠퍼스 투어 가이드 라고 해요!
+// 캠퍼스 투어 가이드:학교와 학교에서 어떻게 생활해야 하는지 간단한 안내를 해드리려고 하니 화살표를 따라 저를 찾아주시겠어요?
+<<set $Story_State = 1>>
+<<set $isGuideBusy = true>>
+<<End>>
+===
+title: Guide
+---
+// 가이드 조우(1) > 상태창 안내(2) > 퀘스트 안내(3) > 건물 정보 안내(4) >  강의 수강 안내(5) > 상점 안내 (6) >
+// [다른 NPC 노드에서 진행] 이동 & 상점 퀘스트 완료 (7) > 이동 장소 안내 (8) > 퀴즈 (9) > 가이드 복귀 안내 (10) >
+// 안내 종료 (11)
+
+<<if $Story_State == 1>>
+    <<Get_Story {$Story_State}>>
+    캠퍼스 투어 가이드:잘 찾아 오셨군요!
+//    캠퍼스 투어 가이드:그럼 이제부터 제가 학교생활을 어떻게 해야하는지 알려드릴게요!
+//    캠퍼스 투어 가이드:학교는 총 8학기로 4학년 2학기까지 진행된답니다
+//    캠퍼스 투어 가이드:여러분들이 지금 1학년 1학기니까 앞으로 7번만 더 반복하면 졸업을 하시는거에요!
+    <<Disable_Button 0>>
+    캠퍼스 투어 가이드:뜬금없지만 키보드 "P"를 눌러보시겠어요?
+<<endif>>
+
+<<if $Story_State == 2>>
+    <<Get_Story {$Story_State}>>
+    <<Enable_Button 0>>
+///상태창 안내
+    캠퍼스 투어 가이드: 상태창에 대해 안내를 시작할게요!
+    // 상태창 안내~
+    <<Disable_Button 0>>
+    캠퍼스 투어 가이드: 그럼 상태창의 우측 상단의 Quest 버튼을 눌러보도록 할까요?
+<<endif>>
+
+<<if $Story_State == 3>>
+    <<Get_Story {$Story_State}>>
+    <<Enable_Button 0>>
+    캠퍼스 투어 가이드: 이곳은 플레이어님이 받은 퀘스트들을 볼 수 있는 곳이에요!
+<<endif>>
+
+<<if $Story_State == 2>>
+    <<Get_Story {$Story_State}>>
+
+<<endif>>
+
+<<if $isGuideBusy == false>>
+    캠퍼스 투어 가이드:무슨일이시죠? 제가 도울 일이 있을까요?
+<<endif>>
+
+<<End>>
 ===
