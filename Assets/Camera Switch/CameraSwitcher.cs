@@ -15,7 +15,7 @@ public class CameraSwitcher : MonoBehaviour
     public LayerMask cullingMaskWhileLive;
     private LayerMask _savedLayerMask;
 
-    private bool _isPlayerCamera = true;
+    internal bool isPlayerCamera = true;
 
     void Awake()
     {
@@ -24,22 +24,22 @@ public class CameraSwitcher : MonoBehaviour
 
     public void SwitchPrioroty(CinemachineVirtualCamera npcCam)
     {
-        if (_isPlayerCamera)
+        if (isPlayerCamera)
         {
+            _npcCamBuffer = npcCam;
             _playerCam.Priority = 0;
             npcCam.Priority = 1;
-            _isPlayerCamera = false;
+            isPlayerCamera = false;
             _OnVirtualCameraAnimateIn_Finished();
             return;
         }
         else
         {
             _playerCam.Priority = 2;
-            npcCam.Priority = 0;
-            _isPlayerCamera = true;
+            _npcCamBuffer.Priority = 0;
+            isPlayerCamera = true;
             _OnVirtualCameraAnimateOut_Started();
         }
-        _npcCamBuffer = npcCam;
     }
 
     public void _OnVirtualCameraAnimateIn_Finished()

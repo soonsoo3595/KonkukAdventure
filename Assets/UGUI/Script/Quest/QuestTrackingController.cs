@@ -27,7 +27,7 @@ public class QuestTrackingController : MonoBehaviour
         QuestObjectController.Tracking += NavigatePortal;
     }
 
-    bool NavigatePortal(int buildingNum)
+    public bool NavigatePortal(int buildingNum)
     {
         if (SearchPortal(buildingNum).Equals(null)) return true;
 
@@ -37,6 +37,7 @@ public class QuestTrackingController : MonoBehaviour
         isTrackingFlag = true;
 
         Vector3 trackingPosition = SearchPortal(buildingNum).position;
+        Debug.Log($"목적지는 {trackingPosition} 입니다.");
         StartCoroutine(Tracking_Update(trackingPosition));
 
         return false;

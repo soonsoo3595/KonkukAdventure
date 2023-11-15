@@ -72,5 +72,9 @@ public class PlaceInfoPopup : MonoBehaviour
     {
         PopupMgr.instance.ClosePopup(PopupMgr.instance.placeInfoPopup);
         Portal.portal.ActivatePopup(placeNum);
+        if (StoryManager.storyManager.storyState.Equals(4))
+        {
+            StoryManager.storyManager.StoryState_4();
+        }
     }
 }

@@ -13,7 +13,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] internal List<GameObject> questObjectList;
     [SerializeField] private List<QuestData> _quests;
     [SerializeField] private List<QuestData> _newQuests;
-    [SerializeField] private List<QuestData> _DoneQuests;
+    [SerializeField] private List<QuestData> _doneQuests;
 
     private void Awake()
     {
@@ -25,13 +25,9 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         QuestObjectController.Delete += DeleteQuest;
-        ///test 코드
-        AddQuest(DataMgr.Quest);
-        AddQuest(DataMgr.Quest);
-        AddQuest(DataMgr.Quest);
     }
 
-    void AddQuest(QuestData quest)
+    public void AddNewQuest(QuestData quest)
     {
         _newQuests.Add(quest);
     }
@@ -45,7 +41,7 @@ public class QuestManager : MonoBehaviour
             questObjectList[i].GetComponent<QuestObjectController>().GetData(_quests[i]);
             if (_quests[i].quest_Done)
             {
-                _DoneQuests.Add(_quests[i]);
+                _doneQuests.Add(_quests[i]);
                 _quests.Remove(_quests[i]);
             }
         }
@@ -78,6 +74,8 @@ public class QuestManager : MonoBehaviour
     {
         foreach (QuestData quest in _quests)
         {
+            //튜토용 코드 State 3
+            if (quest.questID.Equals(3)) StoryManager.storyManager.storyState = 4;
             if (quest.destination.Equals(destination) && quest.quest_Done.Equals(false))
             {
                 quest.quest_Done = true;

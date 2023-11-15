@@ -46,6 +46,9 @@ public enum BuildNum
     퀴즈이벤트1 = 35,
     퀴즈이벤트2 = 36,
     퀴즈이벤트3 = 37,
+    //Npc
+    가이드 = 100,
+    학생1 = 101
     #endregion 
 }
 
@@ -70,6 +73,12 @@ public class Portal : MonoBehaviour
     public static event StoreChain SetStoreData;
     //로드 할 때에 Json에 있는 정보가 들어갈곳
     ItemDataList itemDataList;
+    #endregion
+
+    #region NPC 델리게이트
+    public delegate void NpcChain(String NpcName);
+    public static event NpcChain NpcIn;
+    public static event NpcChain NpcOut;
     #endregion
 
     #region 퀴즈 번호 체크
@@ -102,6 +111,8 @@ public class Portal : MonoBehaviour
 
         if(other.CompareTag("Player"))
         {
+            QuestManager.questManager.CheckQuest(BuildNum);
+
             ///포탈의 콜라이더가 트리거 되었을 때
             ///퀘스트 체크를 최초에 실행한다.
             ///QuestManager에서 다이얼로그 팝업과 보상 지급 진행
@@ -110,19 +121,26 @@ public class Portal : MonoBehaviour
             //델리게이트 실행
             //만약 상점 이라면 상점 델리게이트 실행
 
-            placeInfoPopup.SetPopup(BuildNum);
-            popup = PopupMgr.instance.placeInfoPopup;
-            PopupMgr.instance.OpenPopup(popup);
-            
+            if (placeInfoPopup != null)
+            {
+                placeInfoPopup.SetPopup(BuildNum);
+                popup = PopupMgr.instance.placeInfoPopup;
+                PopupMgr.instance.OpenPopup(popup);
+                StoryManager.storyManager.PortalIn();
+            }
+            else
+            {
+                ActivatePopup(BuildNum);
+            }
         }
     }
     #endregion
 
     //캐릭터 진입 해제시 발동
     #region 캐릭터 진입 해제 이벤트
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
-        PopupMgr.instance.ClosePopup(PopupMgr.instance.placeInfoPopup);
+        if(placeInfoPopup != null) PopupMgr.instance.ClosePopup(PopupMgr.instance.placeInfoPopup);
         Popup popup;
 
         if (other.CompareTag("Player"))
@@ -154,8 +172,15 @@ public class Portal : MonoBehaviour
                 case 32:
                 case 33:
                 case 34:
+                case 100:
                     popup = PopupMgr.instance.dialoguePopup;
                     PopupMgr.instance.ClosePopup(popup);
+                    NpcOut("");
+                    break;
+                case 101:
+                    popup = PopupMgr.instance.dialoguePopup;
+                    PopupMgr.instance.ClosePopup(popup);
+                    NpcOut("");
                     break;
             }
         }
@@ -184,12 +209,14 @@ public class Portal : MonoBehaviour
                 popup = PopupMgr.instance.selectStudyPopup;
                 PopupMgr.instance.OpenPopup(popup);
                 SetLectureData(placeNum);
+                StoryManager.storyManager.PortalIn();
                 break;
             //상점 해제
             case 20:
                 popup = PopupMgr.instance.storePopup;
                 PopupMgr.instance.OpenPopup(popup);
                 SetStoreData(itemDataList);
+                StoryManager.storyManager.PortalIn();
                 break;
             //퀴즈 이벤트 해제
             case 32:
@@ -198,6 +225,16 @@ public class Portal : MonoBehaviour
                 popup = PopupMgr.instance.dialoguePopup;
                 PopupMgr.instance.OpenPopup(popup);
                 SetDialogue(placeNum);
+                break;
+            case 100:
+                popup = PopupMgr.instance.dialoguePopup;
+                PopupMgr.instance.OpenPopup(popup);
+                NpcIn("Guide");
+                break;
+            case 101:
+                popup = PopupMgr.instance.dialoguePopup;
+                PopupMgr.instance.OpenPopup(popup);
+                NpcIn("Student1");
                 break;
         }
     }
