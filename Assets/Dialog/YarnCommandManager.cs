@@ -9,14 +9,13 @@ public class YarnCommandManager : MonoBehaviour
     //진입한 포탈 번호 받는 변수
     private int portalNum;
 
-    private DialogueRunner dialogueRunner;
+    [SerializeField] DialogueRunner StoryRunner;
     private Popup popup;
 
     private void Awake()
     {
         Portal.SetDialogue += SetDialogue;
         popup = GetComponent<Popup>();
-        dialogueRunner = GetComponent<DialogueRunner>();
 
         #region Yarn 커맨드 등록
         CustomQuizCommands.QuizCorrectCommand += QuizCorrect;
@@ -29,7 +28,7 @@ public class YarnCommandManager : MonoBehaviour
     void SetDialogue(int num)
     {
         portalNum = num;
-        dialogueRunner.Stop();
+        StoryRunner.Stop();
 
         switch (num)
         {
@@ -39,10 +38,10 @@ public class YarnCommandManager : MonoBehaviour
                 if (!DataMgr.Dialogue.quiz[ID].isEnter)
                 {
                     GameManager.instance.enteringUI();
-                    dialogueRunner.StartDialogue(num.ToString());
+                    StoryRunner.StartDialogue(num.ToString());
                     break;
                 }
-                dialogueRunner.StartDialogue("0");
+                StoryRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
             case 33:
@@ -50,11 +49,11 @@ public class YarnCommandManager : MonoBehaviour
                 if (!DataMgr.Dialogue.quiz[ID].isEnter)
                 {
                     GameManager.instance.enteringUI();
-                    dialogueRunner.StartDialogue(num.ToString());
+                    StoryRunner.StartDialogue(num.ToString());
                     break;
                 }
-                dialogueRunner.Stop();
-                dialogueRunner.StartDialogue("0");
+                StoryRunner.Stop();
+                StoryRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
             case 34:
@@ -62,11 +61,11 @@ public class YarnCommandManager : MonoBehaviour
                 if (!DataMgr.Dialogue.quiz[ID].isEnter)
                 {
                     GameManager.instance.enteringUI();
-                    dialogueRunner.StartDialogue(num.ToString());
+                    StoryRunner.StartDialogue(num.ToString());
                     break;
                 }
-                dialogueRunner.Stop();
-                dialogueRunner.StartDialogue("0");
+                StoryRunner.Stop();
+                StoryRunner.StartDialogue("0");
                 Debug.Log("이미 본 퀴즈입니다.");
                 break;
         }
@@ -91,16 +90,17 @@ public class YarnCommandManager : MonoBehaviour
                 Debug.Log(DataMgr.Dialogue.quiz[ID].isEnter);
                 break;
         }
+        StoryRunner.Stop();
         PopupMgr.instance.ClosePopup(popup);
     }
 
     private void Checked()
     {
-        if (!dialogueRunner.startNode.Equals("0"))
+        if (!StoryRunner.startNode.Equals("0"))
         {
-            dialogueRunner.StartDialogue("0");
+            StoryRunner.StartDialogue("0");
         }
-        dialogueRunner.Stop();
-        dialogueRunner.StartDialogue("0");
+        StoryRunner.Stop();
+        StoryRunner.StartDialogue("0");
     }
 }

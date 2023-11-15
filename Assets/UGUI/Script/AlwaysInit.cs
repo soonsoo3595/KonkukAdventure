@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AlwaysInit : MonoBehaviour
 {
-    Vector3 objectPosition;
+   [SerializeField] Vector3 objectPosition;
 
-    private void OnEnable()
+    private void FixedUpdate()
     {
-        objectPosition = GetComponent<RectTransform>().anchoredPosition;
+        GetComponent<RectTransform>().SetAsLastSibling();
     }
 
     private void OnDisable()

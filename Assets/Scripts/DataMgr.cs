@@ -165,6 +165,12 @@ public class QuestData{
     public int next_Quest;
     public bool quest_Done;
 }
+
+[System.Serializable]
+public class QuestDataList
+{
+    public List<QuestData> quest;
+}
 #endregion
 
 public static class DataMgr
@@ -192,7 +198,7 @@ public static class DataMgr
     public static LectureDataList Lectures { get; private set; }
     public static ItemDataList Items { get; private set; }
     public static DialogueDataList Dialogue { get; private set; }
-    public static QuestData Quest { get; private set; }
+    public static QuestDataList Quest { get; private set; }
 
     public static void LoadData()
     {
@@ -213,7 +219,7 @@ public static class DataMgr
         Lectures = JsonUtility.FromJson<LectureDataList>(lectureJson.text);
         Items = JsonUtility.FromJson<ItemDataList>(itemJson.text);
         Dialogue = JsonUtility.FromJson<DialogueDataList>(quizJson.text);
-        Quest = JsonUtility.FromJson<QuestData>(questJson.text);
+        Quest = JsonUtility.FromJson<QuestDataList>(questJson.text);
     }
 
     public static void SavePlayerData()
