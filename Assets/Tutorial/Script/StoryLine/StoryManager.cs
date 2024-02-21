@@ -50,7 +50,7 @@ public class StoryManager : MonoBehaviour
             PopupMgr.instance.OpenPopup(popup);
             dialogueRunner.StartDialogue("GameStart");
             _variableStorage = dialogueRunner.VariableStorage;
-            StoryStartBtn.SetActive(false);
+            // StoryStartBtn.SetActive(false);
         }
     }
 
@@ -116,14 +116,14 @@ public class StoryManager : MonoBehaviour
     void DisableNextBnt(int num)
     {
         Debug.Log("버튼 없어짐");
-        lineView.continueButton = null;
+        // lineView.continueButton = null;
         dialogNextBtn.SetActive(false);
     }
 
     void EnableNextBtn(int num)
     {
         dialogNextBtn.SetActive(true);
-        lineView.continueButton = dialogNextBtn;
+        // lineView.continueButton = dialogNextBtn;
     }
 
     void GetNewQuest(int num)
